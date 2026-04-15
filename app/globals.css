@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  background: #080808;
+  color: #e2e2e2;
+  font-family: system-ui, sans-serif;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Monospace numbers globally */
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #111111;
+}
+::-webkit-scrollbar-thumb {
+  background: #252525;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #333333;
+}
+
+/* Input base reset */
+input, button, select, textarea {
+  font-family: inherit;
+}
+
+/* Focus ring */
+input:focus, button:focus-visible {
+  outline: 1px solid #c8a96e;
+  outline-offset: 1px;
+}
+
+/* Table base */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  text-align: left;
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: #4a4a4a;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-bottom: 1px solid #252525;
+  white-space: nowrap;
+}
+
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #1a1a1a;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: #e2e2e2;
+  white-space: nowrap;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* Spinner */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #333333;
+  border-top-color: #c8a96e;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+/* Hover opacity transition */
+.hover-opacity {
+  transition: opacity 0.1s ease;
+}
+.hover-opacity:hover {
+  opacity: 0.8;
+}
