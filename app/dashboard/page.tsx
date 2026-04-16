@@ -31,6 +31,13 @@ export default function ScannerPage() {
 
   const loadLatestData = useCallback(async () => {
     const supabase = createBrowserSupabaseClient()
+
+    const authToken    = document.cookie.match(/(?:^|; )authToken=([^;]*)/)?.[1]
+    const refreshToken = document.cookie.match(/(?:^|; )refreshToken=([^;]*)/)?.[1]
+    if (authToken) {
+      await supabase.auth.setSession({ access_token: authToken, refresh_token: refreshToken ?? '' })
+    }
+
     const { data: runData } = await supabase
       .from('scan_runs')
       .select('*')

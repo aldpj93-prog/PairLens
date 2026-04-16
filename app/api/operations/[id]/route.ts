@@ -6,10 +6,10 @@ export async function PATCH(
   request: Request,
   { params }: { params: { id: string } }
 ) {
-  const cookieStore = cookies()
-  const supabase = createSSRClient(cookieStore)
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  //const cookieStore = cookies()
+  //const supabase = createSSRClient(cookieStore)
+  //const { data: { user } } = await supabase.auth.getUser()
+  //if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
   const body = await request.json()
   const { exit_price_a, exit_price_b } = body

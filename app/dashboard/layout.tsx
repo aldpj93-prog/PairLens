@@ -10,10 +10,10 @@ export default async function DashboardLayout({
 }: {
   children: React.ReactNode
 }) {
-  const cookieStore = cookies()
-  const supabase = createSSRClient(cookieStore)
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) redirect('/login')
+  //const cookieStore = cookies()
+  //const supabase = createSSRClient(cookieStore)
+  //const { data: { user } } = await supabase.auth.getUser()
+  //if (!user) redirect('/login')
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh', background: '#080808' }}>

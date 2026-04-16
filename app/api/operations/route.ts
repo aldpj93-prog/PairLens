@@ -12,10 +12,10 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const cookieStore = cookies()
-  const supabase = createSSRClient(cookieStore)
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  //const cookieStore = cookies()
+  //const supabase = createSSRClient(cookieStore)
+  //const { data: { user } } = await supabase.auth.getUser()
+  //if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
   const body = await request.json()
   const db = createAdminClient()

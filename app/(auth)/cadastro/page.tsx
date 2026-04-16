@@ -4,9 +4,10 @@ import { useState, FormEvent } from 'react'
 import { createBrowserSupabaseClient } from '@/lib/supabase'
 import { useRouter } from 'next/navigation'
 
-export default function LoginPage() {
+export default function signUpPage() {
   const router = useRouter()
   const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
@@ -14,18 +15,20 @@ export default function LoginPage() {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
     setError(null)
-    setLoading(true)
+    //setLoading(true)
     //console.log(email, password)
-    const response = await fetch('/api/express/auth', {
+    const response = await fetch('/api/express/auth/cadastro', {
       headers:{
         'Content-Type': 'application/json'
       },
       method: 'POST',
-      body: JSON.stringify({email, password})
+      body: JSON.stringify({email, name, password})
     });
 
-    router.push('/dashboard')
-    router.refresh()
+    console.log(response);
+
+    //router.push('/dashboard')
+    //router.refresh()
   }
 
   return (
@@ -93,6 +96,40 @@ export default function LoginPage() {
               onChange={e => setEmail(e.target.value)}
               required
               autoComplete="email"
+              style={{
+                width: '100%',
+                background: '#181818',
+                border: '1px solid #252525',
+                color: '#e2e2e2',
+                padding: '10px 12px',
+                fontSize: 13,
+                fontFamily: '"JetBrains Mono", monospace',
+                outline: 'none',
+                borderRadius: 2,
+                boxSizing: 'border-box',
+              }}
+            />
+          </div>          <div className="mb-4">
+            <label
+              htmlFor="email"
+              style={{
+                display: 'block',
+                color: '#7a7a7a',
+                fontSize: 11,
+                letterSpacing: '0.1em',
+                marginBottom: 6,
+                fontFamily: 'system-ui',
+              }}
+            >
+              Name
+            </label>
+            <input
+              id="name"
+              type="name"
+              value={name}
+              onChange={e => setName(e.target.value)}
+              required
+              autoComplete="name"
               style={{
                 width: '100%',
                 background: '#181818',
