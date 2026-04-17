@@ -169,9 +169,19 @@ export default function OperationsPage() {
 
   const load = useCallback(async () => {
     try {
-      const res  = await fetch('/api/operations')
+      const res  = await fetch('/api/express/operations', {
+        method: 'get',
+        credentials: 'include',
+      }) //
       const data = await res.json()
-      setOperations((data as Operation[]).filter(o => o.status === 'open'))
+      console.log(res);
+      const numFields = ['hedge_ratio','entry_ratio','target_ratio','stop_ratio','entry_price_a','entry_price_b','entry_qty_a','entry_qty_b','exit_price_a','exit_price_b','exit_ratio','pnl_pct'] as const
+      const normalized = (data as any[]).map(o => {
+        const n: any = { ...o }
+        for (const k of numFields) if (n[k] != null) n[k] = Number(n[k])
+        return n as Operation
+      })
+      setOperations(normalized.filter(o => o.status === 'open'))
     } catch {
       // silently fail
     } finally {

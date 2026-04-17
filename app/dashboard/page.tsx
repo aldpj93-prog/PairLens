@@ -30,44 +30,18 @@ export default function ScannerPage() {
   // ─── Load latest scan run and its pairs ───────────────────────────────────
 
   const loadLatestData = useCallback(async () => {
-    const supabase = createBrowserSupabaseClient()
-
-    const authToken    = document.cookie.match(/(?:^|; )authToken=([^;]*)/)?.[1]
-    const refreshToken = document.cookie.match(/(?:^|; )refreshToken=([^;]*)/)?.[1]
-    if (authToken) {
-      await supabase.auth.setSession({ access_token: authToken, refresh_token: refreshToken ?? '' })
+    const res = await fetch('/api/express/scanner/latest-data')
+    if (!res.ok) {
+      setLoading(false)
+      return
     }
+    const { run, pairs: pairData, zThreshold: zVal } = await res.json()
 
-    const { data: runData } = await supabase
-      .from('scan_runs')
-      .select('*')
-      .eq('status', 'completed')
-      .order('triggered_at', { ascending: false })
-      .limit(1)
-      .maybeSingle()
-
-    if (runData) {
-      setLatestRun(runData as ScanRun)
-      const { data: pairData } = await supabase
-        .from('cointegrated_pairs')
-        .select('*')
-        .eq('scan_run_id', runData.id)
-        .eq('is_active', true)
-        .order('score', { ascending: false })
-
-      if (pairData) setPairs(pairData as CointegratedPair[])
-    }
-
-    // Load z threshold from config
-    const { data: cfg } = await supabase
-      .from('config')
-      .select('value')
-      .eq('key', 'zscore_threshold')
-      .maybeSingle()
-    if (cfg?.value) {
-      const v = parseFloat(cfg.value)
-      setZThreshold(v)
-      setZInput(String(v))
+    setLatestRun(run ?? null)
+    setPairs(pairData ?? [])
+    if (zVal != null) {
+      setZThreshold(zVal)
+      setZInput(String(zVal))
     }
 
     setLoading(false)
