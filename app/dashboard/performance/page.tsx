@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import type { Operation, ScanRun } from '@/lib/supabase'
-import { createBrowserSupabaseClient } from '@/lib/supabase'
 import MetricCard from '@/components/MetricCard'
 import { fmtPct, fmtDays, fmtDateBRT, signalLabel } from '@/lib/utils'
 import dynamic from 'next/dynamic'
@@ -17,22 +16,24 @@ export default function PerformancePage() {
   useEffect(() => {
     async function load() {
       try {
-        const [opsRes, supabase] = [
-          fetch('/api/operations'),
-          createBrowserSupabaseClient(),
-        ]
-        const [opsData, runsRes] = await Promise.all([
-          opsRes.then(r => r.json()),
-          supabase
-            .from('scan_runs')
-            .select('*')
-            .eq('status', 'completed')
-            .order('triggered_at', { ascending: false })
-            .limit(30),
+        const [opsData, runsData] = await Promise.all([
+          fetch('/api/express/operations', {
+            method: 'get',
+            credentials: 'include',
+          }).then(r => r.json()),
+          fetch('/api/express/scanner/scan-runs', {
+            method: 'get',
+            credentials: 'include',
+          }).then(r => r.json()),
         ])
-        const allOps = opsData as Operation[]
+        const numFields = ['hedge_ratio','entry_ratio','target_ratio','stop_ratio','entry_price_a','entry_price_b','entry_qty_a','entry_qty_b','exit_price_a','exit_price_b','exit_ratio','pnl_pct'] as const
+        const allOps = (opsData as any[]).map(o => {
+          const n: any = { ...o }
+          for (const k of numFields) if (n[k] != null) n[k] = Number(n[k])
+          return n as Operation
+        })
         setClosed(allOps.filter(o => o.status === 'closed'))
-        if (runsRes.data) setRuns(runsRes.data as ScanRun[])
+        if (Array.isArray(runsData)) setRuns(runsData as ScanRun[])
       } catch {
         // silently fail
       } finally {

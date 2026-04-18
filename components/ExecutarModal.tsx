@@ -132,9 +132,10 @@ export default function ExecutarModal({ pair, onClose, onSuccess }: Props) {
     setLoading(true)
     setError(null)
     try {
-      const res = await fetch('/api/operations', {
+      const res = await fetch('/api/express/operations', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: "include",
         body: JSON.stringify({
           ticker_a:     pair.ticker_a,
           ticker_b:     pair.ticker_b,
