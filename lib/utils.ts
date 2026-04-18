@@ -4,46 +4,52 @@
 
 const BRT = 'America/Sao_Paulo'
 
+function toNum(n: unknown): number | null {
+  if (n == null) return null
+  const v = typeof n === 'number' ? n : Number(n as any)
+  return isFinite(v) ? v : null
+}
+
 /** Format a number to exactly 4 decimal places. */
-export function fmt4(n: number | null | undefined): string {
-  if (n == null || !isFinite(n)) return '—'
-  return n.toFixed(4)
+export function fmt4(n: number | string | null | undefined): string {
+  const v = toNum(n); if (v == null) return '—'
+  return v.toFixed(4)
 }
 
 /** Format a number to exactly 2 decimal places. */
-export function fmt2(n: number | null | undefined): string {
-  if (n == null || !isFinite(n)) return '—'
-  return n.toFixed(2)
+export function fmt2(n: number | string | null | undefined): string {
+  const v = toNum(n); if (v == null) return '—'
+  return v.toFixed(2)
 }
 
 /** Format a percentage with 2 decimal places. */
-export function fmtPct(n: number | null | undefined): string {
-  if (n == null || !isFinite(n)) return '—'
-  return `${n >= 0 ? '+' : ''}${n.toFixed(2)}%`
+export function fmtPct(n: number | string | null | undefined): string {
+  const v = toNum(n); if (v == null) return '—'
+  return `${v >= 0 ? '+' : ''}${v.toFixed(2)}%`
 }
 
 /** Format p-value — 4dp with leading zero. */
-export function fmtP(n: number | null | undefined): string {
-  if (n == null || !isFinite(n)) return '—'
-  return n.toFixed(4)
+export function fmtP(n: number | string | null | undefined): string {
+  const v = toNum(n); if (v == null) return '—'
+  return v.toFixed(4)
 }
 
 /** Format a price (2dp). */
-export function fmtPrice(n: number | null | undefined): string {
-  if (n == null || !isFinite(n)) return '—'
-  return n.toFixed(2)
+export function fmtPrice(n: number | string | null | undefined): string {
+  const v = toNum(n); if (v == null) return '—'
+  return v.toFixed(2)
 }
 
 /** Format half-life — integer days or "Inf". */
-export function fmtHL(n: number | null | undefined): string {
-  if (n == null || !isFinite(n as number)) return 'Inf'
-  return `${Math.round(n as number)}d`
+export function fmtHL(n: number | string | null | undefined): string {
+  const v = toNum(n); if (v == null) return 'Inf'
+  return `${Math.round(v)}d`
 }
 
 /** Format a score integer. */
-export function fmtScore(n: number | null | undefined): string {
-  if (n == null) return '—'
-  return String(n)
+export function fmtScore(n: number | string | null | undefined): string {
+  const v = toNum(n); if (v == null) return '—'
+  return String(v)
 }
 
 /** Format a timestamp in BRT timezone. */
@@ -66,9 +72,9 @@ export function fmtDateOnlyBRT(iso: string | null | undefined): string {
 }
 
 /** Format duration in days to 1dp. */
-export function fmtDays(n: number | null | undefined): string {
-  if (n == null || !isFinite(n as number)) return '—'
-  return `${(n as number).toFixed(1)}d`
+export function fmtDays(n: number | string | null | undefined): string {
+  const v = toNum(n); if (v == null) return '—'
+  return `${v.toFixed(1)}d`
 }
 
 /** Signal display text. */
@@ -102,9 +108,9 @@ export function isValidNumber(n: unknown): n is number {
  * Se β < 1 (ex: 0.30) → "3.33 A : 1 B"  (compra 3.33 de A para vender 1 de B)
  * Se β ≥ 1 (ex: 2.00) → "1 A : 2.00 B"  (compra 1 de A para vender 2 de B)
  */
-export function fmtHedge(beta: number | null | undefined): string {
-  if (beta == null || !isFinite(beta) || beta <= 0) return '—'
-  if (Math.abs(beta - 1) < 0.005) return '1 : 1'
-  if (beta < 1) return `${(1 / beta).toFixed(2)} : 1`
-  return `1 : ${beta.toFixed(2)}`
+export function fmtHedge(beta: number | string | null | undefined): string {
+  const v = toNum(beta); if (v == null || v <= 0) return '—'
+  if (Math.abs(v - 1) < 0.005) return '1 : 1'
+  if (v < 1) return `${(1 / v).toFixed(2)} : 1`
+  return `1 : ${v.toFixed(2)}`
 }
