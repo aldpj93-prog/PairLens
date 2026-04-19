@@ -78,8 +78,8 @@ export default function ScannerPage() {
   async function handleRunScan() {
     if (scanning) return
     setScanning(true)
-    setScanStatus({ running: true, phase: 'universe', tickersFetched: 0, tickersTotal: 85, elapsedMs: 0 })
-    await fetch('/api/express/scanner/run', { method: 'POST' })
+    //setScanStatus({ running: true, phase: 'universe', tickersFetched: 0, tickersTotal: 85, elapsedMs: 0 })
+    await fetch('/api/express/scanner/run', { method: 'POST', credentials: "include" })
   }
 
   // ─── Update z threshold ───────────────────────────────────────────────────

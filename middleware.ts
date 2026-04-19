@@ -1,10 +1,16 @@
-import { NextResponse, type NextRequest } from 'next/server'
-import { createServerClient } from '@supabase/ssr'
+// middleware.ts (at the root of your project)
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function middleware(request: NextRequest) {
+export function middleware(req: NextRequest) {
+  const accessToken = req.cookies.get('access-token')?.value;
 
+  if (!accessToken) {
+    return NextResponse.redirect(new URL('/login', req.url));
+  }
+
+  return NextResponse.next();
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*', '/login'],
-}
+  matcher: ['/dashboard/:path*', '/scanner/:path*'], // routes to protect
+};
