@@ -71,28 +71,7 @@ export default function ScannerPage() {
 
   // ─── Scan progress polling ─────────────────────────────────────────────────
 
-  function startPolling() {
-    if (pollRef.current) return
-    pollRef.current = setInterval(async () => {
-      const res = await fetch('/api/scan/status')
-      const data = await res.json()
-      setScanStatus(data)
-      if (!data.running) {
-        stopPolling()
-        setScanning(false)
-        await loadLatestData()
-      }
-    }, 2000)
-  }
 
-  function stopPolling() {
-    if (pollRef.current) {
-      clearInterval(pollRef.current)
-      pollRef.current = null
-    }
-  }
-
-  useEffect(() => { return () => stopPolling() }, [])
 
   // ─── Trigger manual scan ──────────────────────────────────────────────────
 
@@ -100,8 +79,7 @@ export default function ScannerPage() {
     if (scanning) return
     setScanning(true)
     setScanStatus({ running: true, phase: 'universe', tickersFetched: 0, tickersTotal: 85, elapsedMs: 0 })
-    await fetch('/api/scan', { method: 'POST' })
-    startPolling()
+    await fetch('/api/express/scanner/run', { method: 'POST' })
   }
 
   // ─── Update z threshold ───────────────────────────────────────────────────
