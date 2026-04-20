@@ -88,8 +88,9 @@ export default function ScannerPage() {
     const v = parseFloat(zInput)
     if (!isFinite(v) || v <= 0) return
     setZThreshold(v)
-    await fetch('/api/config', {
+    await fetch('/api/express/config', {
       method: 'POST',
+      credentials: "include",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ zscore_threshold: String(v) }),
     })

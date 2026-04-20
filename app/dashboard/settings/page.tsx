@@ -183,8 +183,9 @@ export default function SettingsPage() {
     setError(null)
     setSaved(false)
 
-    const res = await fetch('/api/config', {
+    const res = await fetch('/api/express/config', {
       method: 'POST',
+      credentials: "include",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(config),
     })
