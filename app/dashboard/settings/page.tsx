@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useEffect, useState, FormEvent } from 'react'
-import { createBrowserSupabaseClient } from '@/lib/supabase'
 
 const UNIVERSE_SEGMENT_OPTIONS = [
   { key: 'ibov',     label: 'Ibovespa', description: '85 ações que compõem o índice Ibovespa (~15s)' },
@@ -156,16 +155,17 @@ export default function SettingsPage() {
   const [error, setError]     = useState<string | null>(null)
 
   useEffect(() => {
-    const supabase = createBrowserSupabaseClient()
-    supabase
-      .from('config')
-      .select('key, value')
-      .then(({ data }) => {
+    fetch('/api/express/config', { credentials: 'include', method: 'get' })
+      .then(res => res.ok ? res.json() : null)
+      .then((data: unknown) => {
         if (data) {
-          const map = Object.fromEntries(
-            data.map((r: { key: string; value: string }) => [r.key, r.value])
-          )
-          // Retrocompatibilidade: converte universe_mode antigo
+          const map: Record<string, string> = Array.isArray(data)
+            ? Object.fromEntries(
+                (data as { key: string; value: string }[]).map(r => [r.key, r.value])
+              )
+            : Object.fromEntries(
+                Object.entries(data as Record<string, unknown>).map(([k, v]) => [k, String(v)])
+              )
           if (!map.universe_segments && map.universe_mode) {
             map.universe_segments = map.universe_mode === 'full'
               ? 'acoes_b3,bdr,fii,etf'
@@ -173,8 +173,8 @@ export default function SettingsPage() {
           }
           setConfig(prev => ({ ...prev, ...map }))
         }
-        setLoading(false)
       })
+      .finally(() => setLoading(false))
   }, [])
 
   async function handleSubmit(e: FormEvent) {
