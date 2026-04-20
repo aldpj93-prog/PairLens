@@ -231,7 +231,7 @@ export default function ExecutarModal({ pair, onClose, onSuccess }: Props) {
           </div>
           <div>
             <p style={labelStyle}>Z-SCORE</p>
-            <p style={valueStyle}>{pair.z_score != null ? pair.z_score.toFixed(2) : '—'}</p>
+            <p style={valueStyle}>{pair.z_score != null && !isNaN(Number(pair.z_score)) ? Number(pair.z_score).toFixed(2) : '—'}</p>
           </div>
         </div>
 

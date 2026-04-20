@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import dynamic from 'next/dynamic'
 import type { CointegratedPair } from '@/lib/supabase'
-import { fmt4, fmtP, fmtHL, fmtScore, signalLabel, signalClass, fmtHedge } from '@/lib/utils'
+import { fmt2, fmt4, fmtP, fmtHL, fmtScore, signalLabel, signalClass, fmtHedge } from '@/lib/utils'
 
 const RatioChart          = dynamic(() => import('./RatioChart'),           { ssr: false })
 const NormalizedPricesChart = dynamic(() => import('./NormalizedPricesChart'), { ssr: false })
@@ -177,8 +177,8 @@ export default function PairDetailPanel({
         {[
           // ── Proporção operacional ──────────────────────────────────────
           ['Proporção A : B', fmtHedge(pair.hedge_ratio)],
-          ['Preço A (R$)',    pair.price_a?.toFixed(2) ?? '—'],
-          ['Preço B (R$)',    pair.price_b?.toFixed(2) ?? '—'],
+          ['Preço A (R$)',    fmt2(pair.price_a)],
+          ['Preço B (R$)',    fmt2(pair.price_b)],
 
           // ── Ratio em valores reais ────────────────────────────────────
           ['Ratio Atual',    ratioStats ? ratioStats.current.toFixed(4) : fmt4(pair.z_score)],
@@ -229,10 +229,10 @@ export default function PairDetailPanel({
             margin: 0, lineHeight: 1.6,
           }}>
             <span style={{ color: '#7a7a7a', fontWeight: 600 }}>Proporção {fmtHedge(pair.hedge_ratio)}</span>
-            {pair.hedge_ratio < 1
-              ? ` — para cada ${(1 / pair.hedge_ratio).toFixed(2)} unidades compradas de ${pair.ticker_a}, venda 1 unidade de ${pair.ticker_b}.`
-              : pair.hedge_ratio > 1
-              ? ` — para cada 1 unidade comprada de ${pair.ticker_a}, venda ${pair.hedge_ratio.toFixed(2)} unidades de ${pair.ticker_b}.`
+            {Number(pair.hedge_ratio) < 1
+              ? ` — para cada ${(1 / Number(pair.hedge_ratio)).toFixed(2)} unidades compradas de ${pair.ticker_a}, venda 1 unidade de ${pair.ticker_b}.`
+              : Number(pair.hedge_ratio) > 1
+              ? ` — para cada 1 unidade comprada de ${pair.ticker_a}, venda ${Number(pair.hedge_ratio).toFixed(2)} unidades de ${pair.ticker_b}.`
               : ` — compre e venda quantidades iguais de ${pair.ticker_a} e ${pair.ticker_b}.`
             }
           </p>
