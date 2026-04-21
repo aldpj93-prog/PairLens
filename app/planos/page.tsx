@@ -6,15 +6,46 @@ export default function Planos() {
 
   const plans = [
     {
-      id: 'pro',
-      name: 'PRO',
-      price: 29,
+      id: 'free',
+      name: 'FREE',
+      price: 0,
+      features: [
+        'Universo do scan limitado ao Ibovespa.',
+        'Ranking exibe apenas pares com score até 80.',
+        'Indicador PRI não disponível.',
+        'Educacional básico liberado (seções 1 a 7).',
+        'Operations e Performance bloqueados.',
+        'Configurações travadas nos valores padrão.',
+      ],
     },
     {
-      id: 'super',
-      name: 'SUPER',
-      price: 120,
-    }
+      id: 'starter',
+      name: 'STARTER',
+      price: 49.99,
+      features: [
+        'Universo do scan: Ibovespa + ETFs.',
+        'Ranking completo, score 0 a 100.',
+        'Indicador PRI não disponível.',
+        'Educacional básico liberado (seções 1 a 7).',
+        'Operations liberado — registre e acompanhe suas operações.',
+        'Performance básico liberado — métricas de P&L e histórico.',
+        'Configurações parcialmente editáveis: Z-threshold e Lookback Window.',
+      ],
+    },
+    {
+      id: 'pro',
+      name: 'PRO',
+      price: 99.99,
+      features: [
+        'Universo do scan completo: Ibovespa, Ações B3, FIIs, ETFs e BDRs.',
+        'Ranking completo, score 0 a 100.',
+        'Indicador PRI liberado com todos os sub-indicadores (HRR, WBA, SS).',
+        'Educacional completo, incluindo seção exclusiva sobre o PRI.',
+        'Operations e Performance completos.',
+        'Configurações totalmente editáveis, incluindo universo, liquidez mínima e caps por tipo de ativo.',
+        'Alertas de sinal por e-mail — notificação quando um par favorito gerar sinal ativo.',
+      ],
+    },
   ]
 
   function handleToggle() {
@@ -39,9 +70,14 @@ export default function Planos() {
 
   const isQuarterly = recurrence === 'quarterly';
 
+  function formatPrice(price: number) {
+    if (price === 0) return 'R$ 0';
+    return `R$ ${price.toFixed(2).replace('.', ',')}`;
+  }
+
   return (
     <div style={{ background: '#080808', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 20px' }}>
-      <div style={{ width: '100%', maxWidth: 680 }}>
+      <div style={{ width: '100%', maxWidth: 1080 }}>
 
         {/* Header */}
         <div style={{ marginBottom: 40 }}>
@@ -106,7 +142,7 @@ export default function Planos() {
         </div>
 
         {/* Plan cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
           {plans.map((plan) => (
             <div
               key={plan.id}
@@ -114,6 +150,8 @@ export default function Planos() {
                 background: '#111',
                 border: '1px solid #252525',
                 padding: '28px 24px',
+                display: 'flex',
+                flexDirection: 'column',
               }}
             >
               <p style={{ color: '#4a4a4a', fontSize: 10, letterSpacing: '0.15em', fontFamily: 'system-ui', margin: '0 0 8px' }}>
@@ -123,35 +161,70 @@ export default function Planos() {
                 {plan.name}
               </h3>
 
-              <div style={{ margin: '0 0 28px', borderBottom: '1px solid #1a1a1a', paddingBottom: 24 }}>
-                <span className="mono" style={{ color: '#e2e2e2', fontSize: 30, fontWeight: 600 }}>
-                  R$ {plan.price}
+              <div style={{ margin: '0 0 24px', borderBottom: '1px solid #1a1a1a', paddingBottom: 24 }}>
+                <span className="mono" style={{ color: '#e2e2e2', fontSize: 28, fontWeight: 600 }}>
+                  {formatPrice(plan.price)}
                 </span>
                 <span style={{ color: '#4a4a4a', fontSize: 11, fontFamily: 'system-ui', marginLeft: 6 }}>
                   / {isQuarterly ? 'QUARTER' : 'MONTH'}
                 </span>
               </div>
 
+              <ul style={{
+                listStyle: 'none',
+                padding: 0,
+                margin: '0 0 28px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 10,
+                flex: 1,
+              }}>
+                {plan.features.map((feature, idx) => (
+                  <li
+                    key={idx}
+                    style={{
+                      color: '#b0b0b0',
+                      fontSize: 12,
+                      lineHeight: 1.5,
+                      fontFamily: 'system-ui',
+                      paddingLeft: 14,
+                      position: 'relative',
+                    }}
+                  >
+                    <span style={{
+                      position: 'absolute',
+                      left: 0,
+                      top: 0,
+                      color: '#c8a96e',
+                    }}>
+                      ›
+                    </span>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+
               <button
                 onClick={() => handleSelectPlan(plan)}
+                disabled={plan.price === 0}
                 style={{
                   width: '100%',
-                  background: '#c8a96e',
-                  color: '#080808',
-                  border: 'none',
+                  background: plan.price === 0 ? '#1a1a1a' : '#c8a96e',
+                  color: plan.price === 0 ? '#4a4a4a' : '#080808',
+                  border: plan.price === 0 ? '1px solid #252525' : 'none',
                   padding: '10px 0',
                   fontSize: 11,
                   letterSpacing: '0.15em',
                   fontFamily: 'system-ui',
                   fontWeight: 600,
-                  cursor: 'pointer',
+                  cursor: plan.price === 0 ? 'default' : 'pointer',
                   borderRadius: 2,
                   transition: 'opacity 0.1s',
                 }}
-                onMouseEnter={e => (e.currentTarget.style.opacity = '0.85')}
-                onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
+                onMouseEnter={e => { if (plan.price !== 0) e.currentTarget.style.opacity = '0.85' }}
+                onMouseLeave={e => { if (plan.price !== 0) e.currentTarget.style.opacity = '1' }}
               >
-                ASSINAR
+                {plan.price === 0 ? 'PLANO ATUAL' : 'ASSINAR'}
               </button>
             </div>
           ))}
