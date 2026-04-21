@@ -26,13 +26,13 @@ export default function NavLinks() {
             style={{
               display: 'block',
               padding: '9px 20px',
-              color: active ? '#e2e2e2' : '#7a7a7a',
+              color: active ? '#f5f5f5' : '#a0a0a0',
               fontSize: 11,
               letterSpacing: '0.1em',
               fontFamily: 'system-ui',
               textDecoration: 'none',
-              borderLeft: active ? '2px solid #c8a96e' : '2px solid transparent',
-              background: active ? 'rgba(200,169,110,0.04)' : 'none',
+              borderLeft: active ? '2px solid #d4b87a' : '2px solid transparent',
+              background: active ? 'rgba(212,184,122,0.08)' : 'none',
             }}
           >
             {link.label}

@@ -16,14 +16,14 @@ export default async function DashboardLayout({
   //if (!user) redirect('/login')
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', background: '#080808' }}>
+    <div style={{ display: 'flex', minHeight: '100vh', background: '#1a1a1a' }}>
       {/* Sidebar */}
       <aside
         style={{
           width: 220,
           minWidth: 220,
-          background: '#0d0d0d',
-          borderRight: '1px solid #1a1a1a',
+          background: '#222222',
+          borderRight: '1px solid #3d3d3d',
           display: 'flex',
           flexDirection: 'column',
           padding: '24px 0 16px',
@@ -38,7 +38,7 @@ export default async function DashboardLayout({
         <div style={{ padding: '0 20px 24px' }}>
           <p
             style={{
-              color: '#c8a96e',
+              color: '#d4b87a',
               fontSize: 13,
               letterSpacing: '0.2em',
               fontFamily: '"JetBrains Mono", monospace',
@@ -46,9 +46,9 @@ export default async function DashboardLayout({
               margin: 0,
             }}
           >
-            PAIR<span style={{ color: '#e2e2e2' }}>LENS</span>
+            PAIR<span style={{ color: '#f5f5f5' }}>LENS</span>
           </p>
-          <p style={{ color: '#4a4a4a', fontSize: 10, marginTop: 3, letterSpacing: '0.1em' }}>
+          <p style={{ color: '#8a8a8a', fontSize: 10, marginTop: 3, letterSpacing: '0.1em' }}>
             B3 COINTEGRATION SCANNER
           </p>
         </div>
@@ -60,7 +60,7 @@ export default async function DashboardLayout({
 
         {/* Footer: scan status + logout */}
         <div style={{ padding: '0 16px', marginTop: 16 }}>
-          <ScanRunStatus />
+
           <div style={{ marginTop: 16 }}>
             <LogoutButton />
           </div>

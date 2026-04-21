@@ -105,9 +105,9 @@ export default function ScannerPage() {
       {/* Scan progress banner */}
       {scanning && scanStatus?.running && (
         <div style={{
-          background: '#0d0d0d',
-          border: '1px solid #c8a96e',
-          borderLeft: '3px solid #c8a96e',
+          background: '#1f1f1f',
+          border: '1px solid #d4b87a',
+          borderLeft: '3px solid #d4b87a',
           padding: '8px 16px',
           marginBottom: 20,
           display: 'flex',
@@ -117,7 +117,7 @@ export default function ScannerPage() {
         }}>
           <span className="spinner" />
           <span style={{
-            color: '#c8a96e',
+            color: '#d4b87a',
             fontSize: 12,
             fontFamily: '"JetBrains Mono", monospace',
           }}>
@@ -134,11 +134,11 @@ export default function ScannerPage() {
       {/* Top bar */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24, flexWrap: 'wrap', gap: 12 }}>
         <div>
-          <h1 style={{ fontSize: 13, letterSpacing: '0.1em', color: '#e2e2e2', fontFamily: 'system-ui', margin: '0 0 4px', fontWeight: 500 }}>
+          <h1 style={{ fontSize: 13, letterSpacing: '0.1em', color: '#f5f5f5', fontFamily: 'system-ui', margin: '0 0 4px', fontWeight: 500 }}>
             SCANNER
           </h1>
           {latestRun && (
-            <p style={{ color: '#4a4a4a', fontSize: 11, fontFamily: 'system-ui', margin: 0 }}>
+            <p style={{ color: '#8a8a8a', fontSize: 11, fontFamily: 'system-ui', margin: 0 }}>
               Last scan: {fmtDateBRT(latestRun.triggered_at)}
               {latestRun.pairs_found != null && ` — ${latestRun.pairs_found} pairs found`}
             </p>
@@ -148,7 +148,7 @@ export default function ScannerPage() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           {/* Z threshold input */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <label style={{ color: '#4a4a4a', fontSize: 11, fontFamily: 'system-ui', letterSpacing: '0.08em' }}>
+            <label style={{ color: '#8a8a8a', fontSize: 11, fontFamily: 'system-ui', letterSpacing: '0.08em' }}>
               Z THRESHOLD
             </label>
             <input
@@ -162,9 +162,9 @@ export default function ScannerPage() {
               onKeyDown={e => e.key === 'Enter' && handleZThresholdUpdate()}
               style={{
                 width: 64,
-                background: '#181818',
-                border: '1px solid #252525',
-                color: '#e2e2e2',
+                background: '#2a2a2a',
+                border: '1px solid #3d3d3d',
+                color: '#f5f5f5',
                 padding: '5px 8px',
                 fontSize: 12,
                 fontFamily: '"JetBrains Mono", monospace',
@@ -178,9 +178,9 @@ export default function ScannerPage() {
             onClick={handleRunScan}
             disabled={scanning}
             style={{
-              background: scanning ? '#181818' : '#111111',
-              border: `1px solid ${scanning ? '#252525' : '#333333'}`,
-              color: scanning ? '#4a4a4a' : '#c8a96e',
+              background: scanning ? '#2a2a2a' : '#1f1f1f',
+              border: `1px solid ${scanning ? '#3d3d3d' : '#4a4a4a'}`,
+              color: scanning ? '#8a8a8a' : '#d4b87a',
               fontSize: 11,
               letterSpacing: '0.1em',
               fontFamily: 'system-ui',
@@ -222,19 +222,19 @@ export default function ScannerPage() {
 
       {/* Rank table */}
       <div style={{
-        background: '#111111',
-        border: '1px solid #252525',
+        background: '#1f1f1f',
+        border: '1px solid #3d3d3d',
         borderRadius: 2,
       }}>
-        <div style={{ padding: '12px 16px', borderBottom: '1px solid #1e1e1e' }}>
-          <p style={{ color: '#4a4a4a', fontSize: 11, letterSpacing: '0.1em', fontFamily: 'system-ui', margin: 0 }}>
+        <div style={{ padding: '12px 16px', borderBottom: '1px solid #2e2e2e' }}>
+          <p style={{ color: '#8a8a8a', fontSize: 11, letterSpacing: '0.1em', fontFamily: 'system-ui', margin: 0 }}>
             COINTEGRATED PAIRS — RANKED BY SCORE
           </p>
         </div>
         {loading ? (
           <div style={{ padding: 32 }}>
             {[1, 2, 3, 4, 5].map(i => (
-              <div key={i} style={{ height: 36, background: '#181818', marginBottom: 4, borderRadius: 2 }} />
+              <div key={i} style={{ height: 36, background: '#2a2a2a', marginBottom: 4, borderRadius: 2 }} />
             ))}
           </div>
         ) : (
