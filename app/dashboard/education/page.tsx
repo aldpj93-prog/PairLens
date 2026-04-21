@@ -1,11 +1,11 @@
 export default function EducationPage() {
-  const gold   = '#c8a96e'
-  const dim    = '#4a4a4a'
-  const mid    = '#7a7a7a'
-  const light  = '#e2e2e2'
+  const gold   = '#d4b87a'
+  const dim    = '#8a8a8a'
+  const mid    = '#a0a0a0'
+  const light  = '#f5f5f5'
   const body   = '#a0a0a0'
-  const card   = '#111111'
-  const border = '#1e1e1e'
+  const card   = '#1f1f1f'
+  const border = '#2e2e2e'
   const mono   = '"JetBrains Mono", monospace'
   const sans   = 'system-ui, sans-serif'
 
@@ -24,19 +24,19 @@ export default function EducationPage() {
   )
 
   const Formula = ({ children }: { children: React.ReactNode }) => (
-    <div style={{ background: '#0d0d0d', border: `1px solid ${border}`, borderLeft: `3px solid ${gold}`, borderRadius: 2, padding: '12px 20px', margin: '16px 0', fontFamily: mono, fontSize: 13, color: light, letterSpacing: '0.05em' }}>
+    <div style={{ background: '#1f1f1f', border: `1px solid ${border}`, borderLeft: `3px solid ${gold}`, borderRadius: 2, padding: '12px 20px', margin: '16px 0', fontFamily: mono, fontSize: 13, color: light, letterSpacing: '0.05em' }}>
       {children}
     </div>
   )
 
   const Callout = ({ color = gold, children }: { color?: string; children: React.ReactNode }) => (
-    <div style={{ background: '#0d0d0d', border: `1px solid ${border}`, borderLeft: `3px solid ${color}`, borderRadius: 2, padding: '14px 18px', margin: '16px 0' }}>
+    <div style={{ background: '#1f1f1f', border: `1px solid ${border}`, borderLeft: `3px solid ${color}`, borderRadius: 2, padding: '14px 18px', margin: '16px 0' }}>
       <p style={{ fontSize: 13, color: body, fontFamily: sans, lineHeight: 1.7, margin: 0 }}>{children}</p>
     </div>
   )
 
   const Badge = ({ label, value, accent }: { label: string; value: string; accent?: boolean }) => (
-    <div style={{ background: '#181818', border: `1px solid ${accent ? '#2a2a1a' : border}`, borderRadius: 2, padding: '10px 14px', minWidth: 130 }}>
+    <div style={{ background: '#2a2a2a', border: `1px solid ${accent ? '#2a2a1a' : border}`, borderRadius: 2, padding: '10px 14px', minWidth: 130 }}>
       <p style={{ fontSize: 9, letterSpacing: '0.1em', color: dim, fontFamily: sans, margin: '0 0 4px', textTransform: 'uppercase' }}>{label}</p>
       <p style={{ fontSize: 16, color: accent ? gold : light, fontFamily: mono, margin: 0, fontWeight: 600 }}>{value}</p>
     </div>
@@ -63,7 +63,7 @@ export default function EducationPage() {
     const pathB = baseB.map((v, i) => `${i === 0 ? 'M' : 'L'}${scaleX(i).toFixed(1)},${scaleY(v).toFixed(1)}`).join(' ')
     return (
       <svg width="100%" viewBox={`0 0 ${w} ${h}`} style={{ display: 'block', borderRadius: 2 }}>
-        <rect width={w} height={h} fill="#0d0d0d" rx="2" />
+        <rect width={w} height={h} fill="#1f1f1f" rx="2" />
         <path d={pathA} fill="none" stroke={gold} strokeWidth="2" />
         <path d={pathB} fill="none" stroke="#6a9eb5" strokeWidth="2" />
         <text x={px + 4} y={py + 12} fill={gold} fontSize="10" fontFamily="system-ui">ATIVO A</text>
@@ -86,7 +86,7 @@ export default function EducationPage() {
     const yNeg = scaleY(-sigma)
     return (
       <svg width="100%" viewBox={`0 0 ${w} ${h}`} style={{ display: 'block', borderRadius: 2 }}>
-        <rect width={w} height={h} fill="#0d0d0d" rx="2" />
+        <rect width={w} height={h} fill="#1f1f1f" rx="2" />
         <rect x={px} y={yPos} width={w - 2 * px} height={yNeg - yPos} fill="rgba(74,124,89,0.06)" />
         <line x1={px} y1={yPos} x2={w - px} y2={yPos} stroke="#4a7c59" strokeWidth="1" strokeDasharray="4 3" />
         <line x1={px} y1={yNeg} x2={w - px} y2={yNeg} stroke="#8c3f3f" strokeWidth="1" strokeDasharray="4 3" />
@@ -117,7 +117,7 @@ export default function EducationPage() {
     const entryDots = points.filter(p => Math.abs(p.v) > thr)
     return (
       <svg width="100%" viewBox={`0 0 ${w} ${h}`} style={{ display: 'block', borderRadius: 2 }}>
-        <rect width={w} height={h} fill="#0d0d0d" rx="2" />
+        <rect width={w} height={h} fill="#1f1f1f" rx="2" />
         {/* zones */}
         <rect x={px} y={py}   width={w - 2 * px} height={yPos - py}   fill="rgba(140,63,63,0.07)" />
         <rect x={px} y={yNeg} width={w - 2 * px} height={h - py - yNeg} fill="rgba(74,124,89,0.07)" />
@@ -159,7 +159,7 @@ export default function EducationPage() {
     const zy = py + (1 - (Math.exp(-0.5 * 6.25) / Math.sqrt(2 * Math.PI)) / 0.4) * (h - py - 20) + 8
     return (
       <svg width="100%" viewBox={`0 0 ${w} ${h}`} style={{ display: 'block', borderRadius: 2 }}>
-        <rect width={w} height={h} fill="#0d0d0d" rx="2" />
+        <rect width={w} height={h} fill="#1f1f1f" rx="2" />
         <path d={path} fill="none" stroke={mid} strokeWidth="1.5" />
         {/* sigma markers */}
         {[-2,-1,0,1,2].map(s => {
@@ -256,7 +256,7 @@ export default function EducationPage() {
             ['Desvio padrão estável', 'A amplitude das oscilações é previsível. A maior parte do tempo, o spread fica dentro de ±1 a 2 desvios padrão da média.'],
             ['Reversão à média', 'Quando o spread se afasta demais, ele tende a retornar. Isso é o que cria a oportunidade de operação.'],
           ].map(([title, text]) => (
-            <div key={title} style={{ display: 'flex', gap: 12, background: '#0d0d0d', border: `1px solid ${border}`, borderRadius: 2, padding: '12px 16px' }}>
+            <div key={title} style={{ display: 'flex', gap: 12, background: '#1f1f1f', border: `1px solid ${border}`, borderRadius: 2, padding: '12px 16px' }}>
               <span style={{ color: gold, fontFamily: mono, fontSize: 18, lineHeight: 1, marginTop: 2 }}>&#8594;</span>
               <div>
                 <p style={{ fontSize: 12, color: light, fontFamily: sans, fontWeight: 600, margin: '0 0 4px', letterSpacing: '0.05em' }}>{title}</p>
@@ -272,22 +272,22 @@ export default function EducationPage() {
         <P>Até aqui falamos de intuição. Mas antes de operar, precisamos de evidência estatística de que a reversão à média é real e não apenas aparência. É aí que entra o <strong style={{ color: light }}>Teste ADF</strong>.</P>
         <P>O ADF é um teste de hipótese que verifica se o spread é de fato estacionário. Ele funciona assim:</P>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, margin: '16px 0' }}>
-          <div style={{ background: '#0d0d0d', border: `1px solid #1a2a1a`, borderRadius: 2, padding: '14px 16px' }}>
+          <div style={{ background: '#1f1f1f', border: `1px solid #1a2a1a`, borderRadius: 2, padding: '14px 16px' }}>
             <p style={{ fontSize: 10, color: dim, letterSpacing: '0.1em', fontFamily: sans, margin: '0 0 6px', textTransform: 'uppercase' }}>Hipótese nula (H₀)</p>
             <p style={{ fontSize: 13, color: body, fontFamily: sans, margin: 0, lineHeight: 1.6 }}>O spread tem <strong style={{ color: light }}>raiz unitária</strong> — ele deriva sem limite e não reverte à média. O par <em>não</em> é operável.</p>
           </div>
-          <div style={{ background: '#0d0d0d', border: `1px solid #1a2a1a`, borderRadius: 2, padding: '14px 16px' }}>
+          <div style={{ background: '#1f1f1f', border: `1px solid #1a2a1a`, borderRadius: 2, padding: '14px 16px' }}>
             <p style={{ fontSize: 10, color: dim, letterSpacing: '0.1em', fontFamily: sans, margin: '0 0 6px', textTransform: 'uppercase' }}>Hipótese alternativa (H₁)</p>
             <p style={{ fontSize: 13, color: body, fontFamily: sans, margin: 0, lineHeight: 1.6 }}>O spread é <strong style={{ color: light }}>estacionário</strong> — ele reverte à média. O par é cointegrado e operável.</p>
           </div>
         </div>
         <P>O teste produz dois números que aparecem na tabela de pares:</P>
         <div style={{ margin: '16px 0', display: 'flex', flexDirection: 'column', gap: 10 }}>
-          <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start', padding: '12px 16px', background: '#0d0d0d', border: `1px solid ${border}`, borderRadius: 2 }}>
+          <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start', padding: '12px 16px', background: '#1f1f1f', border: `1px solid ${border}`, borderRadius: 2 }}>
             <span style={{ color: gold, fontFamily: mono, fontSize: 13, minWidth: 100 }}>ADF STAT</span>
             <p style={{ fontSize: 13, color: body, fontFamily: sans, margin: 0, lineHeight: 1.6 }}>A estatística do teste. <strong style={{ color: light }}>Quanto mais negativa, melhor.</strong> Valores abaixo de -3.5 são considerados fortes. Indica a velocidade de reversão do spread.</p>
           </div>
-          <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start', padding: '12px 16px', background: '#0d0d0d', border: `1px solid ${border}`, borderRadius: 2 }}>
+          <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start', padding: '12px 16px', background: '#1f1f1f', border: `1px solid ${border}`, borderRadius: 2 }}>
             <span style={{ color: gold, fontFamily: mono, fontSize: 13, minWidth: 100 }}>p-VALUE</span>
             <p style={{ fontSize: 13, color: body, fontFamily: sans, margin: 0, lineHeight: 1.6 }}>A probabilidade de estarmos errados ao afirmar que o par é cointegrado. <strong style={{ color: light }}>Quanto menor, melhor.</strong> A plataforma exige p &lt; 0.10 para listar um par. O ideal é p &lt; 0.05.</p>
           </div>
@@ -299,7 +299,7 @@ export default function EducationPage() {
             { label: 'p-value 0.050', value: '95.0% confiança', color: gold },
             { label: 'p-value 0.100', value: '90.0% confiança — limite', color: '#7a6a3a' },
           ].map(({ label, value, color }) => (
-            <div key={label} style={{ background: '#0d0d0d', border: `1px solid ${border}`, borderRadius: 2, padding: '8px 14px', display: 'flex', gap: 10, alignItems: 'center' }}>
+            <div key={label} style={{ background: '#1f1f1f', border: `1px solid ${border}`, borderRadius: 2, padding: '8px 14px', display: 'flex', gap: 10, alignItems: 'center' }}>
               <span style={{ fontSize: 11, color: mid, fontFamily: mono }}>{label}</span>
               <span style={{ fontSize: 11, color, fontFamily: sans, fontWeight: 600 }}>{value}</span>
             </div>
@@ -345,7 +345,7 @@ export default function EducationPage() {
         <P>Com um par cointegrado identificado e um Z-Score extremo detectado, a operação é direta. O princípio é sempre o mesmo: você aposta no fechamento do spread, independente do que o mercado fizer como um todo.</P>
 
         {/* SHORT SPREAD */}
-        <div style={{ background: '#0d0d0d', border: `1px solid #2a1a1a`, borderLeft: `3px solid #8c3f3f`, borderRadius: 2, padding: '16px 20px', margin: '20px 0' }}>
+        <div style={{ background: '#1f1f1f', border: `1px solid #2a1a1a`, borderLeft: `3px solid #8c3f3f`, borderRadius: 2, padding: '16px 20px', margin: '20px 0' }}>
           <p style={{ fontSize: 12, color: '#8c3f3f', fontFamily: sans, fontWeight: 600, letterSpacing: '0.1em', margin: '0 0 10px', textTransform: 'uppercase' }}>SHORT SPREAD — quando Z alto (acima de +2)</p>
           <p style={{ fontSize: 13, color: body, fontFamily: sans, lineHeight: 1.7, margin: '0 0 10px' }}>O ativo A está caro demais em relação ao B. O spread vai se fechar, provavelmente com A caindo e/ou B subindo.</p>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
@@ -362,7 +362,7 @@ export default function EducationPage() {
         </div>
 
         {/* LONG SPREAD */}
-        <div style={{ background: '#0d0d0d', border: `1px solid #1a2a1a`, borderLeft: `3px solid #4a7c59`, borderRadius: 2, padding: '16px 20px', margin: '20px 0' }}>
+        <div style={{ background: '#1f1f1f', border: `1px solid #1a2a1a`, borderLeft: `3px solid #4a7c59`, borderRadius: 2, padding: '16px 20px', margin: '20px 0' }}>
           <p style={{ fontSize: 12, color: '#4a7c59', fontFamily: sans, fontWeight: 600, letterSpacing: '0.1em', margin: '0 0 10px', textTransform: 'uppercase' }}>LONG SPREAD — quando Z baixo (abaixo de -2)</p>
           <p style={{ fontSize: 13, color: body, fontFamily: sans, lineHeight: 1.7, margin: '0 0 10px' }}>O ativo A está barato demais em relação ao B. O spread vai se fechar, provavelmente com A subindo e/ou B caindo.</p>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
@@ -399,7 +399,7 @@ export default function EducationPage() {
             { n: '09', title: 'Gera o Score e o Sinal', desc: 'Combina ADF strength (30%), Z-Score magnitude (40%) e Half-life quality (30%) num score de 0 a 100. Classifica o sinal como LONG SPREAD, SHORT SPREAD ou NEUTRAL.' },
             { n: '10', title: 'Salva e notifica', desc: 'Persiste todos os pares no banco de dados. Pares com sinal ativo e score acima do mínimo configurado são automaticamente registrados no log de operações.' },
           ].map(({ n, title, desc }) => (
-            <div key={n} style={{ display: 'flex', gap: 16, background: '#0d0d0d', border: `1px solid ${border}`, borderRadius: 2, padding: '12px 16px' }}>
+            <div key={n} style={{ display: 'flex', gap: 16, background: '#1f1f1f', border: `1px solid ${border}`, borderRadius: 2, padding: '12px 16px' }}>
               <span style={{ fontSize: 11, color: gold, fontFamily: mono, minWidth: 20, paddingTop: 1 }}>{n}</span>
               <div>
                 <p style={{ fontSize: 12, color: light, fontFamily: sans, fontWeight: 600, margin: '0 0 4px' }}>{title}</p>
@@ -471,7 +471,7 @@ export default function EducationPage() {
               desc: 'Mostra os dois preços normalizados para uma base 100 no início do período. Permite comparar visualmente o comportamento relativo dos dois ativos sem a distorção de preços em escalas diferentes. Quando as duas linhas se afastam muito, o spread está se abrindo.',
             },
           ].map(({ title, desc }) => (
-            <div key={title} style={{ background: '#0d0d0d', border: `1px solid ${border}`, borderRadius: 2, padding: '14px 18px' }}>
+            <div key={title} style={{ background: '#1f1f1f', border: `1px solid ${border}`, borderRadius: 2, padding: '14px 18px' }}>
               <p style={{ fontSize: 11, color: light, fontFamily: mono, letterSpacing: '0.08em', margin: '0 0 6px' }}>{title}</p>
               <p style={{ fontSize: 13, color: body, fontFamily: sans, margin: 0, lineHeight: 1.7 }}>{desc}</p>
             </div>
@@ -480,7 +480,7 @@ export default function EducationPage() {
 
         {/* Exemplo real */}
         <p style={{ fontSize: 11, letterSpacing: '0.1em', color: dim, fontFamily: sans, margin: '0 0 16px', textTransform: 'uppercase' }}>Exemplo real interpretado</p>
-        <div style={{ background: '#0d0d0d', border: `1px solid ${border}`, borderRadius: 2, padding: '20px' }}>
+        <div style={{ background: '#1f1f1f', border: `1px solid ${border}`, borderRadius: 2, padding: '20px' }}>
           <p style={{ fontSize: 12, color: mid, fontFamily: sans, margin: '0 0 16px' }}>Leitura de um par com os valores: Hedge Ratio β = -0.1154 | ADF Stat = -3.9989 | p-value = 0.0010 | Half-life = 6d | Score = 99 | Signal = SHORT SPREAD | Current Z = 3.7528</p>
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 16 }}>
             <Badge label="Score" value="99" accent />
@@ -498,7 +498,7 @@ export default function EducationPage() {
               ['Z-Score 3.75', 'O spread está 3.75 desvios padrão acima da média. Isso é extremamente raro e sugere reversão iminente.'],
               ['Sinal SHORT SPREAD', 'Ação recomendada: vender o Ativo A e comprar β unidades do Ativo B. Objetivo: Z retornar a 0.'],
             ].map(([field, interpretation]) => (
-              <div key={field} style={{ display: 'flex', gap: 12, padding: '8px 12px', background: '#111111', borderRadius: 2 }}>
+              <div key={field} style={{ display: 'flex', gap: 12, padding: '8px 12px', background: '#1f1f1f', borderRadius: 2 }}>
                 <span style={{ fontSize: 11, color: gold, fontFamily: mono, minWidth: 160 }}>{field}</span>
                 <span style={{ fontSize: 12, color: body, fontFamily: sans, lineHeight: 1.5 }}>{interpretation}</span>
               </div>

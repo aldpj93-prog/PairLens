@@ -27,7 +27,7 @@ export default function ScanHistoryChart({ runs }: Props) {
   if (data.length === 0) {
     return (
       <div style={{ height: 180, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <p style={{ color: '#4a4a4a', fontSize: 12, fontFamily: 'system-ui' }}>No scan history.</p>
+        <p style={{ color: '#8a8a8a', fontSize: 12, fontFamily: 'system-ui' }}>No scan history.</p>
       </div>
     )
   }
@@ -35,16 +35,16 @@ export default function ScanHistoryChart({ runs }: Props) {
   return (
     <ResponsiveContainer width="100%" height={180}>
       <BarChart data={data} margin={{ top: 4, right: 24, bottom: 4, left: 0 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="#1e1e1e" vertical={false} />
+        <CartesianGrid strokeDasharray="3 3" stroke="#2e2e2e" vertical={false} />
         <XAxis
           dataKey="date"
-          tick={{ fontSize: 9, fill: '#4a4a4a', fontFamily: 'JetBrains Mono' }}
+          tick={{ fontSize: 9, fill: '#8a8a8a', fontFamily: 'JetBrains Mono' }}
           tickLine={false}
-          axisLine={{ stroke: '#333333' }}
+          axisLine={{ stroke: '#4a4a4a' }}
           interval="preserveStartEnd"
         />
         <YAxis
-          tick={{ fontSize: 10, fill: '#4a4a4a', fontFamily: 'JetBrains Mono' }}
+          tick={{ fontSize: 10, fill: '#8a8a8a', fontFamily: 'JetBrains Mono' }}
           tickLine={false}
           axisLine={false}
           width={32}
@@ -52,12 +52,12 @@ export default function ScanHistoryChart({ runs }: Props) {
         />
         <Tooltip
           contentStyle={{
-            background: '#111111',
-            border: '1px solid #252525',
+            background: '#1f1f1f',
+            border: '1px solid #3d3d3d',
             borderRadius: 2,
             fontSize: 11,
             fontFamily: 'JetBrains Mono, monospace',
-            color: '#e2e2e2',
+            color: '#f5f5f5',
           }}
           formatter={(v: number) => [v, 'pairs found']}
         />

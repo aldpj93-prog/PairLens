@@ -218,9 +218,9 @@ export default function SettingsPage() {
 
   const inputStyle: React.CSSProperties = {
     width: 160,
-    background: '#181818',
-    border: '1px solid #252525',
-    color: '#e2e2e2',
+    background: '#2a2a2a',
+    border: '1px solid #3d3d3d',
+    color: '#f5f5f5',
     padding: '7px 10px',
     fontSize: 13,
     fontFamily: '"JetBrains Mono", monospace',
@@ -234,12 +234,12 @@ export default function SettingsPage() {
     <div>
       <div style={{ marginBottom: 28 }}>
         <h1 style={{
-          fontSize: 13, letterSpacing: '0.1em', color: '#e2e2e2',
+          fontSize: 13, letterSpacing: '0.1em', color: '#f5f5f5',
           fontFamily: 'system-ui', margin: '0 0 4px', fontWeight: 500,
         }}>
           SETTINGS
         </h1>
-        <p style={{ color: '#4a4a4a', fontSize: 11, fontFamily: 'system-ui', margin: 0 }}>
+        <p style={{ color: '#8a8a8a', fontSize: 11, fontFamily: 'system-ui', margin: 0 }}>
           Parâmetros do scanner. Aplicados no próximo scan.
         </p>
       </div>
@@ -247,7 +247,7 @@ export default function SettingsPage() {
       {loading ? (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           {[1, 2, 3, 4, 5].map(i => (
-            <div key={i} style={{ height: 60, background: '#111111', borderRadius: 2 }} />
+            <div key={i} style={{ height: 60, background: '#1f1f1f', borderRadius: 2 }} />
           ))}
         </div>
       ) : (
@@ -257,11 +257,11 @@ export default function SettingsPage() {
           <div style={{ marginBottom: 1 }}>
             <div style={{
               padding: '10px 20px 6px',
-              background: '#0d0d0d',
-              borderBottom: '1px solid #1a1a1a',
+              background: '#1f1f1f',
+              borderBottom: '1px solid #2e2e2e',
             }}>
               <p style={{
-                color: '#4a4a4a', fontSize: 10, letterSpacing: '0.12em',
+                color: '#8a8a8a', fontSize: 10, letterSpacing: '0.12em',
                 fontFamily: 'system-ui', margin: 0,
               }}>
                 UNIVERSO DO SCAN
@@ -269,17 +269,17 @@ export default function SettingsPage() {
             </div>
 
             <div style={{
-              background: '#111111',
-              borderBottom: '1px solid #1a1a1a',
+              background: '#1f1f1f',
+              borderBottom: '1px solid #2e2e2e',
               padding: '16px 20px',
             }}>
               <p style={{
-                color: '#7a7a7a', fontSize: 11, letterSpacing: '0.1em',
+                color: '#a0a0a0', fontSize: 11, letterSpacing: '0.1em',
                 fontFamily: 'system-ui', margin: '0 0 4px',
               }}>
                 SEGMENTOS A INCLUIR
               </p>
-              <p style={{ color: '#4a4a4a', fontSize: 11, fontFamily: 'system-ui', margin: '0 0 14px' }}>
+              <p style={{ color: '#8a8a8a', fontSize: 11, fontFamily: 'system-ui', margin: '0 0 14px' }}>
                 Selecione um ou mais grupos de ativos. Pares são testados somente dentro do mesmo tipo.
               </p>
 
@@ -294,8 +294,8 @@ export default function SettingsPage() {
                         alignItems: 'center',
                         gap: 12,
                         padding: '10px 14px',
-                        background: active ? 'rgba(200,169,110,0.05)' : '#181818',
-                        border: `1px solid ${active ? 'rgba(200,169,110,0.2)' : '#252525'}`,
+                        background: active ? 'rgba(212,184,122,0.05)' : '#2a2a2a',
+                        border: `1px solid ${active ? 'rgba(212,184,122,0.2)' : '#3d3d3d'}`,
                         borderRadius: 2,
                         cursor: 'pointer',
                         userSelect: 'none',
@@ -307,9 +307,9 @@ export default function SettingsPage() {
                         style={{
                           width: 16,
                           height: 16,
-                          border: `1px solid ${active ? '#c8a96e' : '#3a3a3a'}`,
+                          border: `1px solid ${active ? '#d4b87a' : '#3a3a3a'}`,
                           borderRadius: 2,
-                          background: active ? '#c8a96e' : 'transparent',
+                          background: active ? '#d4b87a' : 'transparent',
                           flexShrink: 0,
                           display: 'flex',
                           alignItems: 'center',
@@ -318,7 +318,7 @@ export default function SettingsPage() {
                       >
                         {active && (
                           <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                            <path d="M1 4L3.5 6.5L9 1" stroke="#080808" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M1 4L3.5 6.5L9 1" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                           </svg>
                         )}
                       </div>
@@ -327,7 +327,7 @@ export default function SettingsPage() {
                         <span style={{
                           fontSize: 12,
                           fontFamily: '"JetBrains Mono", monospace',
-                          color: active ? '#c8a96e' : '#7a7a7a',
+                          color: active ? '#d4b87a' : '#a0a0a0',
                           fontWeight: active ? 600 : 400,
                           letterSpacing: '0.05em',
                         }}>
@@ -337,7 +337,7 @@ export default function SettingsPage() {
                           marginLeft: 10,
                           fontSize: 11,
                           fontFamily: 'system-ui',
-                          color: '#4a4a4a',
+                          color: '#8a8a8a',
                         }}>
                           {opt.description}
                         </span>
@@ -367,12 +367,12 @@ export default function SettingsPage() {
                 {field.section && (
                   <div style={{
                     padding: '10px 20px 6px',
-                    background: '#0d0d0d',
-                    borderBottom: '1px solid #1a1a1a',
-                    borderTop: '1px solid #252525',
+                    background: '#1f1f1f',
+                    borderBottom: '1px solid #2e2e2e',
+                    borderTop: '1px solid #3d3d3d',
                   }}>
                     <p style={{
-                      color: '#4a4a4a', fontSize: 10, letterSpacing: '0.12em',
+                      color: '#8a8a8a', fontSize: 10, letterSpacing: '0.12em',
                       fontFamily: 'system-ui', margin: 0,
                     }}>
                       {field.section}
@@ -384,18 +384,18 @@ export default function SettingsPage() {
                   alignItems: 'center',
                   justifyContent: 'space-between',
                   padding: '16px 20px',
-                  background: '#111111',
-                  borderBottom: i < FIELD_META.length - 1 ? '1px solid #1a1a1a' : 'none',
+                  background: '#1f1f1f',
+                  borderBottom: i < FIELD_META.length - 1 ? '1px solid #2e2e2e' : 'none',
                   gap: 16,
                 }}>
                   <div style={{ flex: 1 }}>
                     <p style={{
-                      color: '#7a7a7a', fontSize: 11, letterSpacing: '0.1em',
+                      color: '#a0a0a0', fontSize: 11, letterSpacing: '0.1em',
                       fontFamily: 'system-ui', margin: '0 0 3px',
                     }}>
                       {field.label}
                     </p>
-                    <p style={{ color: '#4a4a4a', fontSize: 11, fontFamily: 'system-ui', margin: 0 }}>
+                    <p style={{ color: '#8a8a8a', fontSize: 11, fontFamily: 'system-ui', margin: 0 }}>
                       {field.description}
                     </p>
                   </div>
@@ -419,8 +419,8 @@ export default function SettingsPage() {
               type="submit"
               disabled={saving}
               style={{
-                background: saving ? '#181818' : '#c8a96e',
-                color: saving ? '#7a7a7a' : '#080808',
+                background: saving ? '#2a2a2a' : '#d4b87a',
+                color: saving ? '#a0a0a0' : '#1a1a1a',
                 border: 'none',
                 padding: '9px 24px',
                 fontSize: 11,

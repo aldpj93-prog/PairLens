@@ -14,7 +14,7 @@ const labelStyle: React.CSSProperties = {
   fontSize: 9,
   letterSpacing: '0.1em',
   fontFamily: 'system-ui',
-  color: '#4a4a4a',
+  color: '#8a8a8a',
   textTransform: 'uppercase',
   margin: '0 0 3px',
 }
@@ -22,15 +22,15 @@ const labelStyle: React.CSSProperties = {
 const valueStyle: React.CSSProperties = {
   fontSize: 13,
   fontFamily: '"JetBrains Mono", monospace',
-  color: '#e2e2e2',
+  color: '#f5f5f5',
   margin: 0,
   fontWeight: 600,
 }
 
 const inputStyle: React.CSSProperties = {
-  background: '#181818',
+  background: '#2a2a2a',
   border: '1px solid #2a2a2a',
-  color: '#e2e2e2',
+  color: '#f5f5f5',
   fontSize: 13,
   fontFamily: '"JetBrains Mono", monospace',
   padding: '7px 10px',
@@ -63,7 +63,7 @@ export default function CloseModal({ operation: op, onClose, onSuccess }: Props)
   }
 
   const signalColor = op.signal === 'long_spread' ? '#4a9c6a' : '#c0504a'
-  const pnlColor    = pnlPct == null ? '#7a7a7a' : pnlPct >= 0 ? '#4a9c6a' : '#c0504a'
+  const pnlColor    = pnlPct == null ? '#a0a0a0' : pnlPct >= 0 ? '#4a9c6a' : '#c0504a'
 
   async function handleConfirmar() {
     if (!isFinite(parsedExitA) || !isFinite(parsedExitB)) {
@@ -106,8 +106,8 @@ export default function CloseModal({ operation: op, onClose, onSuccess }: Props)
       onClick={e => { if (e.target === e.currentTarget) onClose() }}
     >
       <div style={{
-        background: '#111111',
-        border: '1px solid #252525',
+        background: '#1f1f1f',
+        border: '1px solid #3d3d3d',
         borderRadius: 2,
         width: '100%',
         maxWidth: 460,
@@ -116,15 +116,15 @@ export default function CloseModal({ operation: op, onClose, onSuccess }: Props)
         {/* Header */}
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 20 }}>
           <div>
-            <p style={{ fontSize: 10, letterSpacing: '0.1em', fontFamily: 'system-ui', color: '#4a4a4a', margin: '0 0 4px' }}>
+            <p style={{ fontSize: 10, letterSpacing: '0.1em', fontFamily: 'system-ui', color: '#8a8a8a', margin: '0 0 4px' }}>
               ENCERRAR OPERACAO
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: 16, color: '#e2e2e2', fontWeight: 700 }}>
+              <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: 16, color: '#f5f5f5', fontWeight: 700 }}>
                 {op.ticker_a}
               </span>
-              <span style={{ color: '#4a4a4a' }}>/</span>
-              <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: 16, color: '#7a7a7a', fontWeight: 700 }}>
+              <span style={{ color: '#8a8a8a' }}>/</span>
+              <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: 16, color: '#a0a0a0', fontWeight: 700 }}>
                 {op.ticker_b}
               </span>
               <span style={{
@@ -138,7 +138,7 @@ export default function CloseModal({ operation: op, onClose, onSuccess }: Props)
           </div>
           <button
             onClick={onClose}
-            style={{ background: 'none', border: 'none', color: '#4a4a4a', fontSize: 18, cursor: 'pointer', padding: 0, lineHeight: 1 }}
+            style={{ background: 'none', border: 'none', color: '#8a8a8a', fontSize: 18, cursor: 'pointer', padding: 0, lineHeight: 1 }}
           >
             x
           </button>
@@ -160,7 +160,7 @@ export default function CloseModal({ operation: op, onClose, onSuccess }: Props)
           </div>
         </div>
 
-        <div style={{ borderTop: '1px solid #1e1e1e', marginBottom: 20 }} />
+        <div style={{ borderTop: '1px solid #2e2e2e', marginBottom: 20 }} />
 
         {/* Exit price inputs */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 20 }}>
@@ -219,8 +219,8 @@ export default function CloseModal({ operation: op, onClose, onSuccess }: Props)
             disabled={loading}
             style={{
               background: 'none',
-              border: '1px solid #252525',
-              color: '#7a7a7a',
+              border: '1px solid #3d3d3d',
+              color: '#a0a0a0',
               fontSize: 11,
               letterSpacing: '0.1em',
               fontFamily: 'system-ui',
@@ -236,8 +236,8 @@ export default function CloseModal({ operation: op, onClose, onSuccess }: Props)
             disabled={loading || exitRatio == null}
             style={{
               background: 'none',
-              border: '1px solid #c8a96e',
-              color: '#c8a96e',
+              border: '1px solid #d4b87a',
+              color: '#d4b87a',
               fontSize: 11,
               letterSpacing: '0.1em',
               fontFamily: 'system-ui',

@@ -19,7 +19,7 @@ export default function LogoutButton() {
       style={{
         background: 'none',
         border: 'none',
-        color: '#4a4a4a',
+        color: '#8a8a8a',
         fontSize: 10,
         letterSpacing: '0.1em',
         cursor: 'pointer',

@@ -81,12 +81,12 @@ export default function PairDetailPanel({
   const sigColor =
     sigClass.replace('text-', '') === 'positive' ? '#4a7c59'
     : sigClass.replace('text-', '') === 'negative' ? '#8c3f3f'
-    : '#4a4a4a'
+    : '#8a8a8a'
 
   return (
     <div style={{
-      background: '#0d0d0d',
-      border: '1px solid #252525',
+      background: '#1f1f1f',
+      border: '1px solid #3d3d3d',
       borderRadius: 2,
       padding: 20,
       marginTop: 2,
@@ -100,7 +100,7 @@ export default function PairDetailPanel({
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <span style={{
             fontFamily: '"JetBrains Mono", monospace',
-            fontSize: 15, color: '#e2e2e2', fontWeight: 600, letterSpacing: '0.05em',
+            fontSize: 15, color: '#f5f5f5', fontWeight: 600, letterSpacing: '0.05em',
           }}>
             {pair.ticker_a} / {pair.ticker_b}
           </span>
@@ -114,7 +114,7 @@ export default function PairDetailPanel({
         <button
           onClick={onClose}
           style={{
-            background: 'none', border: 'none', color: '#4a4a4a',
+            background: 'none', border: 'none', color: '#8a8a8a',
             fontSize: 18, cursor: 'pointer', lineHeight: 1, padding: '0 4px',
           }}
         >
@@ -127,11 +127,11 @@ export default function PairDetailPanel({
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           {[260, 180].map((h, i) => (
             <div key={i} style={{
-              height: h, background: '#111111',
-              border: '1px solid #1e1e1e', borderRadius: 2,
+              height: h, background: '#1f1f1f',
+              border: '1px solid #2e2e2e', borderRadius: 2,
             }} />
           ))}
-          <p style={{ color: '#4a4a4a', fontSize: 11, fontFamily: 'system-ui', marginTop: 4 }}>
+          <p style={{ color: '#8a8a8a', fontSize: 11, fontFamily: 'system-ui', marginTop: 4 }}>
             Carregando dados de preço...
           </p>
         </div>
@@ -166,8 +166,8 @@ export default function PairDetailPanel({
       {/* ── Data block ─────────────────────────────────────────────────── */}
       <div style={{
         marginTop: 16,
-        background: '#111111',
-        border: '1px solid #1e1e1e',
+        background: '#1f1f1f',
+        border: '1px solid #2e2e2e',
         padding: '12px 16px',
         borderRadius: 2,
         display: 'grid',
@@ -197,13 +197,13 @@ export default function PairDetailPanel({
         ].map(([label, value]) => (
           <div key={label}>
             <p style={{
-              color: '#4a4a4a', fontSize: 10, fontFamily: 'system-ui',
+              color: '#8a8a8a', fontSize: 10, fontFamily: 'system-ui',
               letterSpacing: '0.08em', margin: '0 0 2px',
             }}>
               {label}
             </p>
             <p style={{
-              color: label === 'Proporção A : B' ? '#c8a96e' : '#e2e2e2',
+              color: label === 'Proporção A : B' ? '#d4b87a' : '#f5f5f5',
               fontSize: 13,
               fontFamily: '"JetBrains Mono", monospace',
               margin: 0,
@@ -220,15 +220,15 @@ export default function PairDetailPanel({
         <div style={{
           marginTop: 8,
           padding: '10px 14px',
-          background: '#0d0d0d',
-          border: '1px solid #1a1a1a',
+          background: '#1f1f1f',
+          border: '1px solid #2e2e2e',
           borderRadius: 2,
         }}>
           <p style={{
-            fontSize: 11, fontFamily: 'system-ui', color: '#4a4a4a',
+            fontSize: 11, fontFamily: 'system-ui', color: '#8a8a8a',
             margin: 0, lineHeight: 1.6,
           }}>
-            <span style={{ color: '#7a7a7a', fontWeight: 600 }}>Proporção {fmtHedge(pair.hedge_ratio)}</span>
+            <span style={{ color: '#a0a0a0', fontWeight: 600 }}>Proporção {fmtHedge(pair.hedge_ratio)}</span>
             {Number(pair.hedge_ratio) < 1
               ? ` — para cada ${(1 / Number(pair.hedge_ratio)).toFixed(2)} unidades compradas de ${pair.ticker_a}, venda 1 unidade de ${pair.ticker_b}.`
               : Number(pair.hedge_ratio) > 1

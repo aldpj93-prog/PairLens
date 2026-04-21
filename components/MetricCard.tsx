@@ -9,8 +9,8 @@ export default function MetricCard({ label, value, accent, sub }: MetricCardProp
   return (
     <div
       style={{
-        background: '#111111',
-        border: '1px solid #252525',
+        background: '#1f1f1f',
+        border: '1px solid #3d3d3d',
         padding: '16px 20px',
         minWidth: 140,
         flex: 1,
@@ -19,7 +19,7 @@ export default function MetricCard({ label, value, accent, sub }: MetricCardProp
     >
       <p
         style={{
-          color: '#4a4a4a',
+          color: '#8a8a8a',
           fontSize: 10,
           letterSpacing: '0.1em',
           fontFamily: 'system-ui',
@@ -30,7 +30,7 @@ export default function MetricCard({ label, value, accent, sub }: MetricCardProp
       </p>
       <p
         style={{
-          color: accent ? '#c8a96e' : '#e2e2e2',
+          color: accent ? '#d4b87a' : '#f5f5f5',
           fontSize: 24,
           fontFamily: '"JetBrains Mono", monospace',
           fontWeight: 500,
@@ -41,7 +41,7 @@ export default function MetricCard({ label, value, accent, sub }: MetricCardProp
         {value}
       </p>
       {sub && (
-        <p style={{ color: '#4a4a4a', fontSize: 11, marginTop: 4, fontFamily: 'system-ui' }}>
+        <p style={{ color: '#8a8a8a', fontSize: 11, marginTop: 4, fontFamily: 'system-ui' }}>
           {sub}
         </p>
       )}

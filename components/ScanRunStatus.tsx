@@ -35,10 +35,10 @@ export default function ScanRunStatus() {
   const latest = runs[0]
 
   return (
-    <div style={{ borderTop: '1px solid #1a1a1a', paddingTop: 12 }}>
+    <div style={{ borderTop: '1px solid #2e2e2e', paddingTop: 12 }}>
       {/* Latest scan summary */}
       <div style={{ marginBottom: 8 }}>
-        <p style={{ color: '#4a4a4a', fontSize: 10, letterSpacing: '0.08em', marginBottom: 4 }}>
+        <p style={{ color: '#8a8a8a', fontSize: 10, letterSpacing: '0.08em', marginBottom: 4 }}>
           LAST SCAN
         </p>
         {latest ? (
@@ -49,16 +49,16 @@ export default function ScanRunStatus() {
                 height: 6,
                 borderRadius: '50%',
                 background: latest.status === 'completed' ? '#4a7c59'
-                  : latest.status === 'failed' ? '#8c3f3f' : '#c8a96e',
+                  : latest.status === 'failed' ? '#8c3f3f' : '#d4b87a',
                 flexShrink: 0,
               }}
             />
-            <span style={{ color: '#7a7a7a', fontSize: 11, fontFamily: 'system-ui' }}>
+            <span style={{ color: '#a0a0a0', fontSize: 11, fontFamily: 'system-ui' }}>
               {fmtDateBRT(latest.triggered_at)}
             </span>
           </div>
         ) : (
-          <span style={{ color: '#4a4a4a', fontSize: 11 }}>No scans yet</span>
+          <span style={{ color: '#8a8a8a', fontSize: 11 }}>No scans yet</span>
         )}
       </div>
 
@@ -68,7 +68,7 @@ export default function ScanRunStatus() {
         style={{
           background: 'none',
           border: 'none',
-          color: '#4a4a4a',
+          color: '#8a8a8a',
           fontSize: 10,
           letterSpacing: '0.08em',
           cursor: 'pointer',
@@ -97,12 +97,12 @@ export default function ScanRunStatus() {
                   height: 5,
                   borderRadius: '50%',
                   background: run.status === 'completed' ? '#4a7c59'
-                    : run.status === 'failed' ? '#8c3f3f' : '#c8a96e',
+                    : run.status === 'failed' ? '#8c3f3f' : '#d4b87a',
                   flexShrink: 0,
                 }}
               />
               <span style={{
-                color: '#4a4a4a',
+                color: '#8a8a8a',
                 fontSize: 10,
                 fontFamily: 'system-ui',
                 overflow: 'hidden',
@@ -111,14 +111,14 @@ export default function ScanRunStatus() {
                 {fmtDateBRT(run.triggered_at)}
               </span>
               {run.pairs_found != null && (
-                <span style={{ color: '#333333', fontSize: 10, marginLeft: 'auto', flexShrink: 0 }}>
+                <span style={{ color: '#4a4a4a', fontSize: 10, marginLeft: 'auto', flexShrink: 0 }}>
                   {run.pairs_found}p
                 </span>
               )}
             </div>
           ))}
           {runs.length === 0 && (
-            <span style={{ color: '#4a4a4a', fontSize: 11 }}>No history</span>
+            <span style={{ color: '#8a8a8a', fontSize: 11 }}>No history</span>
           )}
         </div>
       )}

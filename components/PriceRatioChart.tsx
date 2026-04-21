@@ -16,8 +16,8 @@ interface Props {
 }
 
 const CHART_STYLE = {
-  background: '#111111',
-  border: '1px solid #1e1e1e',
+  background: '#1f1f1f',
+  border: '1px solid #2e2e2e',
   padding: '12px 0 8px',
   borderRadius: 2,
 }
@@ -31,7 +31,7 @@ export default function PriceRatioChart({ residuals, dates }: Props) {
   return (
     <div style={CHART_STYLE}>
       <p style={{
-        color: '#4a4a4a',
+        color: '#8a8a8a',
         fontSize: 10,
         letterSpacing: '0.1em',
         fontFamily: 'system-ui',
@@ -42,16 +42,16 @@ export default function PriceRatioChart({ residuals, dates }: Props) {
       </p>
       <ResponsiveContainer width="100%" height={160}>
         <LineChart data={data} margin={{ top: 4, right: 16, bottom: 4, left: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#1e1e1e" vertical={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="#2e2e2e" vertical={false} />
           <XAxis
             dataKey="date"
-            tick={{ fontSize: 10, fill: '#4a4a4a', fontFamily: 'JetBrains Mono' }}
+            tick={{ fontSize: 10, fill: '#8a8a8a', fontFamily: 'JetBrains Mono' }}
             tickLine={false}
-            axisLine={{ stroke: '#333333' }}
+            axisLine={{ stroke: '#4a4a4a' }}
             interval="preserveStartEnd"
           />
           <YAxis
-            tick={{ fontSize: 10, fill: '#4a4a4a', fontFamily: 'JetBrains Mono' }}
+            tick={{ fontSize: 10, fill: '#8a8a8a', fontFamily: 'JetBrains Mono' }}
             tickLine={false}
             axisLine={false}
             width={60}
@@ -59,20 +59,20 @@ export default function PriceRatioChart({ residuals, dates }: Props) {
           />
           <Tooltip
             contentStyle={{
-              background: '#111111',
-              border: '1px solid #252525',
+              background: '#1f1f1f',
+              border: '1px solid #3d3d3d',
               borderRadius: 2,
               fontSize: 11,
               fontFamily: 'JetBrains Mono, monospace',
-              color: '#e2e2e2',
+              color: '#f5f5f5',
             }}
-            labelStyle={{ color: '#7a7a7a' }}
+            labelStyle={{ color: '#a0a0a0' }}
             formatter={(v: number) => [v.toFixed(4), 'spread']}
           />
           <Line
             type="linear"
             dataKey="spread"
-            stroke="#7a7a7a"
+            stroke="#a0a0a0"
             strokeWidth={1}
             dot={false}
             isAnimationActive={false}

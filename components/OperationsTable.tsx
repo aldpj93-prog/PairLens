@@ -22,8 +22,8 @@ export default function OperationsTable({ open, closed }: Props) {
   const tabStyle = (active: boolean): React.CSSProperties => ({
     background: 'none',
     border: 'none',
-    borderBottom: active ? '2px solid #c8a96e' : '2px solid transparent',
-    color: active ? '#e2e2e2' : '#4a4a4a',
+    borderBottom: active ? '2px solid #d4b87a' : '2px solid transparent',
+    color: active ? '#f5f5f5' : '#8a8a8a',
     fontSize: 11,
     letterSpacing: '0.1em',
     fontFamily: 'system-ui',
@@ -35,7 +35,7 @@ export default function OperationsTable({ open, closed }: Props) {
   return (
     <div>
       {/* Tabs */}
-      <div style={{ borderBottom: '1px solid #1a1a1a', marginBottom: 16 }}>
+      <div style={{ borderBottom: '1px solid #2e2e2e', marginBottom: 16 }}>
         <button style={tabStyle(tab === 'open')} onClick={() => setTab('open')}>
           OPEN ({open.length})
         </button>
@@ -56,7 +56,7 @@ export default function OperationsTable({ open, closed }: Props) {
           <tbody>
             {open.length === 0 && (
               <tr>
-                <td colSpan={8} style={{ color: '#4a4a4a', textAlign: 'center', padding: '32px 0' }}>
+                <td colSpan={8} style={{ color: '#8a8a8a', textAlign: 'center', padding: '32px 0' }}>
                   No open operations.
                 </td>
               </tr>
@@ -65,11 +65,11 @@ export default function OperationsTable({ open, closed }: Props) {
               const daysOpen = (Date.now() - new Date(op.entry_at).getTime()) / 86400000
               return (
                 <tr key={op.id}>
-                  <td style={{ color: '#7a7a7a' }}>{fmtDateBRT(op.entry_at)}</td>
+                  <td style={{ color: '#a0a0a0' }}>{fmtDateBRT(op.entry_at)}</td>
                   <td>
-                    <span style={{ color: '#e2e2e2' }}>{op.ticker_a}</span>
-                    <span style={{ color: '#4a4a4a', margin: '0 4px' }}>/</span>
-                    <span style={{ color: '#7a7a7a' }}>{op.ticker_b}</span>
+                    <span style={{ color: '#f5f5f5' }}>{op.ticker_a}</span>
+                    <span style={{ color: '#8a8a8a', margin: '0 4px' }}>/</span>
+                    <span style={{ color: '#a0a0a0' }}>{op.ticker_b}</span>
                   </td>
                   <td style={{ color: op.signal === 'long_spread' ? '#4a7c59' : '#8c3f3f', fontWeight: 600 }}>
                     {signalLabel(op.signal)}
@@ -77,8 +77,8 @@ export default function OperationsTable({ open, closed }: Props) {
                   <td>{fmt4(op.entry_z_score)}</td>
                   <td>{fmtPrice(op.entry_price_a)}</td>
                   <td>{fmtPrice(op.entry_price_b)}</td>
-                  <td style={{ color: '#7a7a7a' }}>{daysOpen.toFixed(1)}d</td>
-                  <td style={{ color: '#4a4a4a', fontSize: 10 }}>OPEN</td>
+                  <td style={{ color: '#a0a0a0' }}>{daysOpen.toFixed(1)}d</td>
+                  <td style={{ color: '#8a8a8a', fontSize: 10 }}>OPEN</td>
                 </tr>
               )
             })}
@@ -98,7 +98,7 @@ export default function OperationsTable({ open, closed }: Props) {
           <tbody>
             {closed.length === 0 && (
               <tr>
-                <td colSpan={9} style={{ color: '#4a4a4a', textAlign: 'center', padding: '32px 0' }}>
+                <td colSpan={9} style={{ color: '#8a8a8a', textAlign: 'center', padding: '32px 0' }}>
                   No closed operations.
                 </td>
               </tr>
@@ -106,22 +106,22 @@ export default function OperationsTable({ open, closed }: Props) {
             {closed.map(op => (
               <tr key={op.id}>
                 <td>
-                  <span style={{ color: '#e2e2e2' }}>{op.ticker_a}</span>
-                  <span style={{ color: '#4a4a4a', margin: '0 4px' }}>/</span>
-                  <span style={{ color: '#7a7a7a' }}>{op.ticker_b}</span>
+                  <span style={{ color: '#f5f5f5' }}>{op.ticker_a}</span>
+                  <span style={{ color: '#8a8a8a', margin: '0 4px' }}>/</span>
+                  <span style={{ color: '#a0a0a0' }}>{op.ticker_b}</span>
                 </td>
                 <td style={{ color: op.signal === 'long_spread' ? '#4a7c59' : '#8c3f3f', fontWeight: 600 }}>
                   {signalLabel(op.signal)}
                 </td>
                 <td>{fmt4(op.entry_z_score)}</td>
                 <td>{fmt4(op.exit_z_score)}</td>
-                <td style={{ color: '#7a7a7a' }}>{fmtDateBRT(op.entry_at)}</td>
-                <td style={{ color: '#7a7a7a' }}>{fmtDateBRT(op.exit_at)}</td>
+                <td style={{ color: '#a0a0a0' }}>{fmtDateBRT(op.entry_at)}</td>
+                <td style={{ color: '#a0a0a0' }}>{fmtDateBRT(op.exit_at)}</td>
                 <td>{fmtDays(op.duration_days)}</td>
                 <td style={{ color: (op.pnl_pct ?? 0) >= 0 ? '#4a7c59' : '#8c3f3f', fontWeight: 600 }}>
                   {fmtPct(op.pnl_pct)}
                 </td>
-                <td style={{ color: '#4a4a4a', fontSize: 10, letterSpacing: '0.05em' }}>
+                <td style={{ color: '#8a8a8a', fontSize: 10, letterSpacing: '0.05em' }}>
                   {op.exit_reason?.replace('_', ' ').toUpperCase() ?? '—'}
                 </td>
               </tr>

@@ -39,17 +39,17 @@ function RatioTooltip({ active, payload, label, mean, std, threshold }: any) {
   if (ratio == null) return null
 
   const z      = std > 0 ? (ratio - mean) / std : 0
-  const zColor = z > threshold ? '#c0504a' : z < -threshold ? '#4a9c6a' : '#7a7a7a'
+  const zColor = z > threshold ? '#c0504a' : z < -threshold ? '#4a9c6a' : '#a0a0a0'
 
   return (
     <div style={{
-      background: '#0d0d0d', border: '1px solid #2a2a2a',
+      background: '#1f1f1f', border: '1px solid #2a2a2a',
       borderRadius: 2, padding: '8px 12px',
     }}>
-      <p style={{ color: '#4a4a4a', fontSize: 10, fontFamily: 'system-ui', margin: '0 0 6px' }}>
+      <p style={{ color: '#8a8a8a', fontSize: 10, fontFamily: 'system-ui', margin: '0 0 6px' }}>
         {label}
       </p>
-      <p style={{ color: '#e2e2e2', fontSize: 12, fontFamily: '"JetBrains Mono", monospace', margin: '0 0 3px', fontWeight: 600 }}>
+      <p style={{ color: '#f5f5f5', fontSize: 12, fontFamily: '"JetBrains Mono", monospace', margin: '0 0 3px', fontWeight: 600 }}>
         {ratio.toFixed(4)}
       </p>
       <p style={{ color: zColor, fontSize: 11, fontFamily: '"JetBrains Mono", monospace', margin: 0 }}>
@@ -122,7 +122,7 @@ export default function RatioChart({
     currentZ > threshold  ? 'short' :
     currentZ < -threshold ? 'long'  : null
 
-  const dotColor   = direction === 'short' ? '#c0504a' : direction === 'long' ? '#4a9c6a' : '#c8a96e'
+  const dotColor   = direction === 'short' ? '#c0504a' : direction === 'long' ? '#4a9c6a' : '#d4b87a'
   const stateLabel = direction === 'short' ? 'SHORT SPREAD' : direction === 'long' ? 'LONG SPREAD' : 'NEUTRO'
 
   // ── R/R ──────────────────────────────────────────────────────────────────
@@ -149,7 +149,7 @@ export default function RatioChart({
   const yMax = Math.max(...allY) * 1.015
 
   return (
-    <div style={{ background: '#111111', border: '1px solid #1e1e1e', borderRadius: 2 }}>
+    <div style={{ background: '#1f1f1f', border: '1px solid #2e2e2e', borderRadius: 2 }}>
 
       {/* ── Header ──────────────────────────────────────────────────────── */}
       <div style={{
@@ -159,7 +159,7 @@ export default function RatioChart({
       }}>
         {/* Título + estado atual */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-          <p style={{ color: '#4a4a4a', fontSize: 10, letterSpacing: '0.1em', fontFamily: 'system-ui', margin: 0 }}>
+          <p style={{ color: '#8a8a8a', fontSize: 10, letterSpacing: '0.1em', fontFamily: 'system-ui', margin: 0 }}>
             RATIO {tickerA} / {tickerB}
           </p>
           <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: 12, color: dotColor, fontWeight: 700 }}>
@@ -178,16 +178,16 @@ export default function RatioChart({
 
         {/* Seletor de histórico */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0 }}>
-          <span style={{ fontSize: 9, color: '#4a4a4a', fontFamily: 'system-ui', letterSpacing: '0.08em' }}>
+          <span style={{ fontSize: 9, color: '#8a8a8a', fontFamily: 'system-ui', letterSpacing: '0.08em' }}>
             HISTÓRICO
           </span>
           <select
             value={displayDays}
             onChange={e => setDisplayDays(Number(e.target.value))}
             style={{
-              background: '#181818',
+              background: '#2a2a2a',
               border: '1px solid #2a2a2a',
-              color: '#c8a96e',
+              color: '#d4b87a',
               fontSize: 11,
               fontFamily: '"JetBrains Mono", monospace',
               padding: '3px 8px',
@@ -201,7 +201,7 @@ export default function RatioChart({
             ))}
           </select>
           {displayDays !== lookback && (
-            <span style={{ fontSize: 9, color: '#4a4a4a', fontFamily: 'system-ui' }}>
+            <span style={{ fontSize: 9, color: '#8a8a8a', fontFamily: 'system-ui' }}>
               (bandas: {lookback}d)
             </span>
           )}
@@ -259,13 +259,13 @@ export default function RatioChart({
           {entryRatio != null && (
             <ReferenceLine
               y={entryRatio}
-              stroke="#c8a96e"
+              stroke="#d4b87a"
               strokeWidth={1.5}
               strokeDasharray="4 3"
               label={{
                 value: entryLabel ?? `ENTRADA  ${entryRatio.toFixed(4)}`,
                 position: 'right',
-                fill: '#c8a96e',
+                fill: '#d4b87a',
                 fontSize: 9,
                 fontFamily: 'JetBrains Mono',
                 fontWeight: 600,
@@ -310,26 +310,26 @@ export default function RatioChart({
             display: 'flex', alignItems: 'center', gap: 20,
             marginBottom: 12,
             padding: '8px 12px',
-            background: '#0d0d0d',
-            border: '1px solid #1a1a1a',
+            background: '#1f1f1f',
+            border: '1px solid #2e2e2e',
             borderRadius: 2,
             flexWrap: 'wrap',
           }}>
             <div>
-              <p style={{ fontSize: 9, letterSpacing: '0.1em', fontFamily: 'system-ui', color: '#4a4a4a', margin: '0 0 2px' }}>COMPRA</p>
+              <p style={{ fontSize: 9, letterSpacing: '0.1em', fontFamily: 'system-ui', color: '#8a8a8a', margin: '0 0 2px' }}>COMPRA</p>
               <p style={{ fontSize: 14, fontFamily: '"JetBrains Mono", monospace', color: '#4a9c6a', margin: 0, fontWeight: 700 }}>
                 {direction === 'long' ? tickerA : tickerB}
               </p>
             </div>
             <div style={{ color: '#2a2a2a', fontSize: 18 }}>×</div>
             <div>
-              <p style={{ fontSize: 9, letterSpacing: '0.1em', fontFamily: 'system-ui', color: '#4a4a4a', margin: '0 0 2px' }}>VENDE</p>
+              <p style={{ fontSize: 9, letterSpacing: '0.1em', fontFamily: 'system-ui', color: '#8a8a8a', margin: '0 0 2px' }}>VENDE</p>
               <p style={{ fontSize: 14, fontFamily: '"JetBrains Mono", monospace', color: '#c0504a', margin: 0, fontWeight: 700 }}>
                 {direction === 'long' ? tickerB : tickerA}
               </p>
             </div>
             <div style={{ marginLeft: 'auto' }}>
-              <p style={{ fontSize: 9, letterSpacing: '0.1em', fontFamily: 'system-ui', color: '#4a4a4a', margin: '0 0 2px' }}>RATIO {tickerA}/{tickerB} PRECISA</p>
+              <p style={{ fontSize: 9, letterSpacing: '0.1em', fontFamily: 'system-ui', color: '#8a8a8a', margin: '0 0 2px' }}>RATIO {tickerA}/{tickerB} PRECISA</p>
               <p style={{ fontSize: 13, fontFamily: '"JetBrains Mono", monospace', color: dotColor, margin: 0, fontWeight: 700 }}>
                 {direction === 'long' ? '↑ SUBIR' : '↓ CAIR'}
               </p>
@@ -352,11 +352,11 @@ export default function RatioChart({
               {
                 label: 'RISCO : RETORNO',
                 value: rr != null ? `1 : ${rr.toFixed(1)}` : '—',
-                color: rr != null && rr >= 2 ? '#4a9c6a' : rr != null && rr >= 1 ? '#c8a96e' : '#c0504a',
+                color: rr != null && rr >= 2 ? '#4a9c6a' : rr != null && rr >= 1 ? '#d4b87a' : '#c0504a',
               },
             ].map(({ label, value, color }) => (
               <div key={label}>
-                <p style={{ fontSize: 9, letterSpacing: '0.1em', fontFamily: 'system-ui', color: '#4a4a4a', margin: '0 0 2px', textTransform: 'uppercase' }}>
+                <p style={{ fontSize: 9, letterSpacing: '0.1em', fontFamily: 'system-ui', color: '#8a8a8a', margin: '0 0 2px', textTransform: 'uppercase' }}>
                   {label}
                 </p>
                 <p style={{ fontSize: 13, fontFamily: '"JetBrains Mono", monospace', color, margin: 0, fontWeight: 600 }}>
@@ -367,7 +367,7 @@ export default function RatioChart({
           </div>
 
           {/* Texto explicativo */}
-          <p style={{ fontSize: 11, fontFamily: 'system-ui', color: '#4a4a4a', margin: 0, lineHeight: 1.6 }}>
+          <p style={{ fontSize: 11, fontFamily: 'system-ui', color: '#8a8a8a', margin: 0, lineHeight: 1.6 }}>
             {direction === 'long'
               ? `Compra ${tickerA} e vende ${tickerB}. O ratio ${tickerA}/${tickerB} está abaixo da média — espera-se que suba de ${currentRatio.toFixed(4)} até ${target.toFixed(4)}. Stop em ${stopLevel.toFixed(4)} se o ratio continuar caindo (-${riskPct.toFixed(2)}%). R/R: 1 : ${rr?.toFixed(1) ?? '—'}.`
               : `Vende ${tickerA} e compra ${tickerB}. O ratio ${tickerA}/${tickerB} está acima da média — espera-se que caia de ${currentRatio.toFixed(4)} até ${target.toFixed(4)}. Stop em ${stopLevel.toFixed(4)} se o ratio continuar subindo (-${riskPct.toFixed(2)}%). R/R: 1 : ${rr?.toFixed(1) ?? '—'}.`

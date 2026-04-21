@@ -25,7 +25,7 @@ export default function RankTable({ pairs, zThreshold = 2.0, onExecutar }: Props
   function signalStyle(signal: string | null): React.CSSProperties {
     if (signal === 'long_spread')  return { color: '#4a7c59', fontWeight: 600 }
     if (signal === 'short_spread') return { color: '#8c3f3f', fontWeight: 600 }
-    return { color: '#4a4a4a' }
+    return { color: '#8a8a8a' }
   }
 
   return (
@@ -42,7 +42,7 @@ export default function RankTable({ pairs, zThreshold = 2.0, onExecutar }: Props
           <tbody>
             {sorted.length === 0 && (
               <tr>
-                <td colSpan={12} style={{ color: '#4a4a4a', textAlign: 'center', padding: '32px 0' }}>
+                <td colSpan={12} style={{ color: '#8a8a8a', textAlign: 'center', padding: '32px 0' }}>
                   Nenhum par com sinal ativo e score &ge; 80.
                 </td>
               </tr>
@@ -57,23 +57,23 @@ export default function RankTable({ pairs, zThreshold = 2.0, onExecutar }: Props
                   }}
                   onClick={() => setSelectedId(prev => prev === pair.id ? null : pair.id)}
                 >
-                  <td style={{ color: '#4a4a4a' }}>{idx + 1}</td>
+                  <td style={{ color: '#8a8a8a' }}>{idx + 1}</td>
                   <td>
-                    <span style={{ color: '#e2e2e2', letterSpacing: '0.05em' }}>
+                    <span style={{ color: '#f5f5f5', letterSpacing: '0.05em' }}>
                       {pair.ticker_a}
                     </span>
-                    <span style={{ color: '#4a4a4a', margin: '0 4px' }}>/</span>
-                    <span style={{ color: '#7a7a7a' }}>{pair.ticker_b}</span>
+                    <span style={{ color: '#8a8a8a', margin: '0 4px' }}>/</span>
+                    <span style={{ color: '#a0a0a0' }}>{pair.ticker_b}</span>
                   </td>
-                  <td style={{ color: '#c8a96e' }}>{fmtScore(pair.score)}</td>
+                  <td style={{ color: '#d4b87a' }}>{fmtScore(pair.score)}</td>
                   <td>{fmt4(pair.adf_statistic)}</td>
                   <td>{fmtP(pair.p_value)}</td>
                   <td style={{
                     color: pair.z_score != null
                       ? Math.abs(pair.z_score) > zThreshold
                         ? pair.z_score > 0 ? '#8c3f3f' : '#4a7c59'
-                        : '#e2e2e2'
-                      : '#e2e2e2'
+                        : '#f5f5f5'
+                      : '#f5f5f5'
                   }}>
                     {fmt4(pair.z_score)}
                   </td>
@@ -93,8 +93,8 @@ export default function RankTable({ pairs, zThreshold = 2.0, onExecutar }: Props
                       }}
                       style={{
                         background: 'none',
-                        border: '1px solid #252525',
-                        color: '#7a7a7a',
+                        border: '1px solid #3d3d3d',
+                        color: '#a0a0a0',
                         fontSize: 10,
                         padding: '3px 8px',
                         cursor: 'pointer',
@@ -116,8 +116,8 @@ export default function RankTable({ pairs, zThreshold = 2.0, onExecutar }: Props
                         }}
                         style={{
                           background: 'transparent',
-                          border: '1px solid #c8a96e',
-                          color: '#c8a96e',
+                          border: '1px solid #d4b87a',
+                          color: '#d4b87a',
                           fontSize: 10,
                           padding: '3px 8px',
                           cursor: 'pointer',

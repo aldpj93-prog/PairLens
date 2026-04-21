@@ -14,7 +14,7 @@ const labelStyle: React.CSSProperties = {
   fontSize: 9,
   letterSpacing: '0.1em',
   fontFamily: 'system-ui',
-  color: '#4a4a4a',
+  color: '#8a8a8a',
   textTransform: 'uppercase',
   margin: '0 0 3px',
 }
@@ -22,15 +22,15 @@ const labelStyle: React.CSSProperties = {
 const valueStyle: React.CSSProperties = {
   fontSize: 13,
   fontFamily: '"JetBrains Mono", monospace',
-  color: '#e2e2e2',
+  color: '#f5f5f5',
   margin: 0,
   fontWeight: 600,
 }
 
 const inputStyle: React.CSSProperties = {
-  background: '#181818',
+  background: '#2a2a2a',
   border: '1px solid #2a2a2a',
-  color: '#e2e2e2',
+  color: '#f5f5f5',
   fontSize: 13,
   fontFamily: '"JetBrains Mono", monospace',
   padding: '7px 10px',
@@ -122,7 +122,7 @@ export default function ExecutarModal({ pair, onClose, onSuccess }: Props) {
   const rr = (gainPct != null && riskPct != null && riskPct > 0)
     ? gainPct / riskPct : null
 
-  const signalColor = opDirection === 'long' ? '#4a9c6a' : opDirection === 'short' ? '#c0504a' : '#7a7a7a'
+  const signalColor = opDirection === 'long' ? '#4a9c6a' : opDirection === 'short' ? '#c0504a' : '#a0a0a0'
 
   async function handleConfirmar() {
     if (!entryRatio || !parsedQtyA || !isFinite(parsedPriceA) || !isFinite(parsedPriceB)) {
@@ -179,8 +179,8 @@ export default function ExecutarModal({ pair, onClose, onSuccess }: Props) {
       onClick={e => { if (e.target === e.currentTarget) onClose() }}
     >
       <div style={{
-        background: '#111111',
-        border: '1px solid #252525',
+        background: '#1f1f1f',
+        border: '1px solid #3d3d3d',
         borderRadius: 2,
         width: '100%',
         maxWidth: 520,
@@ -191,15 +191,15 @@ export default function ExecutarModal({ pair, onClose, onSuccess }: Props) {
         {/* Header */}
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 20 }}>
           <div>
-            <p style={{ fontSize: 10, letterSpacing: '0.1em', fontFamily: 'system-ui', color: '#4a4a4a', margin: '0 0 4px' }}>
+            <p style={{ fontSize: 10, letterSpacing: '0.1em', fontFamily: 'system-ui', color: '#8a8a8a', margin: '0 0 4px' }}>
               REGISTRAR OPERAÇÃO
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: 16, color: '#e2e2e2', fontWeight: 700 }}>
+              <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: 16, color: '#f5f5f5', fontWeight: 700 }}>
                 {pair.ticker_a}
               </span>
-              <span style={{ color: '#4a4a4a' }}>/</span>
-              <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: 16, color: '#7a7a7a', fontWeight: 700 }}>
+              <span style={{ color: '#8a8a8a' }}>/</span>
+              <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: 16, color: '#a0a0a0', fontWeight: 700 }}>
                 {pair.ticker_b}
               </span>
               <span style={{
@@ -213,7 +213,7 @@ export default function ExecutarModal({ pair, onClose, onSuccess }: Props) {
           </div>
           <button
             onClick={onClose}
-            style={{ background: 'none', border: 'none', color: '#4a4a4a', fontSize: 18, cursor: 'pointer', padding: 0, lineHeight: 1 }}
+            style={{ background: 'none', border: 'none', color: '#8a8a8a', fontSize: 18, cursor: 'pointer', padding: 0, lineHeight: 1 }}
           >
             x
           </button>
@@ -223,7 +223,7 @@ export default function ExecutarModal({ pair, onClose, onSuccess }: Props) {
         <div style={{ display: 'flex', gap: 20, marginBottom: 20, flexWrap: 'wrap' }}>
           <div>
             <p style={labelStyle}>SCORE</p>
-            <p style={{ ...valueStyle, color: '#c8a96e' }}>{pair.score ?? '—'}</p>
+            <p style={{ ...valueStyle, color: '#d4b87a' }}>{pair.score ?? '—'}</p>
           </div>
           <div>
             <p style={labelStyle}>HEDGE RATIO</p>
@@ -236,7 +236,7 @@ export default function ExecutarModal({ pair, onClose, onSuccess }: Props) {
         </div>
 
         {/* Divider */}
-        <div style={{ borderTop: '1px solid #1e1e1e', marginBottom: 20 }} />
+        <div style={{ borderTop: '1px solid #2e2e2e', marginBottom: 20 }} />
 
         {/* Price inputs */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 16 }}>
@@ -299,7 +299,7 @@ export default function ExecutarModal({ pair, onClose, onSuccess }: Props) {
               type="number"
               readOnly
               value={qtyB != null && isFinite(qtyB) ? String(qtyB) : ''}
-              style={{ ...inputStyle, color: '#4a4a4a', cursor: 'not-allowed' }}
+              style={{ ...inputStyle, color: '#8a8a8a', cursor: 'not-allowed' }}
               placeholder="—"
             />
           </div>
@@ -308,14 +308,14 @@ export default function ExecutarModal({ pair, onClose, onSuccess }: Props) {
         {/* Computed stats */}
         {entryRatio != null && (
           <>
-            <div style={{ borderTop: '1px solid #1e1e1e', marginBottom: 16 }} />
+            <div style={{ borderTop: '1px solid #2e2e2e', marginBottom: 16 }} />
 
             {/* Resumo da operação */}
             {opDirection && (
               <div style={{
                 display: 'flex', alignItems: 'center', gap: 20,
                 marginBottom: 16, padding: '10px 14px',
-                background: '#0d0d0d', border: '1px solid #1a1a1a', borderRadius: 2,
+                background: '#1f1f1f', border: '1px solid #2e2e2e', borderRadius: 2,
                 flexWrap: 'wrap',
               }}>
                 <div>
@@ -377,7 +377,7 @@ export default function ExecutarModal({ pair, onClose, onSuccess }: Props) {
                   <p style={labelStyle}>R/R</p>
                   <p style={{
                     ...valueStyle,
-                    color: rr >= 2 ? '#4a9c6a' : rr >= 1 ? '#c8a96e' : '#c0504a',
+                    color: rr >= 2 ? '#4a9c6a' : rr >= 1 ? '#d4b87a' : '#c0504a',
                   }}>
                     1 : {rr.toFixed(1)}
                   </p>
@@ -401,8 +401,8 @@ export default function ExecutarModal({ pair, onClose, onSuccess }: Props) {
             disabled={loading}
             style={{
               background: 'none',
-              border: '1px solid #252525',
-              color: '#7a7a7a',
+              border: '1px solid #3d3d3d',
+              color: '#a0a0a0',
               fontSize: 11,
               letterSpacing: '0.1em',
               fontFamily: 'system-ui',
@@ -418,8 +418,8 @@ export default function ExecutarModal({ pair, onClose, onSuccess }: Props) {
             disabled={loading || !entryRatio || !isFinite(parsedQtyA)}
             style={{
               background: 'none',
-              border: '1px solid #c8a96e',
-              color: '#c8a96e',
+              border: '1px solid #d4b87a',
+              color: '#d4b87a',
               fontSize: 11,
               letterSpacing: '0.1em',
               fontFamily: 'system-ui',

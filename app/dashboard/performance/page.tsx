@@ -63,10 +63,10 @@ export default function PerformancePage() {
   return (
     <div>
       <div style={{ marginBottom: 24 }}>
-        <h1 style={{ fontSize: 13, letterSpacing: '0.1em', color: '#e2e2e2', fontFamily: 'system-ui', margin: '0 0 4px', fontWeight: 500 }}>
+        <h1 style={{ fontSize: 13, letterSpacing: '0.1em', color: '#f5f5f5', fontFamily: 'system-ui', margin: '0 0 4px', fontWeight: 500 }}>
           PERFORMANCE
         </h1>
-        <p style={{ color: '#4a4a4a', fontSize: 11, fontFamily: 'system-ui', margin: 0 }}>
+        <p style={{ color: '#8a8a8a', fontSize: 11, fontFamily: 'system-ui', margin: 0 }}>
           Historico de operacoes encerradas.
         </p>
       </div>
@@ -74,7 +74,7 @@ export default function PerformancePage() {
       {loading ? (
         <div>
           {[1, 2, 3].map(i => (
-            <div key={i} style={{ height: 48, background: '#111111', marginBottom: 8, borderRadius: 2 }} />
+            <div key={i} style={{ height: 48, background: '#1f1f1f', marginBottom: 8, borderRadius: 2 }} />
           ))}
         </div>
       ) : (
@@ -108,9 +108,9 @@ export default function PerformancePage() {
 
           {/* Closed operations table */}
           {closed.length > 0 && (
-            <div style={{ background: '#111111', border: '1px solid #252525', borderRadius: 2, marginBottom: 16, overflowX: 'auto' }}>
-              <div style={{ padding: '10px 16px', borderBottom: '1px solid #1e1e1e' }}>
-                <p style={{ color: '#4a4a4a', fontSize: 10, letterSpacing: '0.1em', fontFamily: 'system-ui', margin: 0 }}>
+            <div style={{ background: '#1f1f1f', border: '1px solid #3d3d3d', borderRadius: 2, marginBottom: 16, overflowX: 'auto' }}>
+              <div style={{ padding: '10px 16px', borderBottom: '1px solid #2e2e2e' }}>
+                <p style={{ color: '#8a8a8a', fontSize: 10, letterSpacing: '0.1em', fontFamily: 'system-ui', margin: 0 }}>
                   HISTORICO DE OPERACOES
                 </p>
               </div>
@@ -126,8 +126,8 @@ export default function PerformancePage() {
                           fontSize: 9,
                           letterSpacing: '0.1em',
                           fontFamily: 'system-ui',
-                          color: '#4a4a4a',
-                          borderBottom: '1px solid #1e1e1e',
+                          color: '#8a8a8a',
+                          borderBottom: '1px solid #2e2e2e',
                           fontWeight: 500,
                           whiteSpace: 'nowrap',
                         }}
@@ -146,15 +146,15 @@ export default function PerformancePage() {
                         key={op.id}
                         style={{ borderBottom: '1px solid #191919' }}
                       >
-                        <td style={{ padding: '8px 12px', fontSize: 11, fontFamily: '"JetBrains Mono", monospace', color: '#4a4a4a' }}>
+                        <td style={{ padding: '8px 12px', fontSize: 11, fontFamily: '"JetBrains Mono", monospace', color: '#8a8a8a' }}>
                           {idx + 1}
                         </td>
                         <td style={{ padding: '8px 12px', whiteSpace: 'nowrap' }}>
-                          <span style={{ fontSize: 12, fontFamily: '"JetBrains Mono", monospace', color: '#e2e2e2', fontWeight: 600 }}>
+                          <span style={{ fontSize: 12, fontFamily: '"JetBrains Mono", monospace', color: '#f5f5f5', fontWeight: 600 }}>
                             {op.ticker_a}
                           </span>
-                          <span style={{ color: '#4a4a4a', margin: '0 4px' }}>/</span>
-                          <span style={{ fontSize: 12, fontFamily: '"JetBrains Mono", monospace', color: '#7a7a7a' }}>
+                          <span style={{ color: '#8a8a8a', margin: '0 4px' }}>/</span>
+                          <span style={{ fontSize: 12, fontFamily: '"JetBrains Mono", monospace', color: '#a0a0a0' }}>
                             {op.ticker_b}
                           </span>
                         </td>
@@ -163,10 +163,10 @@ export default function PerformancePage() {
                             {signalLabel(op.signal)}
                           </span>
                         </td>
-                        <td style={{ padding: '8px 12px', fontSize: 12, fontFamily: '"JetBrains Mono", monospace', color: '#e2e2e2' }}>
+                        <td style={{ padding: '8px 12px', fontSize: 12, fontFamily: '"JetBrains Mono", monospace', color: '#f5f5f5' }}>
                           {op.entry_ratio.toFixed(4)}
                         </td>
-                        <td style={{ padding: '8px 12px', fontSize: 12, fontFamily: '"JetBrains Mono", monospace', color: '#e2e2e2' }}>
+                        <td style={{ padding: '8px 12px', fontSize: 12, fontFamily: '"JetBrains Mono", monospace', color: '#f5f5f5' }}>
                           {op.exit_ratio?.toFixed(4) ?? '—'}
                         </td>
                         <td style={{ padding: '8px 12px', fontSize: 12, fontFamily: '"JetBrains Mono", monospace', color: pnlColor, fontWeight: 600 }}>
@@ -174,7 +174,7 @@ export default function PerformancePage() {
                             ? `${op.pnl_pct >= 0 ? '+' : ''}${op.pnl_pct.toFixed(2)}%`
                             : '—'}
                         </td>
-                        <td style={{ padding: '8px 12px', fontSize: 11, fontFamily: '"JetBrains Mono", monospace', color: '#4a4a4a', whiteSpace: 'nowrap' }}>
+                        <td style={{ padding: '8px 12px', fontSize: 11, fontFamily: '"JetBrains Mono", monospace', color: '#8a8a8a', whiteSpace: 'nowrap' }}>
                           {fmtDateBRT(op.exit_at)}
                         </td>
                       </tr>
@@ -187,8 +187,8 @@ export default function PerformancePage() {
 
           {/* Scan history chart */}
           {runs.length > 0 && (
-            <div style={{ background: '#111111', border: '1px solid #252525', borderRadius: 2, padding: '16px 0 8px' }}>
-              <p style={{ color: '#4a4a4a', fontSize: 10, letterSpacing: '0.1em', fontFamily: 'system-ui', paddingLeft: 20, marginBottom: 8 }}>
+            <div style={{ background: '#1f1f1f', border: '1px solid #3d3d3d', borderRadius: 2, padding: '16px 0 8px' }}>
+              <p style={{ color: '#8a8a8a', fontSize: 10, letterSpacing: '0.1em', fontFamily: 'system-ui', paddingLeft: 20, marginBottom: 8 }}>
                 HISTORICO DE SCANS — PARES ENCONTRADOS
               </p>
               <ScanHistoryChart runs={runs} />
@@ -197,9 +197,9 @@ export default function PerformancePage() {
 
           {closed.length === 0 && (
             <div style={{
-              background: '#111111', border: '1px solid #252525', borderRadius: 2,
+              background: '#1f1f1f', border: '1px solid #3d3d3d', borderRadius: 2,
               padding: '48px 0', textAlign: 'center',
-              color: '#4a4a4a', fontSize: 11, fontFamily: 'system-ui',
+              color: '#8a8a8a', fontSize: 11, fontFamily: 'system-ui',
             }}>
               Nenhuma operacao encerrada ainda.
             </div>

@@ -57,26 +57,26 @@ function OperationCard({ op, onEncerrar }: CardProps) {
   }
 
   const signalColor = op.signal === 'long_spread' ? '#4a9c6a' : '#c0504a'
-  const pnlColor    = livePnl == null ? '#7a7a7a' : livePnl >= 0 ? '#4a9c6a' : '#c0504a'
+  const pnlColor    = livePnl == null ? '#a0a0a0' : livePnl >= 0 ? '#4a9c6a' : '#c0504a'
 
   return (
     <div style={{
-      background: '#111111',
-      border: '1px solid #252525',
+      background: '#1f1f1f',
+      border: '1px solid #3d3d3d',
       borderRadius: 2,
       marginBottom: 16,
     }}>
       {/* Card header */}
       <div style={{
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        padding: '12px 16px', borderBottom: '1px solid #1e1e1e', flexWrap: 'wrap', gap: 12,
+        padding: '12px 16px', borderBottom: '1px solid #2e2e2e', flexWrap: 'wrap', gap: 12,
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-          <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: 14, color: '#e2e2e2', fontWeight: 700 }}>
+          <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: 14, color: '#f5f5f5', fontWeight: 700 }}>
             {op.ticker_a}
           </span>
-          <span style={{ color: '#4a4a4a' }}>/</span>
-          <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: 14, color: '#7a7a7a', fontWeight: 700 }}>
+          <span style={{ color: '#8a8a8a' }}>/</span>
+          <span style={{ fontFamily: '"JetBrains Mono", monospace', fontSize: 14, color: '#a0a0a0', fontWeight: 700 }}>
             {op.ticker_b}
           </span>
           <span style={{
@@ -86,7 +86,7 @@ function OperationCard({ op, onEncerrar }: CardProps) {
           }}>
             {signalLabel(op.signal)}
           </span>
-          <span style={{ fontSize: 9, color: '#4a4a4a', fontFamily: 'system-ui' }}>
+          <span style={{ fontSize: 9, color: '#8a8a8a', fontFamily: 'system-ui' }}>
             Hedge {fmtHedge(op.hedge_ratio)}
           </span>
         </div>
@@ -114,18 +114,18 @@ function OperationCard({ op, onEncerrar }: CardProps) {
         gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))',
         gap: '8px 20px',
         padding: '12px 16px',
-        borderBottom: '1px solid #1e1e1e',
+        borderBottom: '1px solid #2e2e2e',
       }}>
         {[
           { label: 'ENTRADA',     value: op.entry_ratio.toFixed(4),                        color: signalColor },
           { label: 'ALVO',        value: op.target_ratio?.toFixed(4) ?? '—',               color: '#d8d8d8' },
           { label: 'STOP',        value: op.stop_ratio?.toFixed(4) ?? '—',                 color: op.signal === 'long_spread' ? '#c0504a' : '#4a9c6a' },
-          { label: 'RATIO ATUAL', value: currentRatio?.toFixed(4) ?? '—',                  color: '#e2e2e2' },
+          { label: 'RATIO ATUAL', value: currentRatio?.toFixed(4) ?? '—',                  color: '#f5f5f5' },
           { label: 'P&L ATUAL',   value: livePnl != null ? `${livePnl >= 0 ? '+' : ''}${livePnl.toFixed(2)}%` : '—', color: pnlColor },
-          { label: 'DATA ENTRADA', value: fmtDateBRT(op.entry_at),                         color: '#4a4a4a' },
+          { label: 'DATA ENTRADA', value: fmtDateBRT(op.entry_at),                         color: '#8a8a8a' },
         ].map(({ label, value, color }) => (
           <div key={label}>
-            <p style={{ fontSize: 9, letterSpacing: '0.1em', fontFamily: 'system-ui', color: '#4a4a4a', margin: '0 0 2px', textTransform: 'uppercase' }}>
+            <p style={{ fontSize: 9, letterSpacing: '0.1em', fontFamily: 'system-ui', color: '#8a8a8a', margin: '0 0 2px', textTransform: 'uppercase' }}>
               {label}
             </p>
             <p style={{ fontSize: 12, fontFamily: '"JetBrains Mono", monospace', color, margin: 0, fontWeight: 600 }}>
@@ -138,7 +138,7 @@ function OperationCard({ op, onEncerrar }: CardProps) {
       {/* Chart */}
       {loadingChart ? (
         <div style={{ height: 120, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <span style={{ fontSize: 11, color: '#4a4a4a', fontFamily: 'system-ui' }}>Carregando gráfico...</span>
+          <span style={{ fontSize: 11, color: '#8a8a8a', fontFamily: 'system-ui' }}>Carregando gráfico...</span>
         </div>
       ) : pricesA.length >= 10 ? (
         <RatioChart
@@ -152,7 +152,7 @@ function OperationCard({ op, onEncerrar }: CardProps) {
           entryLabel={`ENTRADA  ${op.entry_ratio.toFixed(4)}`}
         />
       ) : (
-        <div style={{ padding: '16px', color: '#4a4a4a', fontSize: 11, fontFamily: 'system-ui' }}>
+        <div style={{ padding: '16px', color: '#8a8a8a', fontSize: 11, fontFamily: 'system-ui' }}>
           Histórico insuficiente para renderizar gráfico.
         </div>
       )}
@@ -199,10 +199,10 @@ export default function OperationsPage() {
   return (
     <div>
       <div style={{ marginBottom: 24 }}>
-        <h1 style={{ fontSize: 13, letterSpacing: '0.1em', color: '#e2e2e2', fontFamily: 'system-ui', margin: '0 0 4px', fontWeight: 500 }}>
+        <h1 style={{ fontSize: 13, letterSpacing: '0.1em', color: '#f5f5f5', fontFamily: 'system-ui', margin: '0 0 4px', fontWeight: 500 }}>
           OPERACOES ABERTAS
         </h1>
-        <p style={{ color: '#4a4a4a', fontSize: 11, fontFamily: 'system-ui', margin: 0 }}>
+        <p style={{ color: '#8a8a8a', fontSize: 11, fontFamily: 'system-ui', margin: 0 }}>
           Operacoes registradas manualmente. Use o scanner para identificar novas entradas.
         </p>
       </div>
@@ -210,14 +210,14 @@ export default function OperationsPage() {
       {loading ? (
         <div>
           {[1, 2].map(i => (
-            <div key={i} style={{ height: 200, background: '#111111', border: '1px solid #252525', borderRadius: 2, marginBottom: 16 }} />
+            <div key={i} style={{ height: 200, background: '#1f1f1f', border: '1px solid #3d3d3d', borderRadius: 2, marginBottom: 16 }} />
           ))}
         </div>
       ) : operations.length === 0 ? (
         <div style={{
-          background: '#111111', border: '1px solid #252525', borderRadius: 2,
+          background: '#1f1f1f', border: '1px solid #3d3d3d', borderRadius: 2,
           padding: '48px 0', textAlign: 'center',
-          color: '#4a4a4a', fontSize: 11, fontFamily: 'system-ui',
+          color: '#8a8a8a', fontSize: 11, fontFamily: 'system-ui',
         }}>
           Nenhuma operacao aberta. Acesse o scanner e clique em EXECUTAR para registrar uma entrada.
         </div>

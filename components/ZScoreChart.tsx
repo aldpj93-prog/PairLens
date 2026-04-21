@@ -56,13 +56,13 @@ export default function ZScoreChart({
 
   return (
     <div style={{
-      background: '#111111',
-      border: '1px solid #1e1e1e',
+      background: '#1f1f1f',
+      border: '1px solid #2e2e2e',
       padding: '12px 0 8px',
       borderRadius: 2,
     }}>
       <p style={{
-        color: '#4a4a4a',
+        color: '#8a8a8a',
         fontSize: 10,
         letterSpacing: '0.1em',
         fontFamily: 'system-ui',
@@ -73,16 +73,16 @@ export default function ZScoreChart({
       </p>
       <ResponsiveContainer width="100%" height={180}>
         <ComposedChart data={data} margin={{ top: 4, right: 16, bottom: 4, left: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#1e1e1e" vertical={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="#2e2e2e" vertical={false} />
           <XAxis
             dataKey="date"
-            tick={{ fontSize: 10, fill: '#4a4a4a', fontFamily: 'JetBrains Mono' }}
+            tick={{ fontSize: 10, fill: '#8a8a8a', fontFamily: 'JetBrains Mono' }}
             tickLine={false}
-            axisLine={{ stroke: '#333333' }}
+            axisLine={{ stroke: '#4a4a4a' }}
             interval="preserveStartEnd"
           />
           <YAxis
-            tick={{ fontSize: 10, fill: '#4a4a4a', fontFamily: 'JetBrains Mono' }}
+            tick={{ fontSize: 10, fill: '#8a8a8a', fontFamily: 'JetBrains Mono' }}
             tickLine={false}
             axisLine={false}
             width={48}
@@ -90,19 +90,19 @@ export default function ZScoreChart({
           />
           <Tooltip
             contentStyle={{
-              background: '#111111',
-              border: '1px solid #252525',
+              background: '#1f1f1f',
+              border: '1px solid #3d3d3d',
               borderRadius: 2,
               fontSize: 11,
               fontFamily: 'JetBrains Mono, monospace',
-              color: '#e2e2e2',
+              color: '#f5f5f5',
             }}
-            labelStyle={{ color: '#7a7a7a' }}
+            labelStyle={{ color: '#a0a0a0' }}
             formatter={(v: number) => [v?.toFixed(4), 'z-score']}
           />
 
           {/* Reference lines */}
-          <ReferenceLine y={0}           stroke="#333333" strokeDasharray="2 2" strokeWidth={0.5} />
+          <ReferenceLine y={0}           stroke="#4a4a4a" strokeDasharray="2 2" strokeWidth={0.5} />
           <ReferenceLine y={0.5}         stroke="#5a5a6a" strokeDasharray="2 4" strokeWidth={0.5} />
           <ReferenceLine y={-0.5}        stroke="#5a5a6a" strokeDasharray="2 4" strokeWidth={0.5} />
           <ReferenceLine y={threshold}   stroke="#8c3f3f" strokeDasharray="3 3" strokeWidth={0.5} label={{ value: `+${threshold}σ`, fill: '#8c3f3f', fontSize: 9, position: 'right' }} />
@@ -144,13 +144,13 @@ export default function ZScoreChart({
             <Scatter
               data={currentDot}
               dataKey="z"
-              fill="#c8a96e"
+              fill="#d4b87a"
               shape={(props: any) => {
                 const { cx, cy } = props
                 return (
                   <g>
-                    <circle cx={cx} cy={cy} r={4} fill="#c8a96e" />
-                    <text x={cx + 7} y={cy + 4} fontSize={9} fill="#c8a96e" fontFamily="JetBrains Mono">
+                    <circle cx={cx} cy={cy} r={4} fill="#d4b87a" />
+                    <text x={cx + 7} y={cy + 4} fontSize={9} fill="#d4b87a" fontFamily="JetBrains Mono">
                       {currentDot[0]?.z?.toFixed(2)}
                     </text>
                   </g>
