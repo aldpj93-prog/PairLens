@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { href: '/dashboard',             label: 'SCANNER' },
   { href: '/dashboard/operations',  label: 'OPERATIONS' },
   { href: '/dashboard/performance', label: 'PERFORMANCE' },
+  { href: '/planos',                label: 'PLANOS' },
   { href: '/dashboard/settings',    label: 'SETTINGS' },
 ]
 
