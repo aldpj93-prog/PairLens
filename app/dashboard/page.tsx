@@ -8,19 +8,11 @@ import RankTable from '@/components/RankTable'
 import ExecutarModal from '@/components/ExecutarModal'
 import { fmtDateBRT } from '@/lib/utils'
 
-interface ScanStatus {
-  running: boolean
-  phase: 'idle' | 'universe' | 'fetching' | 'testing' | 'saving'
-  tickersFetched: number
-  tickersTotal: number
-  elapsedMs: number
-}
 
 export default function ScannerPage() {
   const [pairs, setPairs]             = useState<CointegratedPair[]>([])
   const [latestRun, setLatestRun]     = useState<ScanRun | null>(null)
   const [scanning, setScanning]       = useState(false)
-  const [scanStatus, setScanStatus]   = useState<ScanStatus | null>(null)
   const [zThreshold, setZThreshold]   = useState(2.0)
   const [zInput, setZInput]           = useState('2.0')
   const [loading, setLoading]         = useState(true)
@@ -78,7 +70,6 @@ export default function ScannerPage() {
   async function handleRunScan() {
     if (scanning) return
     setScanning(true)
-    //setScanStatus({ running: true, phase: 'universe', tickersFetched: 0, tickersTotal: 85, elapsedMs: 0 })
     await fetch('/api/express/scanner/run', { method: 'POST', credentials: "include" })
   }
 
@@ -102,34 +93,7 @@ export default function ScannerPage() {
 
   return (
     <div>
-      {/* Scan progress banner */}
-      {scanning && scanStatus?.running && (
-        <div style={{
-          background: '#1f1f1f',
-          border: '1px solid #d4b87a',
-          borderLeft: '3px solid #d4b87a',
-          padding: '8px 16px',
-          marginBottom: 20,
-          display: 'flex',
-          alignItems: 'center',
-          gap: 12,
-          borderRadius: 2,
-        }}>
-          <span className="spinner" />
-          <span style={{
-            color: '#d4b87a',
-            fontSize: 12,
-            fontFamily: '"JetBrains Mono", monospace',
-          }}>
-            {scanStatus.phase === 'universe' && 'Montando universo de ativos B3...'}
-            {scanStatus.phase === 'fetching' && `Buscando histórico — ${scanStatus.tickersFetched} / ${scanStatus.tickersTotal} tickers`}
-            {scanStatus.phase === 'testing'  && 'Testando cointegração + filtro de liquidez...'}
-            {scanStatus.phase === 'saving'   && 'Salvando resultados...'}
-            {(!scanStatus.phase || scanStatus.phase === 'idle') && 'Scan em andamento...'}
-            {' '}— {Math.round((scanStatus.elapsedMs || 0) / 1000)}s
-          </span>
-        </div>
-      )}
+
 
       {/* Top bar */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24, flexWrap: 'wrap', gap: 12 }}>
