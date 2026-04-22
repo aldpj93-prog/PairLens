@@ -82,9 +82,9 @@ export default function ExecutarModal({ pair, onClose, onSuccess }: Props) {
   const entryRatio = (isFinite(parsedPriceA) && isFinite(parsedPriceB) && parsedPriceB > 0)
     ? parsedPriceA / parsedPriceB : null
 
-  // Qty B: rounds to nearest integer — fractional shares are not tradeable.
-  const qtyB = (isFinite(parsedQtyA) && isFinite(hedge))
-    ? Math.round(parsedQtyA * hedge) : null
+  // Qty B: casa o valor financeiro da perna A, arredondado para a centena acima.
+  const qtyB = (isFinite(parsedQtyA) && isFinite(parsedPriceA) && isFinite(parsedPriceB) && parsedPriceB > 0)
+    ? Math.ceil((parsedQtyA * parsedPriceA) / parsedPriceB / 100) * 100 : null
 
   const mean = ratioStats?.mean ?? 0
   const std  = ratioStats?.std  ?? 0
