@@ -1,11 +1,11 @@
 export default function EducationPage() {
-  const gold   = '#d4b87a'
-  const dim    = '#8a8a8a'
-  const mid    = '#a0a0a0'
-  const light  = '#f5f5f5'
+  const gold   = '#c8a96e'
+  const dim    = '#4a4a4a'
+  const mid    = '#7a7a7a'
+  const light  = '#e2e2e2'
   const body   = '#a0a0a0'
-  const card   = '#1f1f1f'
-  const border = '#2e2e2e'
+  const card   = '#111111'
+  const border = '#1e1e1e'
   const mono   = '"JetBrains Mono", monospace'
   const sans   = 'system-ui, sans-serif'
 
@@ -24,19 +24,19 @@ export default function EducationPage() {
   )
 
   const Formula = ({ children }: { children: React.ReactNode }) => (
-    <div style={{ background: '#1f1f1f', border: `1px solid ${border}`, borderLeft: `3px solid ${gold}`, borderRadius: 2, padding: '12px 20px', margin: '16px 0', fontFamily: mono, fontSize: 13, color: light, letterSpacing: '0.05em' }}>
+    <div style={{ background: '#0d0d0d', border: `1px solid ${border}`, borderLeft: `3px solid ${gold}`, borderRadius: 2, padding: '12px 20px', margin: '16px 0', fontFamily: mono, fontSize: 13, color: light, letterSpacing: '0.05em' }}>
       {children}
     </div>
   )
 
   const Callout = ({ color = gold, children }: { color?: string; children: React.ReactNode }) => (
-    <div style={{ background: '#1f1f1f', border: `1px solid ${border}`, borderLeft: `3px solid ${color}`, borderRadius: 2, padding: '14px 18px', margin: '16px 0' }}>
+    <div style={{ background: '#0d0d0d', border: `1px solid ${border}`, borderLeft: `3px solid ${color}`, borderRadius: 2, padding: '14px 18px', margin: '16px 0' }}>
       <p style={{ fontSize: 13, color: body, fontFamily: sans, lineHeight: 1.7, margin: 0 }}>{children}</p>
     </div>
   )
 
   const Badge = ({ label, value, accent }: { label: string; value: string; accent?: boolean }) => (
-    <div style={{ background: '#2a2a2a', border: `1px solid ${accent ? '#2a2a1a' : border}`, borderRadius: 2, padding: '10px 14px', minWidth: 130 }}>
+    <div style={{ background: '#181818', border: `1px solid ${accent ? '#2a2a1a' : border}`, borderRadius: 2, padding: '10px 14px', minWidth: 130 }}>
       <p style={{ fontSize: 9, letterSpacing: '0.1em', color: dim, fontFamily: sans, margin: '0 0 4px', textTransform: 'uppercase' }}>{label}</p>
       <p style={{ fontSize: 16, color: accent ? gold : light, fontFamily: mono, margin: 0, fontWeight: 600 }}>{value}</p>
     </div>
@@ -63,7 +63,7 @@ export default function EducationPage() {
     const pathB = baseB.map((v, i) => `${i === 0 ? 'M' : 'L'}${scaleX(i).toFixed(1)},${scaleY(v).toFixed(1)}`).join(' ')
     return (
       <svg width="100%" viewBox={`0 0 ${w} ${h}`} style={{ display: 'block', borderRadius: 2 }}>
-        <rect width={w} height={h} fill="#1f1f1f" rx="2" />
+        <rect width={w} height={h} fill="#0d0d0d" rx="2" />
         <path d={pathA} fill="none" stroke={gold} strokeWidth="2" />
         <path d={pathB} fill="none" stroke="#6a9eb5" strokeWidth="2" />
         <text x={px + 4} y={py + 12} fill={gold} fontSize="10" fontFamily="system-ui">ATIVO A</text>
@@ -86,7 +86,7 @@ export default function EducationPage() {
     const yNeg = scaleY(-sigma)
     return (
       <svg width="100%" viewBox={`0 0 ${w} ${h}`} style={{ display: 'block', borderRadius: 2 }}>
-        <rect width={w} height={h} fill="#1f1f1f" rx="2" />
+        <rect width={w} height={h} fill="#0d0d0d" rx="2" />
         <rect x={px} y={yPos} width={w - 2 * px} height={yNeg - yPos} fill="rgba(74,124,89,0.06)" />
         <line x1={px} y1={yPos} x2={w - px} y2={yPos} stroke="#4a7c59" strokeWidth="1" strokeDasharray="4 3" />
         <line x1={px} y1={yNeg} x2={w - px} y2={yNeg} stroke="#8c3f3f" strokeWidth="1" strokeDasharray="4 3" />
@@ -117,7 +117,7 @@ export default function EducationPage() {
     const entryDots = points.filter(p => Math.abs(p.v) > thr)
     return (
       <svg width="100%" viewBox={`0 0 ${w} ${h}`} style={{ display: 'block', borderRadius: 2 }}>
-        <rect width={w} height={h} fill="#1f1f1f" rx="2" />
+        <rect width={w} height={h} fill="#0d0d0d" rx="2" />
         {/* zones */}
         <rect x={px} y={py}   width={w - 2 * px} height={yPos - py}   fill="rgba(140,63,63,0.07)" />
         <rect x={px} y={yNeg} width={w - 2 * px} height={h - py - yNeg} fill="rgba(74,124,89,0.07)" />
@@ -159,7 +159,7 @@ export default function EducationPage() {
     const zy = py + (1 - (Math.exp(-0.5 * 6.25) / Math.sqrt(2 * Math.PI)) / 0.4) * (h - py - 20) + 8
     return (
       <svg width="100%" viewBox={`0 0 ${w} ${h}`} style={{ display: 'block', borderRadius: 2 }}>
-        <rect width={w} height={h} fill="#1f1f1f" rx="2" />
+        <rect width={w} height={h} fill="#0d0d0d" rx="2" />
         <path d={path} fill="none" stroke={mid} strokeWidth="1.5" />
         {/* sigma markers */}
         {[-2,-1,0,1,2].map(s => {
@@ -179,6 +179,118 @@ export default function EducationPage() {
         <line x1={zx} y1={zy + 6} x2={zx} y2={yBase} stroke={gold} strokeWidth="1" strokeDasharray="3 2" />
         <text x={zx + 8} y={zy + 4} fill={gold} fontSize="10" fontFamily="system-ui">Z = 2.5</text>
         <text x={cx + (2/3.5)*165 + 2} y={py + 24} fill="#8c3f3f" fontSize="9" fontFamily="system-ui">5% dos casos</text>
+      </svg>
+    )
+  }
+
+  // ── SVG: HRR — entradas e reversões ─────────────────────────────────────
+  const SvgHRR = () => {
+    const w = 680; const h = 180; const px = 30; const py = 20
+    // Z-score com 4 excursões: 3 reversões (verde) e 1 falha (vermelho)
+    const vals = [0.2,0.4,0.6,0.9,1.3,1.8,2.2,2.6,2.9,2.5,2.0,1.4,0.8,0.3,0.0,-0.3,-0.6,-1.1,-1.5,-2.0,-2.4,-2.1,-1.7,-1.2,-0.7,-0.2,0.2,0.6,1.1,1.6,2.1,2.5,2.8,2.4,1.9,1.3,0.7,0.2,-0.1,-0.4,-0.8,-1.3,-1.9,-2.3,-2.6,-2.9,-3.1,-3.0,-2.8,-2.5]
+    const thr = 2.0
+    const minV = -3.4; const maxV = 3.2
+    const scaleX = (i: number) => px + (i / (vals.length - 1)) * (w - 2 * px)
+    const scaleY = (v: number) => py + (1 - (v - minV) / (maxV - minV)) * (h - 2 * py)
+    const yPos = scaleY(thr); const yNeg = scaleY(-thr); const y0 = scaleY(0)
+    const path = vals.map((v, i) => `${i === 0 ? 'M' : 'L'}${scaleX(i).toFixed(1)},${scaleY(v).toFixed(1)}`).join(' ')
+    // Entradas e resultados
+    const events = [
+      { i: 6,  side: 1,  ok: true },   // cruza +2 → reverte ✓
+      { i: 19, side: -1, ok: true },   // cruza -2 → reverte ✓
+      { i: 30, side: 1,  ok: true },   // cruza +2 → reverte ✓
+      { i: 43, side: -1, ok: false },  // cruza -2 → não reverte ✗
+    ]
+    return (
+      <svg width="100%" viewBox={`0 0 ${w} ${h}`} style={{ display: 'block', borderRadius: 2, border: '1px solid #1e1e1e' }}>
+        <rect width={w} height={h} fill="#0d0d0d" rx="2" />
+        <rect x={px} y={yPos} width={w - 2 * px} height={yNeg - yPos} fill="rgba(74,124,89,0.04)" />
+        <line x1={px} y1={yPos} x2={w - px} y2={yPos} stroke="#8c3f3f" strokeWidth="1" strokeDasharray="4 3" />
+        <line x1={px} y1={yNeg} x2={w - px} y2={yNeg} stroke="#4a7c59" strokeWidth="1" strokeDasharray="4 3" />
+        <line x1={px} y1={y0}   x2={w - px} y2={y0}   stroke="#2a2a2a" strokeWidth="1" />
+        <path d={path} fill="none" stroke="#c8a96e" strokeWidth="1.5" />
+        {events.map(({ i, side, ok }, idx) => {
+          const cx2 = scaleX(i); const cy2 = scaleY(vals[i])
+          return (
+            <g key={idx}>
+              <circle cx={cx2} cy={cy2} r="5" fill={ok ? '#4a7c59' : '#8c3f3f'} opacity="0.9" />
+              <text x={cx2} y={cy2 + (side > 0 ? -10 : 16)} fill={ok ? '#4a7c59' : '#8c3f3f'} fontSize="11" fontFamily="system-ui" textAnchor="middle" fontWeight="700">{ok ? '✓' : '✗'}</text>
+            </g>
+          )
+        })}
+        <text x={px + 4} y={py + 12} fill="#4a4a4a" fontSize="9" fontFamily="system-ui">4 entradas · 3 reverteram · HRR = 0.75</text>
+        <text x={w - px - 4} y={yPos - 5} fill="#8c3f3f" fontSize="9" fontFamily="system-ui" textAnchor="end">+2σ entrada</text>
+        <text x={w - px - 4} y={yNeg + 13} fill="#4a7c59" fontSize="9" fontFamily="system-ui" textAnchor="end">-2σ entrada</text>
+      </svg>
+    )
+  }
+
+  // ── SVG: WBA — aderência ao range com peso exponencial ───────────────────
+  const SvgWBA = () => {
+    const w = 680; const h = 160; const px = 30; const py = 16
+    const vals = [0.3,0.7,1.1,1.5,1.8,2.2,2.5,2.1,1.6,1.0,0.5,0.1,-0.3,-0.7,-1.0,-1.4,-1.8,-2.1,-1.7,-1.2,-0.7,-0.2,0.3,0.8,1.2,1.5,1.9,1.6,1.2,0.7,0.3,-0.1,-0.5,-0.9,-1.3,-1.6,-1.2,-0.7,-0.2,0.3,0.6,1.0,1.3,1.7,2.0,2.3,1.9,1.4,0.9,0.4]
+    const thr = 2.0
+    const minV = -2.4; const maxV = 2.8
+    const scaleX = (i: number) => px + (i / (vals.length - 1)) * (w - 2 * px)
+    const scaleY = (v: number) => py + (1 - (v - minV) / (maxV - minV)) * (h - 2 * py)
+    const yPos = scaleY(thr); const yNeg = scaleY(-thr)
+    const n = vals.length
+    return (
+      <svg width="100%" viewBox={`0 0 ${w} ${h}`} style={{ display: 'block', borderRadius: 2, border: '1px solid #1e1e1e' }}>
+        <rect width={w} height={h} fill="#0d0d0d" rx="2" />
+        {vals.map((v, i) => {
+          const x1 = scaleX(i - 0.5); const x2 = scaleX(i + 0.5)
+          const inside = Math.abs(v) < thr
+          // Peso: mais recente = mais opaco
+          const weight = Math.pow(0.985, n - 1 - i)
+          const opacity = 0.06 + weight * 0.28
+          return (
+            <rect key={i} x={x1.toFixed(1)} y={py} width={Math.max((x2 - x1), 1).toFixed(1)} height={h - 2 * py}
+              fill={inside ? '#4a7c59' : '#8c3f3f'}
+              opacity={opacity} />
+          )
+        })}
+        <line x1={px} y1={yPos} x2={w - px} y2={yPos} stroke="#8c3f3f" strokeWidth="1" strokeDasharray="4 3" opacity="0.6" />
+        <line x1={px} y1={yNeg} x2={w - px} y2={yNeg} stroke="#4a7c59" strokeWidth="1" strokeDasharray="4 3" opacity="0.6" />
+        {vals.map((v, i) => {
+          if (i === 0) return null
+          const x1 = scaleX(i - 1); const y1 = scaleY(vals[i - 1])
+          const x2 = scaleX(i);     const y2 = scaleY(v)
+          return <line key={i} x1={x1.toFixed(1)} y1={y1.toFixed(1)} x2={x2.toFixed(1)} y2={y2.toFixed(1)} stroke="#c8a96e" strokeWidth="1.5" />
+        })}
+        <text x={px + 4} y={py + 12} fill="#4a4a4a" fontSize="9" fontFamily="system-ui">Verde = dentro do range · Vermelho = fora · Opacidade = peso recente</text>
+        <text x={w - px - 4} y={h - 6} fill="#4a7c59" fontSize="9" fontFamily="system-ui" textAnchor="end">Direita = mais recente (maior peso)</text>
+      </svg>
+    )
+  }
+
+  // ── SVG: SS — correlação completa vs recente ─────────────────────────────
+  const SvgSS = () => {
+    const w = 680; const h = 120; const px = 30; const py = 20
+    const barH = 22; const gap = 26; const barY1 = py; const barY2 = py + barH + gap
+    const corrFull = 0.88; const corrRecent1 = 0.91; const corrRecent2 = 0.62
+    const barW = w - 2 * px
+    const renderBar = (y: number, corrF: number, corrR: number, label1: string, label2: string) => {
+      const x1end = px + corrF * barW
+      const x2end = px + corrR * barW
+      return (
+        <g>
+          <rect x={px} y={y} width={barW} height={barH} fill="#181818" rx="2" />
+          <rect x={px} y={y} width={(corrF * barW).toFixed(1)} height={barH} fill="#3a3a2a" rx="2" />
+          <rect x={px} y={y} width={(Math.min(corrF, corrR) * barW).toFixed(1)} height={barH} fill="#4a7c2a" opacity="0.5" rx="2" />
+          <line x1={x1end.toFixed(1)} y1={y - 4} x2={x1end.toFixed(1)} y2={y + barH + 4} stroke="#c8a96e" strokeWidth="1.5" strokeDasharray="3 2" />
+          <line x1={x2end.toFixed(1)} y1={y - 4} x2={x2end.toFixed(1)} y2={y + barH + 4} stroke={corrR >= corrF - 0.05 ? '#4a7c59' : '#8c3f3f'} strokeWidth="1.5" />
+          <text x={px + 6} y={y + barH / 2 + 4} fill="#4a4a4a" fontSize="9" fontFamily="system-ui">{label1}: {corrF.toFixed(2)}</text>
+          <text x={x2end + 6} y={y + barH / 2 + 4} fill={corrR >= corrF - 0.05 ? '#4a7c59' : '#8c3f3f'} fontSize="9" fontFamily="system-ui">{label2}: {corrR.toFixed(2)}</text>
+        </g>
+      )
+    }
+    return (
+      <svg width="100%" viewBox={`0 0 ${w} ${h}`} style={{ display: 'block', borderRadius: 2, border: '1px solid #1e1e1e' }}>
+        <rect width={w} height={h} fill="#0d0d0d" rx="2" />
+        {renderBar(barY1, corrFull, corrRecent1, 'Corr. completa', 'Corr. recente (60d) →  SS = 0.97 ✓')}
+        {renderBar(barY2, corrFull, corrRecent2, 'Corr. completa', 'Corr. recente (60d) →  SS = 0.30 ✗')}
+        <text x={px + 4} y={h - 6} fill="#4a4a4a" fontSize="9" fontFamily="system-ui">Linha dourada = correlação histórica · Linha colorida = correlação recente</text>
       </svg>
     )
   }
@@ -210,6 +322,7 @@ export default function EducationPage() {
           ['6', 'A operação Long-Short na prática'],
           ['7', 'Como a PairLens funciona por dentro'],
           ['8', 'Glossário completo dos indicadores'],
+          ['9', 'Indicadores Premium — Pair Reliability Index (PRI)'],
         ].map(([n, label]) => (
           <div key={n} style={{ display: 'flex', gap: 12, alignItems: 'baseline', padding: '4px 0', borderBottom: `1px solid #141414` }}>
             <span style={{ fontSize: 10, color: gold, fontFamily: mono, minWidth: 14 }}>{n}</span>
@@ -256,7 +369,7 @@ export default function EducationPage() {
             ['Desvio padrão estável', 'A amplitude das oscilações é previsível. A maior parte do tempo, o spread fica dentro de ±1 a 2 desvios padrão da média.'],
             ['Reversão à média', 'Quando o spread se afasta demais, ele tende a retornar. Isso é o que cria a oportunidade de operação.'],
           ].map(([title, text]) => (
-            <div key={title} style={{ display: 'flex', gap: 12, background: '#1f1f1f', border: `1px solid ${border}`, borderRadius: 2, padding: '12px 16px' }}>
+            <div key={title} style={{ display: 'flex', gap: 12, background: '#0d0d0d', border: `1px solid ${border}`, borderRadius: 2, padding: '12px 16px' }}>
               <span style={{ color: gold, fontFamily: mono, fontSize: 18, lineHeight: 1, marginTop: 2 }}>&#8594;</span>
               <div>
                 <p style={{ fontSize: 12, color: light, fontFamily: sans, fontWeight: 600, margin: '0 0 4px', letterSpacing: '0.05em' }}>{title}</p>
@@ -272,22 +385,22 @@ export default function EducationPage() {
         <P>Até aqui falamos de intuição. Mas antes de operar, precisamos de evidência estatística de que a reversão à média é real e não apenas aparência. É aí que entra o <strong style={{ color: light }}>Teste ADF</strong>.</P>
         <P>O ADF é um teste de hipótese que verifica se o spread é de fato estacionário. Ele funciona assim:</P>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, margin: '16px 0' }}>
-          <div style={{ background: '#1f1f1f', border: `1px solid #1a2a1a`, borderRadius: 2, padding: '14px 16px' }}>
+          <div style={{ background: '#0d0d0d', border: `1px solid #1a2a1a`, borderRadius: 2, padding: '14px 16px' }}>
             <p style={{ fontSize: 10, color: dim, letterSpacing: '0.1em', fontFamily: sans, margin: '0 0 6px', textTransform: 'uppercase' }}>Hipótese nula (H₀)</p>
             <p style={{ fontSize: 13, color: body, fontFamily: sans, margin: 0, lineHeight: 1.6 }}>O spread tem <strong style={{ color: light }}>raiz unitária</strong> — ele deriva sem limite e não reverte à média. O par <em>não</em> é operável.</p>
           </div>
-          <div style={{ background: '#1f1f1f', border: `1px solid #1a2a1a`, borderRadius: 2, padding: '14px 16px' }}>
+          <div style={{ background: '#0d0d0d', border: `1px solid #1a2a1a`, borderRadius: 2, padding: '14px 16px' }}>
             <p style={{ fontSize: 10, color: dim, letterSpacing: '0.1em', fontFamily: sans, margin: '0 0 6px', textTransform: 'uppercase' }}>Hipótese alternativa (H₁)</p>
             <p style={{ fontSize: 13, color: body, fontFamily: sans, margin: 0, lineHeight: 1.6 }}>O spread é <strong style={{ color: light }}>estacionário</strong> — ele reverte à média. O par é cointegrado e operável.</p>
           </div>
         </div>
         <P>O teste produz dois números que aparecem na tabela de pares:</P>
         <div style={{ margin: '16px 0', display: 'flex', flexDirection: 'column', gap: 10 }}>
-          <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start', padding: '12px 16px', background: '#1f1f1f', border: `1px solid ${border}`, borderRadius: 2 }}>
+          <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start', padding: '12px 16px', background: '#0d0d0d', border: `1px solid ${border}`, borderRadius: 2 }}>
             <span style={{ color: gold, fontFamily: mono, fontSize: 13, minWidth: 100 }}>ADF STAT</span>
             <p style={{ fontSize: 13, color: body, fontFamily: sans, margin: 0, lineHeight: 1.6 }}>A estatística do teste. <strong style={{ color: light }}>Quanto mais negativa, melhor.</strong> Valores abaixo de -3.5 são considerados fortes. Indica a velocidade de reversão do spread.</p>
           </div>
-          <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start', padding: '12px 16px', background: '#1f1f1f', border: `1px solid ${border}`, borderRadius: 2 }}>
+          <div style={{ display: 'flex', gap: 14, alignItems: 'flex-start', padding: '12px 16px', background: '#0d0d0d', border: `1px solid ${border}`, borderRadius: 2 }}>
             <span style={{ color: gold, fontFamily: mono, fontSize: 13, minWidth: 100 }}>p-VALUE</span>
             <p style={{ fontSize: 13, color: body, fontFamily: sans, margin: 0, lineHeight: 1.6 }}>A probabilidade de estarmos errados ao afirmar que o par é cointegrado. <strong style={{ color: light }}>Quanto menor, melhor.</strong> A plataforma exige p &lt; 0.10 para listar um par. O ideal é p &lt; 0.05.</p>
           </div>
@@ -299,7 +412,7 @@ export default function EducationPage() {
             { label: 'p-value 0.050', value: '95.0% confiança', color: gold },
             { label: 'p-value 0.100', value: '90.0% confiança — limite', color: '#7a6a3a' },
           ].map(({ label, value, color }) => (
-            <div key={label} style={{ background: '#1f1f1f', border: `1px solid ${border}`, borderRadius: 2, padding: '8px 14px', display: 'flex', gap: 10, alignItems: 'center' }}>
+            <div key={label} style={{ background: '#0d0d0d', border: `1px solid ${border}`, borderRadius: 2, padding: '8px 14px', display: 'flex', gap: 10, alignItems: 'center' }}>
               <span style={{ fontSize: 11, color: mid, fontFamily: mono }}>{label}</span>
               <span style={{ fontSize: 11, color, fontFamily: sans, fontWeight: 600 }}>{value}</span>
             </div>
@@ -345,7 +458,7 @@ export default function EducationPage() {
         <P>Com um par cointegrado identificado e um Z-Score extremo detectado, a operação é direta. O princípio é sempre o mesmo: você aposta no fechamento do spread, independente do que o mercado fizer como um todo.</P>
 
         {/* SHORT SPREAD */}
-        <div style={{ background: '#1f1f1f', border: `1px solid #2a1a1a`, borderLeft: `3px solid #8c3f3f`, borderRadius: 2, padding: '16px 20px', margin: '20px 0' }}>
+        <div style={{ background: '#0d0d0d', border: `1px solid #2a1a1a`, borderLeft: `3px solid #8c3f3f`, borderRadius: 2, padding: '16px 20px', margin: '20px 0' }}>
           <p style={{ fontSize: 12, color: '#8c3f3f', fontFamily: sans, fontWeight: 600, letterSpacing: '0.1em', margin: '0 0 10px', textTransform: 'uppercase' }}>SHORT SPREAD — quando Z alto (acima de +2)</p>
           <p style={{ fontSize: 13, color: body, fontFamily: sans, lineHeight: 1.7, margin: '0 0 10px' }}>O ativo A está caro demais em relação ao B. O spread vai se fechar, provavelmente com A caindo e/ou B subindo.</p>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
@@ -362,7 +475,7 @@ export default function EducationPage() {
         </div>
 
         {/* LONG SPREAD */}
-        <div style={{ background: '#1f1f1f', border: `1px solid #1a2a1a`, borderLeft: `3px solid #4a7c59`, borderRadius: 2, padding: '16px 20px', margin: '20px 0' }}>
+        <div style={{ background: '#0d0d0d', border: `1px solid #1a2a1a`, borderLeft: `3px solid #4a7c59`, borderRadius: 2, padding: '16px 20px', margin: '20px 0' }}>
           <p style={{ fontSize: 12, color: '#4a7c59', fontFamily: sans, fontWeight: 600, letterSpacing: '0.1em', margin: '0 0 10px', textTransform: 'uppercase' }}>LONG SPREAD — quando Z baixo (abaixo de -2)</p>
           <p style={{ fontSize: 13, color: body, fontFamily: sans, lineHeight: 1.7, margin: '0 0 10px' }}>O ativo A está barato demais em relação ao B. O spread vai se fechar, provavelmente com A subindo e/ou B caindo.</p>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
@@ -399,7 +512,7 @@ export default function EducationPage() {
             { n: '09', title: 'Gera o Score e o Sinal', desc: 'Combina ADF strength (30%), Z-Score magnitude (40%) e Half-life quality (30%) num score de 0 a 100. Classifica o sinal como LONG SPREAD, SHORT SPREAD ou NEUTRAL.' },
             { n: '10', title: 'Salva e notifica', desc: 'Persiste todos os pares no banco de dados. Pares com sinal ativo e score acima do mínimo configurado são automaticamente registrados no log de operações.' },
           ].map(({ n, title, desc }) => (
-            <div key={n} style={{ display: 'flex', gap: 16, background: '#1f1f1f', border: `1px solid ${border}`, borderRadius: 2, padding: '12px 16px' }}>
+            <div key={n} style={{ display: 'flex', gap: 16, background: '#0d0d0d', border: `1px solid ${border}`, borderRadius: 2, padding: '12px 16px' }}>
               <span style={{ fontSize: 11, color: gold, fontFamily: mono, minWidth: 20, paddingTop: 1 }}>{n}</span>
               <div>
                 <p style={{ fontSize: 12, color: light, fontFamily: sans, fontWeight: 600, margin: '0 0 4px' }}>{title}</p>
@@ -471,7 +584,7 @@ export default function EducationPage() {
               desc: 'Mostra os dois preços normalizados para uma base 100 no início do período. Permite comparar visualmente o comportamento relativo dos dois ativos sem a distorção de preços em escalas diferentes. Quando as duas linhas se afastam muito, o spread está se abrindo.',
             },
           ].map(({ title, desc }) => (
-            <div key={title} style={{ background: '#1f1f1f', border: `1px solid ${border}`, borderRadius: 2, padding: '14px 18px' }}>
+            <div key={title} style={{ background: '#0d0d0d', border: `1px solid ${border}`, borderRadius: 2, padding: '14px 18px' }}>
               <p style={{ fontSize: 11, color: light, fontFamily: mono, letterSpacing: '0.08em', margin: '0 0 6px' }}>{title}</p>
               <p style={{ fontSize: 13, color: body, fontFamily: sans, margin: 0, lineHeight: 1.7 }}>{desc}</p>
             </div>
@@ -480,7 +593,7 @@ export default function EducationPage() {
 
         {/* Exemplo real */}
         <p style={{ fontSize: 11, letterSpacing: '0.1em', color: dim, fontFamily: sans, margin: '0 0 16px', textTransform: 'uppercase' }}>Exemplo real interpretado</p>
-        <div style={{ background: '#1f1f1f', border: `1px solid ${border}`, borderRadius: 2, padding: '20px' }}>
+        <div style={{ background: '#0d0d0d', border: `1px solid ${border}`, borderRadius: 2, padding: '20px' }}>
           <p style={{ fontSize: 12, color: mid, fontFamily: sans, margin: '0 0 16px' }}>Leitura de um par com os valores: Hedge Ratio β = -0.1154 | ADF Stat = -3.9989 | p-value = 0.0010 | Half-life = 6d | Score = 99 | Signal = SHORT SPREAD | Current Z = 3.7528</p>
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 16 }}>
             <Badge label="Score" value="99" accent />
@@ -498,7 +611,7 @@ export default function EducationPage() {
               ['Z-Score 3.75', 'O spread está 3.75 desvios padrão acima da média. Isso é extremamente raro e sugere reversão iminente.'],
               ['Sinal SHORT SPREAD', 'Ação recomendada: vender o Ativo A e comprar β unidades do Ativo B. Objetivo: Z retornar a 0.'],
             ].map(([field, interpretation]) => (
-              <div key={field} style={{ display: 'flex', gap: 12, padding: '8px 12px', background: '#1f1f1f', borderRadius: 2 }}>
+              <div key={field} style={{ display: 'flex', gap: 12, padding: '8px 12px', background: '#111111', borderRadius: 2 }}>
                 <span style={{ fontSize: 11, color: gold, fontFamily: mono, minWidth: 160 }}>{field}</span>
                 <span style={{ fontSize: 12, color: body, fontFamily: sans, lineHeight: 1.5 }}>{interpretation}</span>
               </div>
@@ -506,6 +619,211 @@ export default function EducationPage() {
           </div>
         </div>
       </Section>
+
+      {/* ── 9. Indicadores Premium ── */}
+      <Section title="9. Exclusivo para assinantes" sub="Pair Reliability Index — PRI">
+
+        {/* Intro */}
+        <P>Os indicadores apresentados até aqui — ADF, Z-Score, Half-life e Score — são excelentes para confirmar que um par é <em>matematicamente</em> cointegrado. Mas eles não respondem à pergunta mais importante para o operador:</P>
+        <Callout color="#c8a96e">
+          <strong style={{ color: '#e2e2e2' }}>Quando esse par mandou um sinal no passado, ele realmente funcionou?</strong>
+          {' '}O Pair Reliability Index foi criado para responder exatamente isso — validando empiricamente o comportamento histórico do par, não apenas a sua estatística atual.
+        </Callout>
+        <P>O PRI é composto por três sub-indicadores, cada um medindo um aspecto diferente da confiabilidade do par. Pares com score acima de 80 no Score base e PRI elevado representam as oportunidades de maior convicção que a plataforma consegue identificar.</P>
+
+        <Formula>PRI = (40% × HRR) + (35% × WBA) + (25% × SS) — resultado de 0 a 100</Formula>
+
+        {/* ── HRR ── */}
+        <div style={{ marginTop: 40, marginBottom: 40 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 16 }}>
+            <div style={{ background: '#c8a96e', color: '#080808', fontSize: 10, fontWeight: 700, fontFamily: sans, letterSpacing: '0.12em', padding: '4px 10px', borderRadius: 2 }}>HRR · 40%</div>
+            <p style={{ fontSize: 18, color: light, fontFamily: sans, fontWeight: 300, margin: 0 }}>Historical Reversion Rate — Taxa de Reversão Histórica</p>
+          </div>
+
+          <P>Este é o componente mais poderoso do PRI. Para cada vez que o Z-Score cruzou o threshold (padrão ±2σ) no histórico de 1 ano, o algoritmo verifica: <strong style={{ color: light }}>o spread voltou para perto de zero dentro do prazo esperado?</strong></P>
+
+          {/* SVG HRR */}
+          <SvgHRR />
+
+          <P style={{ marginTop: 16 }}>O prazo de reversão considerado é <strong style={{ color: light }}>2× o Half-life</strong> do par. Se o half-life é 10 dias, o par tem 20 dias para reverter. Reverter significa o Z-Score retornar para |z| &lt; 0.5 — praticamente zerado.</P>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, margin: '20px 0' }}>
+            {[
+              ['Como é calculado', 'O algoritmo varre a série de z-scores do histórico. Cada vez que |z| cruza o threshold pela primeira vez (vindo de baixo), conta-se uma "entrada". Após detectar a entrada, aguarda-se até 2×half-life dias. Se |z| retornar < 0.5 nesse período: sucesso. Se não: falha.'],
+              ['Por que 2× o half-life?', 'O half-life é o tempo médio para o spread percorrer metade do caminho de volta. Dois half-lives representam o tempo esperado para uma reversão quase completa. É uma janela generosa, mas não infinita.'],
+              ['O que acontece com poucos dados?', 'Se o par gerou menos de 3 entradas no histórico de 1 ano (comum em pares com half-life longo), o HRR assume 0.50 — valor neutro. Isso não penaliza o par, mas também não o beneficia.'],
+            ].map(([q, a]) => (
+              <div key={q} style={{ background: '#0d0d0d', border: `1px solid ${border}`, borderRadius: 2, padding: '12px 16px' }}>
+                <p style={{ fontSize: 11, color: gold, fontFamily: mono, margin: '0 0 6px', letterSpacing: '0.06em' }}>{q}</p>
+                <p style={{ fontSize: 13, color: body, fontFamily: sans, margin: 0, lineHeight: 1.7 }}>{a}</p>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 10, margin: '16px 0' }}>
+            {[
+              { label: 'HRR ≥ 0.80', value: 'Excelente', desc: '80%+ dos sinais reverteram. Par com histórico consistente.', color: '#4a7c59' },
+              { label: 'HRR 0.55–0.79', value: 'Bom', desc: 'Maioria dos sinais funcionou. Confiável com gestão de risco.', color: gold },
+              { label: 'HRR < 0.55', value: 'Atenção', desc: 'Histórico fraco ou dados insuficientes (< 3 entradas).', color: '#8c3f3f' },
+            ].map(({ label, value, desc, color }) => (
+              <div key={label} style={{ background: '#0d0d0d', border: `1px solid ${border}`, borderLeft: `3px solid ${color}`, borderRadius: 2, padding: '12px 14px' }}>
+                <p style={{ fontSize: 10, color: dim, fontFamily: mono, margin: '0 0 4px', letterSpacing: '0.08em' }}>{label}</p>
+                <p style={{ fontSize: 13, color, fontFamily: sans, fontWeight: 600, margin: '0 0 6px' }}>{value}</p>
+                <p style={{ fontSize: 12, color: body, fontFamily: sans, margin: 0, lineHeight: 1.5 }}>{desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <Callout>
+            Um par com HRR = 0.83 e 6 entradas históricas quer dizer: nos últimos 252 pregões, esse sinal apareceu 6 vezes — e em 5 delas, o spread reverteu como esperado. Isso é a diferença entre uma hipótese estatística e uma estratégia com histórico verificável.
+          </Callout>
+        </div>
+
+        {/* ── WBA ── */}
+        <div style={{ marginTop: 40, marginBottom: 40 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 16 }}>
+            <div style={{ background: '#c8a96e', color: '#080808', fontSize: 10, fontWeight: 700, fontFamily: sans, letterSpacing: '0.12em', padding: '4px 10px', borderRadius: 2 }}>WBA · 35%</div>
+            <p style={{ fontSize: 18, color: light, fontFamily: sans, fontWeight: 300, margin: 0 }}>Weighted Band Adherence — Aderência ao Range</p>
+          </div>
+
+          <P>O WBA mede <strong style={{ color: light }}>quanto tempo o par ficou dentro do range normal</strong> ao longo do histórico — com uma diferença crucial: dias recentes têm mais peso do que dias antigos. Isso garante que o indicador reflita o comportamento atual do par, não apenas o histórico distante.</P>
+
+          {/* SVG WBA */}
+          <SvgWBA />
+
+          <P style={{ marginTop: 16 }}>A fórmula usa um fator de decaimento exponencial (<strong style={{ color: light }}>λ = 0.985</strong>) aplicado a cada dia. Na prática, os últimos 45 pregões respondem por aproximadamente 50% do peso total — mas o ano inteiro ainda influencia o resultado.</P>
+
+          <Formula>
+            WBA = Σ(0.985^(T−i) × 1{'{'}{'{'}|z| {'<'} 2{'}'}{'}'}{'}'}) / Σ(0.985^(T−i))
+          </Formula>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, margin: '20px 0' }}>
+            {[
+              ['Por que esse indicador existe?', 'Um par pode ter p-value excelente e Z-Score elevado agora, mas se ele passou os últimos 6 meses com o spread fora do range, isso indica instabilidade. O WBA detecta isso. Pares estáveis ficam dentro do range na maior parte do tempo e saem apenas nos momentos de oportunidade.'],
+              ['Diferença para um simples percentual', 'Um cálculo simples de "% de dias dentro do range" trataria um dia de 8 meses atrás com o mesmo peso de ontem. O decaimento exponencial corrige isso — se o par perdeu estabilidade recentemente, o WBA cai mesmo que o histórico longo seja bom.'],
+            ].map(([q, a]) => (
+              <div key={q} style={{ background: '#0d0d0d', border: `1px solid ${border}`, borderRadius: 2, padding: '12px 16px' }}>
+                <p style={{ fontSize: 11, color: gold, fontFamily: mono, margin: '0 0 6px', letterSpacing: '0.06em' }}>{q}</p>
+                <p style={{ fontSize: 13, color: body, fontFamily: sans, margin: 0, lineHeight: 1.7 }}>{a}</p>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 10, margin: '16px 0' }}>
+            {[
+              { label: 'WBA ≥ 0.85', value: 'Estável', desc: 'Par passou 85%+ do tempo dentro do range. Relação muito disciplinada.', color: '#4a7c59' },
+              { label: 'WBA 0.65–0.84', value: 'Normal', desc: 'Comportamento típico de pares operáveis. Aceitável.', color: gold },
+              { label: 'WBA < 0.65', value: 'Volátil', desc: 'Par passou muito tempo fora do range. Relação menos previsível.', color: '#8c3f3f' },
+            ].map(({ label, value, desc, color }) => (
+              <div key={label} style={{ background: '#0d0d0d', border: `1px solid ${border}`, borderLeft: `3px solid ${color}`, borderRadius: 2, padding: '12px 14px' }}>
+                <p style={{ fontSize: 10, color: dim, fontFamily: mono, margin: '0 0 4px', letterSpacing: '0.08em' }}>{label}</p>
+                <p style={{ fontSize: 13, color, fontFamily: sans, fontWeight: 600, margin: '0 0 6px' }}>{value}</p>
+                <p style={{ fontSize: 12, color: body, fontFamily: sans, margin: 0, lineHeight: 1.5 }}>{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── SS ── */}
+        <div style={{ marginTop: 40, marginBottom: 40 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 16 }}>
+            <div style={{ background: '#c8a96e', color: '#080808', fontSize: 10, fontWeight: 700, fontFamily: sans, letterSpacing: '0.12em', padding: '4px 10px', borderRadius: 2 }}>SS · 25%</div>
+            <p style={{ fontSize: 18, color: light, fontFamily: sans, fontWeight: 300, margin: 0 }}>Structural Stability — Estabilidade Estrutural</p>
+          </div>
+
+          <P>O SS detecta se o <strong style={{ color: light }}>vínculo entre os dois ativos está se sustentando ou se deteriorando</strong>. Ele compara a correlação de Pearson dos últimos 60 pregões com a correlação do período completo de 1 ano. Se os dois números forem parecidos, a relação é estável. Se divergirem, é um alerta precoce.</P>
+
+          {/* SVG SS */}
+          <SvgSS />
+
+          <Formula>
+            SS = 1 − |corr_recente − corr_completa| / |corr_completa|
+          </Formula>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, margin: '20px 0' }}>
+            {[
+              ['Por que o ADF não captura isso?', 'O Teste ADF usa a série inteira para calcular o p-value. Se a cointegração se quebrou nos últimos 2 meses mas existiu nos 10 meses anteriores, o ADF ainda pode retornar um p-value baixo. O SS usa apenas os últimos 60 pregões como janela recente, funcionando como um detector de quebra estrutural antes que o ADF falhe.'],
+              ['O que faz a correlação cair?', 'Mudanças fundamentais num dos ativos: fusão, saída de índice, mudança de setor de atuação, crise específica da empresa. O SS detecta esses eventos antes que se tornem visíveis nas outras métricas estatísticas.'],
+            ].map(([q, a]) => (
+              <div key={q} style={{ background: '#0d0d0d', border: `1px solid ${border}`, borderRadius: 2, padding: '12px 16px' }}>
+                <p style={{ fontSize: 11, color: gold, fontFamily: mono, margin: '0 0 6px', letterSpacing: '0.06em' }}>{q}</p>
+                <p style={{ fontSize: 13, color: body, fontFamily: sans, margin: 0, lineHeight: 1.7 }}>{a}</p>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 10, margin: '16px 0' }}>
+            {[
+              { label: 'SS ≥ 0.90', value: 'Sólido', desc: 'Correlação recente = correlação histórica. Relação estrutural intacta.', color: '#4a7c59' },
+              { label: 'SS 0.70–0.89', value: 'Atenção leve', desc: 'Alguma divergência recente. Monitorar, mas aceitável.', color: gold },
+              { label: 'SS < 0.70', value: 'Alerta', desc: 'Correlação recente muito diferente do histórico. Sinal de deterioração.', color: '#8c3f3f' },
+            ].map(({ label, value, desc, color }) => (
+              <div key={label} style={{ background: '#0d0d0d', border: `1px solid ${border}`, borderLeft: `3px solid ${color}`, borderRadius: 2, padding: '12px 14px' }}>
+                <p style={{ fontSize: 10, color: dim, fontFamily: mono, margin: '0 0 4px', letterSpacing: '0.08em' }}>{label}</p>
+                <p style={{ fontSize: 13, color, fontFamily: sans, fontWeight: 600, margin: '0 0 6px' }}>{value}</p>
+                <p style={{ fontSize: 12, color: body, fontFamily: sans, margin: 0, lineHeight: 1.5 }}>{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── PRI Combinado ── */}
+        <div style={{ marginTop: 40 }}>
+          <p style={{ fontSize: 11, letterSpacing: '0.12em', color: dim, fontFamily: sans, margin: '0 0 16px', textTransform: 'uppercase' }}>Como ler o PRI combinado</p>
+
+          {/* Exemplo premium */}
+          <div style={{ background: '#0d0d0d', border: `1px solid #2a2a1a`, borderLeft: `3px solid ${gold}`, borderRadius: 2, padding: '20px', marginBottom: 24 }}>
+            <p style={{ fontSize: 11, color: dim, fontFamily: sans, margin: '0 0 16px', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Exemplo de leitura — par premium</p>
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 16 }}>
+              <Badge label="Score"    value="87"    accent />
+              <Badge label="PRI"      value="82"    accent />
+              <Badge label="HRR"      value="0.83"  />
+              <Badge label="WBA"      value="0.88"  />
+              <Badge label="SS"       value="0.94"  />
+              <Badge label="Entradas" value="6"     />
+              <Badge label="Sucessos" value="5"     />
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {[
+                ['Score 87 + PRI 82', 'Combinação rara. O Score confirma estatística forte agora; o PRI confirma que essa estatística se traduziu em operações bem-sucedidas no passado.'],
+                ['HRR 0.83 (5/6 entradas)', 'Das 6 vezes que esse sinal apareceu no último ano, 5 reverteram com sucesso. Win rate histórico de 83% neste par específico.'],
+                ['WBA 0.88', 'Par ficou 88% do tempo dentro do range ±2σ, ponderado por recência. Relação disciplinada e previsível.'],
+                ['SS 0.94', 'Correlação dos últimos 60 pregões praticamente idêntica ao ano completo. Nenhum sinal de deterioração estrutural.'],
+              ].map(([field, interpretation]) => (
+                <div key={field} style={{ display: 'flex', gap: 12, padding: '8px 12px', background: '#111111', borderRadius: 2 }}>
+                  <span style={{ fontSize: 11, color: gold, fontFamily: mono, minWidth: 180 }}>{field}</span>
+                  <span style={{ fontSize: 12, color: body, fontFamily: sans, lineHeight: 1.5 }}>{interpretation}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 1, border: `1px solid ${border}`, borderRadius: 2, overflow: 'hidden' }}>
+            <div style={{ padding: '8px 16px', background: '#0d0d0d', borderBottom: `1px solid ${border}` }}>
+              <p style={{ fontSize: 10, color: dim, fontFamily: sans, letterSpacing: '0.1em', margin: 0, textTransform: 'uppercase' }}>Tabela de referência — PRI</p>
+            </div>
+            {[
+              ['PRI 80–100', 'Excelente', 'Confiabilidade histórica excepcional. Máxima convicção da plataforma.', '#4a7c59'],
+              ['PRI 65–79',  'Bom',       'Histórico sólido. Par operável com boa margem de segurança.', gold],
+              ['PRI 50–64',  'Moderado',  'Desempenho histórico misto. Recomenda gestão de risco criteriosa.', '#7a6a3a'],
+              ['PRI < 50',   'Fraco',     'Histórico desfavorável ou dados insuficientes. Maior cautela.', '#8c3f3f'],
+            ].map(([range, label, desc, color]) => (
+              <div key={range} style={{ display: 'grid', gridTemplateColumns: '100px 90px 1fr', gap: 0, background: card, borderBottom: `1px solid #141414`, padding: '10px 16px', alignItems: 'start' }}>
+                <span style={{ fontSize: 11, color: gold, fontFamily: mono, paddingTop: 1 }}>{range}</span>
+                <span style={{ fontSize: 11, color, fontFamily: sans, fontWeight: 600, paddingTop: 1 }}>{label}</span>
+                <span style={{ fontSize: 12, color: body, fontFamily: sans, lineHeight: 1.6 }}>{desc}</span>
+              </div>
+            ))}
+          </div>
+
+          <Callout color="#6a9eb5">
+            <strong style={{ color: '#e2e2e2' }}>Por que Score e PRI são complementares e não redundantes?</strong>
+            {' '}O Score mede a intensidade da oportunidade <em>agora</em> — quão forte é o sinal no momento do scan. O PRI mede a <em>confiabilidade histórica</em> desse tipo de sinal nesse par específico. Um par pode ter Score 90 (sinal muito forte agora) mas PRI 40 (historicamente, esse par raramente reverteu). E o inverso também existe: Score 82 com PRI 85 — sinal moderado, mas com excelente histórico de reversão. Os melhores pares têm ambos elevados.
+          </Callout>
+        </div>
+      </Section>
+
+      {/* SVGs do PRI — definidos abaixo como componentes inline */}
 
       {/* Rodapé */}
       <div style={{ borderTop: `1px solid ${border}`, paddingTop: 24, marginTop: 8 }}>
