@@ -73,6 +73,7 @@ export type CointegratedPair = {
   signal: string | null
   price_a: number | null
   price_b: number | null
+  pri: number | null
   spread_mean: number | null
   spread_std: number | null
   created_at: string

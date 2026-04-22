@@ -27,6 +27,7 @@ export default function ScannerPage() {
       setLoading(false)
       return
     }
+    //console.log(await res.json());
     const { run, pairs: pairData, zThreshold: zVal } = await res.json()
 
     setLatestRun(run ?? null)
@@ -42,26 +43,8 @@ export default function ScannerPage() {
   useEffect(() => {
     loadLatestData()
 
-    // Realtime: refresh when scan_runs changes
-    const supabaseRT = createBrowserSupabaseClient()
-    const channel = supabaseRT
-      .channel('scanner_page')
-      .on('postgres_changes', {
-        event: 'INSERT',
-        schema: 'public',
-        table: 'scan_runs',
-      }, () => loadLatestData())
-      .on('postgres_changes', {
-        event: 'UPDATE',
-        schema: 'public',
-        table: 'scan_runs',
-      }, () => loadLatestData())
-      .subscribe()
-
-    return () => { supabaseRT.removeChannel(channel) }
   }, [loadLatestData])
 
-  // ─── Scan progress polling ─────────────────────────────────────────────────
 
 
 

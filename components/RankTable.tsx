@@ -34,7 +34,7 @@ export default function RankTable({ pairs, zThreshold = 2.0, onExecutar }: Props
         <table>
           <thead>
             <tr>
-              {['#', 'PAIR', 'SCORE', 'ADF STAT', 'p-VALUE', 'Z-SCORE', 'HALF-LIFE', 'SIGNAL', 'PRICE A', 'PRICE B', '', ''].map((h, i) => (
+              {['#', 'PAIR', 'SCORE', 'ADF STAT', 'p-VALUE', 'Z-SCORE', 'HALF-LIFE', 'SIGNAL', 'PRICE A', 'PRICE B', 'PRI', '', ''].map((h, i) => (
                 <th key={`${h}-${i}`}>{h}</th>
               ))}
             </tr>
@@ -85,6 +85,7 @@ export default function RankTable({ pairs, zThreshold = 2.0, onExecutar }: Props
                   </td>
                   <td>{fmtPrice(pair.price_a)}</td>
                   <td>{fmtPrice(pair.price_b)}</td>
+                  <td>{fmtPrice(pair.pri)}</td>
                   <td>
                     <button
                       onClick={e => {
