@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import type { CointegratedPair } from '@/lib/supabase'
 import PairDetailPanel from './PairDetailPanel'
 import { fmt4, fmtP, fmtHL, fmtScore, fmtPrice, signalLabel } from '@/lib/utils'
@@ -48,9 +48,8 @@ export default function RankTable({ pairs, zThreshold = 2.0, onExecutar }: Props
               </tr>
             )}
             {sorted.map((pair, idx) => (
-              <>
+              <Fragment key={pair.id}>
                 <tr
-                  key={pair.id}
                   style={{
                     background: selectedId === pair.id ? '#151515' : 'transparent',
                     cursor: 'pointer',
@@ -134,7 +133,7 @@ export default function RankTable({ pairs, zThreshold = 2.0, onExecutar }: Props
                   </td>
                 </tr>
                 {selectedId === pair.id && (
-                  <tr key={`${pair.id}-detail`}>
+                  <tr>
                     <td colSpan={12} style={{ padding: '8px 0 16px', background: '#0a0a0a' }}>
                       <PairDetailPanel
                         pair={pair}
@@ -144,7 +143,7 @@ export default function RankTable({ pairs, zThreshold = 2.0, onExecutar }: Props
                     </td>
                   </tr>
                 )}
-              </>
+              </Fragment>
             ))}
           </tbody>
         </table>
