@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   ComposedChart,
   Line,
@@ -66,6 +66,10 @@ export default function RatioChart({
 }: Props) {
   const [displayDays, setDisplayDays] = useState(lookback)
 
+  // useEffect(()=>{
+    // console.log(currentZ);
+  // }, []);
+
   const n = pricesA.length
   if (n < 10) return null
 
@@ -120,7 +124,7 @@ export default function RatioChart({
   // or computed in the BA direction, which would invert the label.
   const direction =
     currentZ > threshold  ? 'short' :
-    currentZ < -threshold ? 'long'  : null
+    currentZ <= -threshold ? 'long'  : null
 
   const dotColor   = direction === 'short' ? '#c0504a' : direction === 'long' ? '#4a9c6a' : '#d4b87a'
   const stateLabel = direction === 'short' ? 'SHORT SPREAD' : direction === 'long' ? 'LONG SPREAD' : 'NEUTRO'

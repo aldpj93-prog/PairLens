@@ -11,12 +11,14 @@ import { fmtDateBRT } from '@/lib/utils'
 
 export default function ScannerPage() {
   const [pairs, setPairs]             = useState<CointegratedPair[]>([])
+  const [plan, setPlan]               = useState<'free' | 'starter' | 'pro'>('free')
   const [latestRun, setLatestRun]     = useState<ScanRun | null>(null)
   const [scanning, setScanning]       = useState(false)
   const [zThreshold, setZThreshold]   = useState(2.0)
   const [zInput, setZInput]           = useState('2.0')
   const [loading, setLoading]         = useState(true)
   const [executarPair, setExecutarPair] = useState<CointegratedPair | null>(null)
+  const [tab, setTab] = useState<'entrada' | 'observacao'>('entrada')
   const pollRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
   // ─── Load latest scan run and its pairs ───────────────────────────────────
@@ -27,11 +29,13 @@ export default function ScannerPage() {
       setLoading(false)
       return
     }
-    //console.log(await res.json());
-    const { run, pairs: pairData, zThreshold: zVal } = await res.json()
+    //console.log(await res.json())
+    const { run, pairs: pairData, zThreshold: zVal, userPlan: planVal } = await res.json()
+    // console.log(pairData?.find((p: CointegratedPair) => p.ticker_a?.startsWith('EGIE') && p.ticker_b?.startsWith('CAML')))
 
     setLatestRun(run ?? null)
     setPairs(pairData ?? [])
+    if (planVal) setPlan(planVal)
     if (zVal != null) {
       setZThreshold(zVal)
       setZInput(String(zVal))
@@ -167,15 +171,51 @@ export default function ScannerPage() {
         />
       </div>
 
+      {/* Sub-tabs */}
+      <div style={{ display: 'flex', gap: 0, marginBottom: 0, borderBottom: '1px solid #3d3d3d' }}>
+        {([
+          { key: 'entrada', label: 'PONTO DE ENTRADA' },
+          { key: 'observacao', label: 'OBSERVAÇÃO' },
+        ] as const).map(t => {
+          const active = tab === t.key
+          return (
+            <button
+              key={t.key}
+              onClick={() => setTab(t.key)}
+              style={{
+                background: active ? '#1f1f1f' : 'transparent',
+                border: '1px solid #3d3d3d',
+                borderBottom: active ? '1px solid #1f1f1f' : '1px solid #3d3d3d',
+                borderTopLeftRadius: 2,
+                borderTopRightRadius: 2,
+                color: active ? '#d4b87a' : '#8a8a8a',
+                fontSize: 11,
+                letterSpacing: '0.1em',
+                fontFamily: 'system-ui',
+                padding: '8px 16px',
+                cursor: 'pointer',
+                marginBottom: -1,
+                marginRight: 4,
+              }}
+            >
+              {t.label}
+            </button>
+          )
+        })}
+      </div>
+
       {/* Rank table */}
       <div style={{
         background: '#1f1f1f',
         border: '1px solid #3d3d3d',
+        borderTop: 'none',
         borderRadius: 2,
       }}>
         <div style={{ padding: '12px 16px', borderBottom: '1px solid #2e2e2e' }}>
           <p style={{ color: '#8a8a8a', fontSize: 11, letterSpacing: '0.1em', fontFamily: 'system-ui', margin: 0 }}>
-            COINTEGRATED PAIRS — RANKED BY SCORE
+            {tab === 'entrada'
+              ? 'PARES COM SINAL ATIVO — |Z| > THRESHOLD'
+              : 'PARES COINTEGRADOS EM OBSERVAÇÃO — |Z| ≤ THRESHOLD'}
           </p>
         </div>
         {loading ? (
@@ -188,6 +228,8 @@ export default function ScannerPage() {
           <RankTable
             pairs={pairs}
             zThreshold={zThreshold}
+            mode={tab}
+            plan={plan}
             onExecutar={pair => setExecutarPair(pair)}
           />
         )}
