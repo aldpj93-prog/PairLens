@@ -11,7 +11,7 @@ import { fmtDateBRT } from '@/lib/utils'
 
 export default function ScannerPage() {
   const [pairs, setPairs]             = useState<CointegratedPair[]>([])
-  const [plan, setPlan]               = useState<'free' | 'starter' | 'pro'>('free')
+  const [plan, setPlan]               = useState<'FREE' | 'starter' | 'pro'>('FREE')
   const [latestRun, setLatestRun]     = useState<ScanRun | null>(null)
   const [scanning, setScanning]       = useState(false)
   const [zThreshold, setZThreshold]   = useState(2.0)
