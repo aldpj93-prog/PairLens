@@ -33,6 +33,39 @@ export default function RankTable({ pairs, zThreshold = 2.0, mode = 'entrada', p
         )
         .sort((a, b) => Math.abs(b.z_score ?? 0) - Math.abs(a.z_score ?? 0))
 
+  function hashSeed(s: string): number {
+    let h = 2166136261
+    for (let i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 16777619)
+    return h >>> 0
+  }
+
+  function distortPair(pair: CointegratedPair): CointegratedPair {
+    const seed = hashSeed(pair.id)
+    const r = (n: number) => (Math.sin(seed + n) + 1) / 2
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    const fakeTicker = (n: number) =>
+      letters[Math.floor(r(n) * 26)] +
+      letters[Math.floor(r(n + 1) * 26)] +
+      letters[Math.floor(r(n + 2) * 26)] +
+      letters[Math.floor(r(n + 3) * 26)] +
+      String(Math.floor(r(n + 4) * 9) + 1)
+    return {
+      ...pair,
+      id: `locked-${seed.toString(36)}`,
+      ticker_a: fakeTicker(1),
+      ticker_b: fakeTicker(11),
+      score: 60 + r(2) * 39,
+      adf_statistic: -(2 + r(3) * 4),
+      p_value: r(4) * 0.05,
+      z_score: (r(5) - 0.5) * 6,
+      half_life: 2 + r(6) * 30,
+      signal: r(7) > 0.5 ? 'long_spread' : 'short_spread',
+      price_a: 5 + r(8) * 95,
+      price_b: 5 + r(9) * 95,
+      pri: 0.5 + r(10) * 4,
+    }
+  }
+
   function signalStyle(signal: string | null): React.CSSProperties {
     if (signal === 'long_spread')  return { color: '#4a7c59', fontWeight: 600 }
     if (signal === 'short_spread') return { color: '#8c3f3f', fontWeight: 600 }
@@ -94,52 +127,54 @@ export default function RankTable({ pairs, zThreshold = 2.0, mode = 'entrada', p
             )}
             {sorted.map((pair, idx) => {
               const locked = plan.toLowerCase() === 'free' && idx < LOCKED_TOP_N
+              const view = locked ? distortPair(pair) : pair
               return (
-              <Fragment key={pair.id}>
+              <Fragment key={view.id}>
                 <tr
                   style={{
-                    background: selectedId === pair.id ? '#151515' : 'transparent',
+                    background: selectedId === view.id ? '#151515' : 'transparent',
                     cursor: locked ? 'not-allowed' : 'pointer',
                     filter: locked ? 'blur(5px)' : undefined,
                     pointerEvents: locked ? 'none' : undefined,
                     userSelect: locked ? 'none' : undefined,
                   }}
-                  onClick={() => !locked && setSelectedId(prev => prev === pair.id ? null : pair.id)}
+                  onClick={() => !locked && setSelectedId(prev => prev === view.id ? null : view.id)}
                 >
                   <td style={{ color: '#8a8a8a' }}>{idx + 1}</td>
                   <td>
                     <span style={{ color: '#f5f5f5', letterSpacing: '0.05em' }}>
-                      {pair.ticker_a}
+                      {view.ticker_a}
                     </span>
                     <span style={{ color: '#8a8a8a', margin: '0 4px' }}>/</span>
-                    <span style={{ color: '#a0a0a0' }}>{pair.ticker_b}</span>
+                    <span style={{ color: '#a0a0a0' }}>{view.ticker_b}</span>
                   </td>
-                  <td style={{ color: '#d4b87a' }}>{fmtScore(pair.score)}</td>
-                  <td>{fmt4(pair.adf_statistic)}</td>
-                  <td>{fmtP(pair.p_value)}</td>
+                  <td style={{ color: '#d4b87a' }}>{fmtScore(view.score)}</td>
+                  <td>{fmt4(view.adf_statistic)}</td>
+                  <td>{fmtP(view.p_value)}</td>
                   <td style={{
-                    color: pair.z_score != null
-                      ? Math.abs(pair.z_score) > zThreshold
-                        ? pair.z_score > 0 ? '#8c3f3f' : '#4a7c59'
+                    color: view.z_score != null
+                      ? Math.abs(view.z_score) > zThreshold
+                        ? view.z_score > 0 ? '#8c3f3f' : '#4a7c59'
                         : '#f5f5f5'
                       : '#f5f5f5'
                   }}>
-                    {fmt4(pair.z_score)}
+                    {fmt4(view.z_score)}
                   </td>
-                  <td>{fmtHL(pair.half_life)}</td>
+                  <td>{fmtHL(view.half_life)}</td>
                   <td>
-                    <span style={signalStyle(pair.signal)}>
-                      {signalLabel(pair.signal)}
+                    <span style={signalStyle(view.signal)}>
+                      {signalLabel(view.signal)}
                     </span>
                   </td>
-                  <td>{fmtPrice(pair.price_a)}</td>
-                  <td>{fmtPrice(pair.price_b)}</td>
-                  <td>{fmtPrice(pair.pri)}</td>
+                  <td>{fmtPrice(view.price_a)}</td>
+                  <td>{fmtPrice(view.price_b)}</td>
+                  <td>{fmtPrice(view.pri)}</td>
                   <td>
                     <button
                       onClick={e => {
                         e.stopPropagation()
-                        setSelectedId(prev => prev === pair.id ? null : pair.id)
+                        if (locked) return
+                        setSelectedId(prev => prev === view.id ? null : view.id)
                       }}
                       style={{
                         background: 'none',
@@ -154,7 +189,7 @@ export default function RankTable({ pairs, zThreshold = 2.0, mode = 'entrada', p
                       }}
                       className="hover-opacity"
                     >
-                      {selectedId === pair.id ? 'CLOSE' : 'VIEW'}
+                      {selectedId === view.id ? 'CLOSE' : 'VIEW'}
                     </button>
                   </td>
                   <td>
@@ -162,7 +197,8 @@ export default function RankTable({ pairs, zThreshold = 2.0, mode = 'entrada', p
                       <button
                         onClick={e => {
                           e.stopPropagation()
-                          onExecutar(pair)
+                          if (locked) return
+                          onExecutar(view)
                         }}
                         style={{
                           background: 'transparent',
@@ -182,11 +218,11 @@ export default function RankTable({ pairs, zThreshold = 2.0, mode = 'entrada', p
                     )}
                   </td>
                 </tr>
-                {selectedId === pair.id && (
+                {selectedId === view.id && (
                   <tr>
                     <td colSpan={12} style={{ padding: '8px 0 16px', background: '#0a0a0a' }}>
                       <PairDetailPanel
-                        pair={pair}
+                        pair={view}
                         onClose={() => setSelectedId(null)}
                         zThreshold={zThreshold}
                       />
