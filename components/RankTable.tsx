@@ -9,13 +9,13 @@ interface Props {
   pairs: CointegratedPair[]
   zThreshold?: number
   mode?: 'entrada' | 'observacao'
-  plan?: 'free' | 'starter' | 'pro'
+  plan?: 'FREE' | 'starter' | 'pro'
   onExecutar?: (pair: CointegratedPair) => void
 }
 
 const LOCKED_TOP_N = 20
 
-export default function RankTable({ pairs, zThreshold = 2.0, mode = 'entrada', plan = 'free', onExecutar }: Props) {
+export default function RankTable({ pairs, zThreshold = 2.0, mode = 'entrada', plan = 'FREE', onExecutar }: Props) {
   const [selectedId, setSelectedId] = useState<string | null>(null)
 
   const sorted = mode === 'entrada'
@@ -74,7 +74,7 @@ export default function RankTable({ pairs, zThreshold = 2.0, mode = 'entrada', p
 
   return (
     <div>
-      {plan === 'free' && sorted.length > 0 && (
+      {plan === 'FREE' && sorted.length > 0 && (
         <div style={{
           padding: '10px 16px',
           background: '#1a1410',
@@ -126,7 +126,7 @@ export default function RankTable({ pairs, zThreshold = 2.0, mode = 'entrada', p
               </tr>
             )}
             {sorted.map((pair, idx) => {
-              const locked = plan.toLowerCase() === 'free' && idx < LOCKED_TOP_N
+              const locked = plan === 'FREE' && idx < LOCKED_TOP_N
               const view = locked ? distortPair(pair) : pair
               return (
               <Fragment key={view.id}>
