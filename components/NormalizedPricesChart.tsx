@@ -50,7 +50,7 @@ export default function NormalizedPricesChart({
         paddingLeft: 16,
         marginBottom: 8,
       }}>
-        NORMALIZED PRICES (base = 100)
+        PREÇOS NORMALIZADOS (base = 100)
       </p>
       <ResponsiveContainer width="100%" height={180}>
         <LineChart data={data} margin={{ top: 4, right: 16, bottom: 4, left: 0 }}>
@@ -83,7 +83,7 @@ export default function NormalizedPricesChart({
           />
           <Legend
             wrapperStyle={{ fontSize: 10, fontFamily: 'system-ui', color: '#a0a0a0', paddingLeft: 16 }}
-            formatter={(value) => `${value} (normalized)`}
+            formatter={(value) => `${value} (normalizado)`}
           />
           <Line
             type="linear"

@@ -189,11 +189,11 @@ export default function PairDetailPanel({
             : fmt4(pair.z_score)],
 
           // ── Qualidade estatística ─────────────────────────────────────
-          ['ADF Statistic',  fmt4(pair.adf_statistic)],
-          ['p-value',        fmtP(pair.p_value)],
-          ['Half-life',      fmtHL(pair.half_life)],
-          ['Score',          fmtScore(pair.score)],
-          ['Signal',         sigLabel],
+          ['Estatística ADF', fmt4(pair.adf_statistic)],
+          ['p-valor',         fmtP(pair.p_value)],
+          ['Meia-vida',       fmtHL(pair.half_life)],
+          ['Score',           fmtScore(pair.score)],
+          ['Sinal',           sigLabel],
         ].map(([label, value]) => (
           <div key={label}>
             <p style={{

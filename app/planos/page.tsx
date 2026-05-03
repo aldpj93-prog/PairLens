@@ -82,13 +82,13 @@ export default function Planos() {
         {/* Header */}
         <div style={{ marginBottom: 40 }}>
           <p style={{ color: '#7a7a7a', fontSize: 11, letterSpacing: '0.15em', marginBottom: 6, fontFamily: 'system-ui', margin: '0 0 6px' }}>
-            QUANTITATIVE RESEARCH TERMINAL
+            TERMINAL DE PESQUISA QUANTITATIVA
           </p>
           <h1 style={{ color: '#c8a96e', fontSize: 20, letterSpacing: '0.2em', fontFamily: '"JetBrains Mono", monospace', fontWeight: 600, margin: '0 0 4px' }}>
             PAIR<span style={{ color: '#e2e2e2' }}>LENS</span>
           </h1>
           <p style={{ color: '#4a4a4a', fontSize: 11, fontFamily: 'system-ui', letterSpacing: '0.1em', margin: 0 }}>
-            SELECT SUBSCRIPTION PLAN
+            SELECIONE O PLANO DE ASSINATURA
           </p>
         </div>
 
@@ -101,7 +101,7 @@ export default function Planos() {
             fontFamily: 'system-ui',
             transition: 'color 0.15s',
           }}>
-            MONTHLY
+            MENSAL
           </span>
           <button
             onClick={handleToggle}
@@ -137,7 +137,7 @@ export default function Planos() {
             fontFamily: 'system-ui',
             transition: 'color 0.15s',
           }}>
-            QUARTERLY
+            TRIMESTRAL
           </span>
         </div>
 
@@ -155,7 +155,7 @@ export default function Planos() {
               }}
             >
               <p style={{ color: '#4a4a4a', fontSize: 10, letterSpacing: '0.15em', fontFamily: 'system-ui', margin: '0 0 8px' }}>
-                PLAN
+                PLANO
               </p>
               <h3 style={{ color: '#c8a96e', fontSize: 16, letterSpacing: '0.2em', fontFamily: '"JetBrains Mono", monospace', fontWeight: 600, margin: '0 0 20px' }}>
                 {plan.name}
@@ -166,7 +166,7 @@ export default function Planos() {
                   {formatPrice(plan.price)}
                 </span>
                 <span style={{ color: '#4a4a4a', fontSize: 11, fontFamily: 'system-ui', marginLeft: 6 }}>
-                  / {isQuarterly ? 'QUARTER' : 'MONTH'}
+                  / {isQuarterly ? 'TRIMESTRE' : 'MÊS'}
                 </span>
               </div>
 

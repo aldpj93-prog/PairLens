@@ -79,11 +79,11 @@ export function fmtDays(n: number | string | null | undefined): string {
 
 /** Signal display text. */
 export function signalLabel(signal: string | null): string {
-  if (!signal) return 'NEUTRAL'
+  if (!signal) return 'NEUTRO'
   switch (signal) {
-    case 'long_spread':  return 'LONG SPREAD'
-    case 'short_spread': return 'SHORT SPREAD'
-    default:             return 'NEUTRAL'
+    case 'long_spread':  return 'SPREAD COMPRADO'
+    case 'short_spread': return 'SPREAD VENDIDO'
+    default:             return 'NEUTRO'
   }
 }
 

@@ -127,7 +127,7 @@ export default function RatioChart({
     currentZ <= -threshold ? 'long'  : null
 
   const dotColor   = direction === 'short' ? '#c0504a' : direction === 'long' ? '#4a9c6a' : '#d4b87a'
-  const stateLabel = direction === 'short' ? 'SHORT SPREAD' : direction === 'long' ? 'LONG SPREAD' : 'NEUTRO'
+  const stateLabel = direction === 'short' ? 'SPREAD VENDIDO' : direction === 'long' ? 'SPREAD COMPRADO' : 'NEUTRO'
 
   // ── R/R ──────────────────────────────────────────────────────────────────
   // Stop rule: 1/3 of the potential (distance from entry to mean).

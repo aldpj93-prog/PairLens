@@ -39,7 +39,7 @@ export default function ScanRunStatus() {
       {/* Latest scan summary */}
       <div style={{ marginBottom: 8 }}>
         <p style={{ color: '#8a8a8a', fontSize: 10, letterSpacing: '0.08em', marginBottom: 4 }}>
-          LAST SCAN
+          ÚLTIMO SCAN
         </p>
         {latest ? (
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
@@ -58,7 +58,7 @@ export default function ScanRunStatus() {
             </span>
           </div>
         ) : (
-          <span style={{ color: '#8a8a8a', fontSize: 11 }}>No scans yet</span>
+          <span style={{ color: '#8a8a8a', fontSize: 11 }}>Nenhum scan ainda</span>
         )}
       </div>
 
@@ -76,7 +76,7 @@ export default function ScanRunStatus() {
           marginBottom: collapsed ? 0 : 6,
         }}
       >
-        {collapsed ? '+ SCAN HISTORY' : '- SCAN HISTORY'}
+        {collapsed ? '+ HISTÓRICO DE SCANS' : '- HISTÓRICO DE SCANS'}
       </button>
 
       {!collapsed && (
@@ -118,7 +118,7 @@ export default function ScanRunStatus() {
             </div>
           ))}
           {runs.length === 0 && (
-            <span style={{ color: '#8a8a8a', fontSize: 11 }}>No history</span>
+            <span style={{ color: '#8a8a8a', fontSize: 11 }}>Sem histórico</span>
           )}
         </div>
       )}

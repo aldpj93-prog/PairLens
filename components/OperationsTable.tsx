@@ -37,10 +37,10 @@ export default function OperationsTable({ open, closed }: Props) {
       {/* Tabs */}
       <div style={{ borderBottom: '1px solid #2e2e2e', marginBottom: 16 }}>
         <button style={tabStyle(tab === 'open')} onClick={() => setTab('open')}>
-          OPEN ({open.length})
+          ABERTAS ({open.length})
         </button>
         <button style={tabStyle(tab === 'closed')} onClick={() => setTab('closed')}>
-          CLOSED ({closed.length})
+          FECHADAS ({closed.length})
         </button>
       </div>
 
@@ -48,7 +48,7 @@ export default function OperationsTable({ open, closed }: Props) {
         <table>
           <thead>
             <tr>
-              {['OPENED AT', 'PAIR', 'SIGNAL', 'ENTRY Z', 'ENTRY PRICE A', 'ENTRY PRICE B', 'DAYS OPEN', ''].map(h => (
+              {['ABERTA EM', 'PAR', 'SINAL', 'Z DE ENTRADA', 'PREÇO A ENTRADA', 'PREÇO B ENTRADA', 'DIAS ABERTA', ''].map(h => (
                 <th key={h}>{h}</th>
               ))}
             </tr>
@@ -57,7 +57,7 @@ export default function OperationsTable({ open, closed }: Props) {
             {open.length === 0 && (
               <tr>
                 <td colSpan={8} style={{ color: '#8a8a8a', textAlign: 'center', padding: '32px 0' }}>
-                  No open operations.
+                  Nenhuma operação aberta.
                 </td>
               </tr>
             )}
@@ -78,7 +78,7 @@ export default function OperationsTable({ open, closed }: Props) {
                   <td>{fmtPrice(op.entry_price_a)}</td>
                   <td>{fmtPrice(op.entry_price_b)}</td>
                   <td style={{ color: '#a0a0a0' }}>{daysOpen.toFixed(1)}d</td>
-                  <td style={{ color: '#8a8a8a', fontSize: 10 }}>OPEN</td>
+                  <td style={{ color: '#8a8a8a', fontSize: 10 }}>ABERTA</td>
                 </tr>
               )
             })}
@@ -90,7 +90,7 @@ export default function OperationsTable({ open, closed }: Props) {
         <table>
           <thead>
             <tr>
-              {['PAIR', 'SIGNAL', 'ENTRY Z', 'EXIT Z', 'ENTRY DATE', 'EXIT DATE', 'DURATION', 'P&L %', 'EXIT REASON'].map(h => (
+              {['PAR', 'SINAL', 'Z ENTRADA', 'Z SAÍDA', 'DATA ENTRADA', 'DATA SAÍDA', 'DURAÇÃO', 'P&L %', 'MOTIVO SAÍDA'].map(h => (
                 <th key={h}>{h}</th>
               ))}
             </tr>
@@ -99,7 +99,7 @@ export default function OperationsTable({ open, closed }: Props) {
             {closed.length === 0 && (
               <tr>
                 <td colSpan={9} style={{ color: '#8a8a8a', textAlign: 'center', padding: '32px 0' }}>
-                  No closed operations.
+                  Nenhuma operação fechada.
                 </td>
               </tr>
             )}

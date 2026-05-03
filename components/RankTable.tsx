@@ -110,7 +110,7 @@ export default function RankTable({ pairs, zThreshold = 2.0, mode = 'entrada', p
         <table>
           <thead>
             <tr>
-              {['#', 'PAIR', 'SCORE', 'ADF STAT', 'p-VALUE', 'Z-SCORE', 'HALF-LIFE', 'SIGNAL', 'PRICE A', 'PRICE B', 'PRI', '', ''].map((h, i) => (
+              {['#', 'PAR', 'SCORE', 'ADF STAT', 'p-VALOR', 'Z-SCORE', 'MEIA-VIDA', 'SINAL', 'PREÇO A', 'PREÇO B', 'PRI', '', ''].map((h, i) => (
                 <th key={`${h}-${i}`}>{h}</th>
               ))}
             </tr>
@@ -189,7 +189,7 @@ export default function RankTable({ pairs, zThreshold = 2.0, mode = 'entrada', p
                       }}
                       className="hover-opacity"
                     >
-                      {selectedId === view.id ? 'CLOSE' : 'VIEW'}
+                      {selectedId === view.id ? 'FECHAR' : 'VER'}
                     </button>
                   </td>
                   <td>

@@ -60,14 +60,14 @@ type FieldMeta = {
 const FIELD_META: FieldMeta[] = [
   {
     key: 'zscore_threshold',
-    label: 'Z-SCORE THRESHOLD',
+    label: 'LIMIAR DO Z-SCORE',
     type: 'number', step: '0.1', min: '0.5', max: '5.0',
     description: 'Z-score necessário para gerar um sinal. Default 2.0.',
     section: 'SCANNER',
   },
   {
     key: 'lookback_window',
-    label: 'LOOKBACK WINDOW (dias)',
+    label: 'JANELA DE ANÁLISE (dias)',
     type: 'number', step: '1', min: '20', max: '252',
     description: 'Janela de cálculo do z-score em dias. Default 60.',
   },
@@ -79,13 +79,13 @@ const FIELD_META: FieldMeta[] = [
   },
   {
     key: 'min_half_life',
-    label: 'HALF-LIFE MÍNIMO (dias)',
+    label: 'MEIA-VIDA MÍNIMA (dias)',
     type: 'number', step: '1', min: '1', max: '30',
     description: 'Meia-vida mínima de reversão à média. Default 5.',
   },
   {
     key: 'max_half_life',
-    label: 'HALF-LIFE MÁXIMO (dias)',
+    label: 'MEIA-VIDA MÁXIMA (dias)',
     type: 'number', step: '1', min: '10', max: '365',
     description: 'Meia-vida máxima de reversão à média. Default 60.',
   },
@@ -237,7 +237,7 @@ export default function SettingsPage() {
           fontSize: 13, letterSpacing: '0.1em', color: '#f5f5f5',
           fontFamily: 'system-ui', margin: '0 0 4px', fontWeight: 500,
         }}>
-          SETTINGS
+          CONFIGURAÇÕES
         </h1>
         <p style={{ color: '#8a8a8a', fontSize: 11, fontFamily: 'system-ui', margin: 0 }}>
           Parâmetros do scanner. Aplicados no próximo scan.

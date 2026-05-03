@@ -90,8 +90,8 @@ export default function ScannerPage() {
           </h1>
           {latestRun && (
             <p style={{ color: '#8a8a8a', fontSize: 11, fontFamily: 'system-ui', margin: 0 }}>
-              Last scan: {fmtDateBRT(latestRun.triggered_at)}
-              {latestRun.pairs_found != null && ` — ${latestRun.pairs_found} pairs found`}
+              Último scan: {fmtDateBRT(latestRun.triggered_at)}
+              {latestRun.pairs_found != null && ` — ${latestRun.pairs_found} pares encontrados`}
             </p>
           )}
         </div>
@@ -100,7 +100,7 @@ export default function ScannerPage() {
           {/* Z threshold input */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <label style={{ color: '#8a8a8a', fontSize: 11, fontFamily: 'system-ui', letterSpacing: '0.08em' }}>
-              Z THRESHOLD
+              LIMIAR Z
             </label>
             <input
               type="number"
@@ -144,7 +144,7 @@ export default function ScannerPage() {
             }}
           >
             {scanning && <span className="spinner" />}
-            {scanning ? 'SCANNING...' : 'RUN SCAN NOW'}
+            {scanning ? 'EXECUTANDO...' : 'EXECUTAR SCAN AGORA'}
           </button>
         </div>
       </div>
@@ -152,20 +152,20 @@ export default function ScannerPage() {
       {/* Metric cards */}
       <div style={{ display: 'flex', gap: 12, marginBottom: 28, flexWrap: 'wrap' }}>
         <MetricCard
-          label="TICKERS SCANNED"
+          label="ATIVOS ESCANEADOS"
           value={latestRun?.tickers_scanned ?? '—'}
         />
         <MetricCard
-          label="PAIRS TESTED"
+          label="PARES TESTADOS"
           value={latestRun?.pairs_tested ?? '—'}
         />
         <MetricCard
-          label="COINTEGRATED (p < 0.05)"
+          label="COINTEGRADOS (p < 0.05)"
           value={latestRun?.pairs_found ?? '—'}
           accent
         />
         <MetricCard
-          label="ACTIVE SIGNALS"
+          label="SINAIS ATIVOS"
           value={withSignal}
           accent={withSignal > 0}
         />
@@ -214,8 +214,8 @@ export default function ScannerPage() {
         <div style={{ padding: '12px 16px', borderBottom: '1px solid #2e2e2e' }}>
           <p style={{ color: '#8a8a8a', fontSize: 11, letterSpacing: '0.1em', fontFamily: 'system-ui', margin: 0 }}>
             {tab === 'entrada'
-              ? 'PARES COM SINAL ATIVO — |Z| > THRESHOLD'
-              : 'PARES COINTEGRADOS EM OBSERVAÇÃO — |Z| ≤ THRESHOLD'}
+              ? 'PARES COM SINAL ATIVO — |Z| > LIMIAR'
+              : 'PARES COINTEGRADOS EM OBSERVAÇÃO — |Z| ≤ LIMIAR'}
           </p>
         </div>
         {loading ? (

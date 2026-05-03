@@ -8,13 +8,13 @@ export default function PagamentoSucesso() {
 
         <div style={{ marginBottom: 32 }}>
           <p style={{ color: '#7a7a7a', fontSize: 11, letterSpacing: '0.15em', marginBottom: 6, fontFamily: 'system-ui', margin: '0 0 6px' }}>
-            QUANTITATIVE RESEARCH TERMINAL
+            TERMINAL DE PESQUISA QUANTITATIVA
           </p>
           <h1 style={{ color: '#c8a96e', fontSize: 20, letterSpacing: '0.2em', fontFamily: '"JetBrains Mono", monospace', fontWeight: 600, margin: '0 0 4px' }}>
             PAIR<span style={{ color: '#e2e2e2' }}>LENS</span>
           </h1>
           <p style={{ color: '#4a4a4a', fontSize: 11, fontFamily: 'system-ui', letterSpacing: '0.1em', margin: 0 }}>
-            PAYMENT CONFIRMATION
+            CONFIRMAÇÃO DE PAGAMENTO
           </p>
         </div>
 

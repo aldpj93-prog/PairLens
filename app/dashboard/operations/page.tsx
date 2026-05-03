@@ -104,7 +104,7 @@ function OperationCard({ op, onEncerrar }: CardProps) {
             borderRadius: 2,
           }}
         >
-          ENCERRAR OPERACAO
+          ENCERRAR OPERAÇÃO
         </button>
       </div>
 
@@ -200,10 +200,10 @@ export default function OperationsPage() {
     <div>
       <div style={{ marginBottom: 24 }}>
         <h1 style={{ fontSize: 13, letterSpacing: '0.1em', color: '#f5f5f5', fontFamily: 'system-ui', margin: '0 0 4px', fontWeight: 500 }}>
-          OPERACOES ABERTAS
+          OPERAÇÕES ABERTAS
         </h1>
         <p style={{ color: '#8a8a8a', fontSize: 11, fontFamily: 'system-ui', margin: 0 }}>
-          Operacoes registradas manualmente. Use o scanner para identificar novas entradas.
+          Operações registradas manualmente. Use o scanner para identificar novas entradas.
         </p>
       </div>
 
@@ -219,7 +219,7 @@ export default function OperationsPage() {
           padding: '48px 0', textAlign: 'center',
           color: '#8a8a8a', fontSize: 11, fontFamily: 'system-ui',
         }}>
-          Nenhuma operacao aberta. Acesse o scanner e clique em EXECUTAR para registrar uma entrada.
+          Nenhuma operação aberta. Acesse o scanner e clique em EXECUTAR para registrar uma entrada.
         </div>
       ) : (
         operations.map(op => (

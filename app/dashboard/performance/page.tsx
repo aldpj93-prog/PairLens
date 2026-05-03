@@ -64,10 +64,10 @@ export default function PerformancePage() {
     <div>
       <div style={{ marginBottom: 24 }}>
         <h1 style={{ fontSize: 13, letterSpacing: '0.1em', color: '#f5f5f5', fontFamily: 'system-ui', margin: '0 0 4px', fontWeight: 500 }}>
-          PERFORMANCE
+          DESEMPENHO
         </h1>
         <p style={{ color: '#8a8a8a', fontSize: 11, fontFamily: 'system-ui', margin: 0 }}>
-          Historico de operacoes encerradas.
+          Histórico de operações encerradas.
         </p>
       </div>
 
@@ -81,26 +81,26 @@ export default function PerformancePage() {
         <>
           {/* Metric cards */}
           <div style={{ display: 'flex', gap: 12, marginBottom: 28, flexWrap: 'wrap' }}>
-            <MetricCard label="OPERACOES ENCERRADAS" value={total} />
+            <MetricCard label="OPERAÇÕES ENCERRADAS" value={total} />
             <MetricCard
-              label="WIN RATE"
+              label="TAXA DE ACERTO"
               value={total > 0 ? `${winRate.toFixed(1)}%` : '—'}
               accent={winRate >= 50}
             />
             <MetricCard
-              label="P&L MEDIO"
+              label="P&L MÉDIO"
               value={total > 0 ? fmtPct(avgPnl) : '—'}
               accent={avgPnl > 0}
             />
-            <MetricCard label="DURACAO MEDIA" value={total > 0 ? fmtDays(avgDur) : '—'} />
+            <MetricCard label="DURAÇÃO MÉDIA" value={total > 0 ? fmtDays(avgDur) : '—'} />
             <MetricCard
-              label="MELHOR TRADE"
+              label="MELHOR OPERAÇÃO"
               value={best ? fmtPct(best.pnl_pct) : '—'}
               sub={best ? `${best.ticker_a}/${best.ticker_b}` : undefined}
               accent
             />
             <MetricCard
-              label="PIOR TRADE"
+              label="PIOR OPERAÇÃO"
               value={worst ? fmtPct(worst.pnl_pct) : '—'}
               sub={worst ? `${worst.ticker_a}/${worst.ticker_b}` : undefined}
             />
@@ -111,13 +111,13 @@ export default function PerformancePage() {
             <div style={{ background: '#1f1f1f', border: '1px solid #3d3d3d', borderRadius: 2, marginBottom: 16, overflowX: 'auto' }}>
               <div style={{ padding: '10px 16px', borderBottom: '1px solid #2e2e2e' }}>
                 <p style={{ color: '#8a8a8a', fontSize: 10, letterSpacing: '0.1em', fontFamily: 'system-ui', margin: 0 }}>
-                  HISTORICO DE OPERACOES
+                  HISTÓRICO DE OPERAÇÕES
                 </p>
               </div>
               <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <thead>
                   <tr>
-                    {['#', 'PAR', 'DIRECAO', 'ENTRADA', 'SAIDA', 'P&L', 'ENCERRAMENTO'].map(h => (
+                    {['#', 'PAR', 'DIREÇÃO', 'ENTRADA', 'SAÍDA', 'P&L', 'ENCERRAMENTO'].map(h => (
                       <th
                         key={h}
                         style={{
@@ -189,7 +189,7 @@ export default function PerformancePage() {
           {runs.length > 0 && (
             <div style={{ background: '#1f1f1f', border: '1px solid #3d3d3d', borderRadius: 2, padding: '16px 0 8px' }}>
               <p style={{ color: '#8a8a8a', fontSize: 10, letterSpacing: '0.1em', fontFamily: 'system-ui', paddingLeft: 20, marginBottom: 8 }}>
-                HISTORICO DE SCANS — PARES ENCONTRADOS
+                HISTÓRICO DE SCANS — PARES ENCONTRADOS
               </p>
               <ScanHistoryChart runs={runs} />
             </div>
@@ -201,7 +201,7 @@ export default function PerformancePage() {
               padding: '48px 0', textAlign: 'center',
               color: '#8a8a8a', fontSize: 11, fontFamily: 'system-ui',
             }}>
-              Nenhuma operacao encerrada ainda.
+              Nenhuma operação encerrada ainda.
             </div>
           )}
         </>

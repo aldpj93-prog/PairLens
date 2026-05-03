@@ -49,7 +49,7 @@ export default async function DashboardLayout({
             PAIR<span style={{ color: '#f5f5f5' }}>LENS</span>
           </p>
           <p style={{ color: '#8a8a8a', fontSize: 10, marginTop: 3, letterSpacing: '0.1em' }}>
-            B3 COINTEGRATION SCANNER
+            SCANNER DE COINTEGRAÇÃO B3
           </p>
         </div>
 

@@ -48,7 +48,7 @@ export default function signUpPage() {
               fontFamily: 'system-ui',
             }}
           >
-            QUANTITATIVE RESEARCH TERMINAL
+            TERMINAL DE PESQUISA QUANTITATIVA
           </p>
           <h1
             style={{
@@ -70,7 +70,7 @@ export default function signUpPage() {
               letterSpacing: '0.1em',
             }}
           >
-            RESTRICTED ACCESS
+            ACESSO RESTRITO
           </p>
         </div>
 
@@ -121,7 +121,7 @@ export default function signUpPage() {
                 fontFamily: 'system-ui',
               }}
             >
-              Name
+              NOME
             </label>
             <input
               id="name"
@@ -157,7 +157,7 @@ export default function signUpPage() {
                 fontFamily: 'system-ui',
               }}
             >
-              PASSWORD
+              SENHA
             </label>
             <input
               id="password"
@@ -211,7 +211,7 @@ export default function signUpPage() {
               borderRadius: 2,
             }}
           >
-            {loading ? 'AUTHENTICATING...' : 'AUTHENTICATE'}
+            {loading ? 'CADASTRANDO...' : 'CADASTRAR'}
           </button>
         </form>
       </div>

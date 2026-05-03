@@ -38,7 +38,7 @@ export default function PriceRatioChart({ residuals, dates }: Props) {
         paddingLeft: 16,
         marginBottom: 8,
       }}>
-        SPREAD SERIES (A - β·B)
+        SÉRIE DO SPREAD (A - β·B)
       </p>
       <ResponsiveContainer width="100%" height={160}>
         <LineChart data={data} margin={{ top: 4, right: 16, bottom: 4, left: 0 }}>

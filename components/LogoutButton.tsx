@@ -28,7 +28,7 @@ export default function LogoutButton() {
       }}
       className="hover-opacity"
     >
-      SIGN OUT
+      SAIR
     </button>
   )
 }

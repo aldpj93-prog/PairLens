@@ -69,7 +69,7 @@ export default function ZScoreChart({
         paddingLeft: 16,
         marginBottom: 8,
       }}>
-        Z-SCORE (60-day rolling)
+        Z-SCORE (móvel de 60 dias)
       </p>
       <ResponsiveContainer width="100%" height={180}>
         <ComposedChart data={data} margin={{ top: 4, right: 16, bottom: 4, left: 0 }}>

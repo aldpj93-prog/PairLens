@@ -6,10 +6,10 @@ import { usePathname } from 'next/navigation'
 const NAV_LINKS = [
   { href: '/dashboard/education',   label: 'EDUCACIONAL' },
   { href: '/dashboard',             label: 'SCANNER' },
-  { href: '/dashboard/operations',  label: 'OPERATIONS' },
-  { href: '/dashboard/performance', label: 'PERFORMANCE' },
+  { href: '/dashboard/operations',  label: 'OPERAÇÕES' },
+  { href: '/dashboard/performance', label: 'DESEMPENHO' },
   { href: '/planos',                label: 'PLANOS' },
-  { href: '/dashboard/settings',    label: 'SETTINGS' },
+  { href: '/dashboard/settings',    label: 'CONFIGURAÇÕES' },
 ]
 
 export default function NavLinks() {
